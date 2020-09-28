@@ -2188,13 +2188,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2212,7 +2205,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     createUser: function createUser() {
       // Submit the form via a POST request
-      this.form.post("/api/user").then(function (_ref) {
+      this.form.post("/api/users").then(function (_ref) {
         var data = _ref.data;
         console.log(data);
       });
@@ -39197,23 +39190,36 @@ var render = function() {
                         })
                       ],
                       1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Close\n                        "
+                        )
+                      ]
                     ),
                     _vm._v(" "),
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-primary",
-                        attrs: { disabled: _vm.form.busy, type: "submit" }
+                        staticClass: "btn btn-success",
+                        attrs: { type: "submit", disabled: _vm.form.busy }
                       },
                       [
                         _vm._v(
-                          "\n                            Log In\n                        "
+                          "\n                            Create\n                        "
                         )
                       ]
                     )
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(2)
+                  ])
                 ]
               )
             ])
@@ -39320,35 +39326,6 @@ var staticRenderFns = [
           }
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-danger",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [
-          _vm._v(
-            "\n                            Close\n                        "
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-success", attrs: { type: "button" } },
-        [
-          _vm._v(
-            "\n                            Create\n                        "
-          )
-        ]
       )
     ])
   }

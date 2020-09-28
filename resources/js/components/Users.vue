@@ -175,13 +175,6 @@
                                 ></has-error>
                             </div>
 
-                            <button
-                                :disabled="form.busy"
-                                type="submit"
-                                class="btn btn-primary"
-                            >
-                                Log In
-                            </button>
                         </div>
                         <div class="modal-footer">
                             <button
@@ -191,7 +184,7 @@
                             >
                                 Close
                             </button>
-                            <button type="button" class="btn btn-success">
+                            <button type="submit"  :disabled="form.busy" class="btn btn-success">
                                 Create
                             </button>
                         </div>
@@ -221,7 +214,7 @@ export default {
     methods: {
         createUser() {
             // Submit the form via a POST request
-            this.form.post("/api/user").then(({ data }) => {
+            this.form.post("/api/users").then(({ data }) => {
                 console.log(data);
             });
         }
