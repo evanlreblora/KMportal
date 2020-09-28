@@ -52920,6 +52920,7 @@ var routes = [{
 // keep it simple for now.
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  mode: 'history',
   routes: routes // short for `routes: routes`
 
 });

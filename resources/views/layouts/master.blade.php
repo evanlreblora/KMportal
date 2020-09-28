@@ -8,8 +8,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name') }}</title>
-    <link rel="stylesheet" href="/css/app.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 </head>
 
@@ -69,7 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <router-link to="/dashboard" class="nav-link">
+                            <router-link to="/dashboard" tag="a" exact class="nav-link" active-class="active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -77,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-cog"></i>
                                 <p>
                                     Management
@@ -86,7 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link active">
+                                    <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Active Page</p>
                                     </a>
@@ -100,7 +102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <router-link to="/profile" class="nav-link">
+                            <router-link to="/profile" tag="a" exact class="nav-link" active-class="active">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Profile
@@ -129,7 +131,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="content">
                 <div class="container-fluid">
 
+                    <div class="row">
                         <router-view></router-view>
+                    </div>
 
                     <!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -138,15 +142,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
         <!-- /.content-wrapper -->
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
-        <!-- /.control-sidebar -->
 
         <!-- Main Footer -->
         <footer class="main-footer">
@@ -155,7 +150,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 Anything you want
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            <strong>Copyright &copy; 2014-2020 MH Raihan.</strong> All rights
             reserved.
         </footer>
     </div>
@@ -164,7 +159,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- REQUIRED SCRIPTS -->
 
     <!--  App -->
-    <script src="/js/app.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>
