@@ -7,7 +7,11 @@
                         <h3 class="card-title">Users Table</h3>
 
                         <div class="card-tools">
-                            <button class="btn btn-success" data-toggle="modal" data-target="#userModal">
+                            <button
+                                class="btn btn-success"
+                                data-toggle="modal"
+                                data-target="#userModal"
+                            >
                                 Add User <i class="fas fa-user-plus fa-fw"></i>
                             </button>
                         </div>
@@ -77,7 +81,117 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <form
+                            @submit.prevent="login"
+                            @keydown="form.onKeydown($event)"
+                        >
+                            <div class="form-group">
+                                <input
+                                    v-model="form.name"
+                                    type="text"
+                                    name="name"
+                                    class="form-control"
+                                    placeholder="Name"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'name'
+                                        )
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="name"
+                                ></has-error>
+                            </div>
+
+                            <div class="form-group">
+                                <input
+                                    v-model="form.email"
+                                    type="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="Email address"
+                                    autocomplete="off"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'email'
+                                        )
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="email"
+                                ></has-error>
+                            </div>
+
+                            <div class="form-group">
+                                <input
+                                    v-model="form.password"
+                                    type="password"
+                                    name="password"
+                                    class="form-control"
+                                    placeholder="password"
+                                    autocomplete="off"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'password'
+                                        )
+                                    }"
+                                />
+                                <has-error
+                                    :form="form"
+                                    field="password"
+                                ></has-error>
+                            </div>
+
+                            <div class="form-group">
+                                <textarea
+                                    v-model="form.bio"
+                                    name="bio"
+                                    class="form-control"
+                                    placeholder="write short bio"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'bio'
+                                        )
+                                    }"
+                                ></textarea>
+                                <has-error
+                                    :form="form"
+                                    field="bio"
+                                ></has-error>
+                            </div>
+                            <div class="form-group">
+                                <select
+                                    v-model="form.type"
+                                    name="type"
+                                    class="form-control"
+                                    placeholder="Name"
+                                    :class="{
+                                        'is-invalid': form.errors.has(
+                                            'type'
+                                        )
+                                    }"
+                                >
+                                    <option value="" selected disabled>Select User Role</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="user">User</option>
+                                    <option value="author">Author</option>
+                                </select>
+                                <has-error
+                                    :form="form"
+                                    field="type"
+                                ></has-error>
+                            </div>
+
+                            <button
+                                :disabled="form.busy"
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                Log In
+                            </button>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button
@@ -99,6 +213,28 @@
 
 <script>
 export default {
+    data() {
+        return {
+            // Create a new form instance
+            form: new Form({
+                name: "",
+                email: "",
+                password: "",
+                type: "",
+                bio: "",
+                photo: ""
+            })
+        };
+    },
+
+    methods: {
+        login() {
+            // Submit the form via a POST request
+            this.form.post("/login").then(({ data }) => {
+                console.log(data);
+            });
+        }
+    },
     mounted() {
         console.log("Component mounted.");
     }
