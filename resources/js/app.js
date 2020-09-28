@@ -26,7 +26,8 @@ Vue.use(VueRouter)
 // define some routes
 const routes = [
     { path: '/dashboard', component:  require('./components/Dashboard.vue').default },
-    { path: '/profile', component:  require('./components/Profile.vue').default }
+    { path: '/profile', component:  require('./components/Profile.vue').default },
+    { path: '/users', component:  require('./components/Users.vue').default }
   ]
 
 // 3. Create the router instance and pass the `routes` option
