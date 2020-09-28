@@ -80,11 +80,11 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <form
-                            @submit.prevent="login"
-                            @keydown="form.onKeydown($event)"
-                        >
+                    <form
+                        @submit.prevent="createUser"
+                        @keydown="form.onKeydown($event)"
+                    >
+                        <div class="modal-body">
                             <div class="form-group">
                                 <input
                                     v-model="form.name"
@@ -93,9 +93,7 @@
                                     class="form-control"
                                     placeholder="Name"
                                     :class="{
-                                        'is-invalid': form.errors.has(
-                                            'name'
-                                        )
+                                        'is-invalid': form.errors.has('name')
                                     }"
                                 />
                                 <has-error
@@ -113,9 +111,7 @@
                                     placeholder="Email address"
                                     autocomplete="off"
                                     :class="{
-                                        'is-invalid': form.errors.has(
-                                            'email'
-                                        )
+                                        'is-invalid': form.errors.has('email')
                                     }"
                                 />
                                 <has-error
@@ -151,15 +147,10 @@
                                     class="form-control"
                                     placeholder="write short bio"
                                     :class="{
-                                        'is-invalid': form.errors.has(
-                                            'bio'
-                                        )
+                                        'is-invalid': form.errors.has('bio')
                                     }"
                                 ></textarea>
-                                <has-error
-                                    :form="form"
-                                    field="bio"
-                                ></has-error>
+                                <has-error :form="form" field="bio"></has-error>
                             </div>
                             <div class="form-group">
                                 <select
@@ -168,12 +159,12 @@
                                     class="form-control"
                                     placeholder="Name"
                                     :class="{
-                                        'is-invalid': form.errors.has(
-                                            'type'
-                                        )
+                                        'is-invalid': form.errors.has('type')
                                     }"
                                 >
-                                    <option value="" selected disabled>Select User Role</option>
+                                    <option value="" selected disabled
+                                        >Select User Role</option
+                                    >
                                     <option value="admin">Admin</option>
                                     <option value="user">User</option>
                                     <option value="author">Author</option>
@@ -191,20 +182,20 @@
                             >
                                 Log In
                             </button>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button
-                            type="button"
-                            class="btn btn-danger"
-                            data-dismiss="modal"
-                        >
-                            Close
-                        </button>
-                        <button type="button" class="btn btn-success">
-                            Create
-                        </button>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-danger"
+                                data-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-success">
+                                Create
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -228,15 +219,15 @@ export default {
     },
 
     methods: {
-        login() {
+        createUser() {
             // Submit the form via a POST request
-            this.form.post("/login").then(({ data }) => {
+            this.form.post("/api/user").then(({ data }) => {
                 console.log(data);
             });
         }
     },
     mounted() {
-        console.log("Component mounted.");
+        console.log("Users Component mounted.");
     }
 };
 </script>
