@@ -1,3 +1,4 @@
+import axios from '../../../public/js/app';
 <template>
     <div class="container">
         <div class="row">
@@ -25,18 +26,22 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Type</th>
+                                    <th>Registerd At</th>
                                     <th>Modify</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>183</td>
-                                    <td>John Doe</td>
-                                    <td>11-7-2014</td>
+                                <tr v-for="(user,index) in users" :key="user.id">
+                                    <td :title="user.id">{{ index + 1 }}</td>
+                                    <td>{{ user.name }}</td>
+                                    <td>{{ user.email }}</td>
                                     <td>
                                         <span class="tag tag-success"
-                                            >Approved</span
+                                            >{{ user.type }}</span
                                         >
+                                    </td>
+                                    <td>
+                                        {{ user.created_at }}
                                     </td>
                                     <td>
                                         <a href="#" title="Edit">
@@ -199,6 +204,7 @@
 export default {
     data() {
         return {
+            users:[],
             // Create a new form instance
             form: new Form({
                 name: "",
@@ -212,15 +218,20 @@ export default {
     },
 
     methods: {
-        createUser() {
+        async getUsers(){
+            const users = await axios.get('/api/users');
+            this.users = users.data.data;
+        },
+        async createUser() {
             // Submit the form via a POST request
-            this.form.post("/api/users").then(({ data }) => {
-                console.log(data);
-            });
+            await this.form.post("/api/users");
+            // modal close after submit
+            // need to modify later
+            $('#userModal').modal('toggle')
         }
     },
     mounted() {
-        console.log("Users Component mounted.");
+        this.getUsers();
     }
 };
 </script>
