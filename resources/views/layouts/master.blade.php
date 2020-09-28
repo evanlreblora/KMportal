@@ -124,7 +124,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper pt-5">
 
             <!-- Main content -->
             <div class="content">
