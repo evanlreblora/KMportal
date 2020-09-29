@@ -11,6 +11,7 @@ import VueRouter from 'vue-router'
 import { Form, HasError, AlertError } from 'vform'
 import moment from "moment";
 import Swal from 'sweetalert2';
+import VueProgressBar from 'vue-progressbar';
 
 window.Form = Form;
 
@@ -69,6 +70,13 @@ const Toast = Swal.mixin({
   })
 
   window.Toast = Toast;
+
+/* vue progressbar */
+Vue.use(VueProgressBar, {
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '4px'
+  })
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

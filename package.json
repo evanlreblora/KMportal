@@ -29,6 +29,7 @@
         "moment": "^2.29.0",
         "sweetalert2": "^10.3.5",
         "vform": "^1.0.1",
+        "vue-progressbar": "^0.7.5",
         "vue-router": "^3.4.5"
     }
 }

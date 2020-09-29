@@ -50,7 +50,11 @@ import axios from '../../../public/js/app';
                                             <i class="fa fa-edit indigo"></i>
                                         </a>
                                         <span class="yellow">/</span>
-                                        <a href="#" title="Remove">
+                                        <a
+                                            href="#"
+                                            @click.prevent="deleteUser(user)"
+                                            title="Remove"
+                                        >
                                             <i class="fa fa-trash red"></i>
                                         </a>
                                     </td>
@@ -235,6 +239,7 @@ export default {
         async createUser() {
             try {
                 // Submit the form via a POST request
+                this.$Progress.start();
                 await this.form.post("/api/users");
                 // modal close after submit
                 // need to modify later
@@ -246,19 +251,44 @@ export default {
 
                 // updated the list
                 window.Fire.$emit("loadUser");
+
+                this.$Progress.finish();
             } catch (error) {
                 window.Toast.fire({
                     icon: "error",
                     title: "User cannon created"
                 });
             }
+        },
+        async deleteUser(user) {
+            // delete the user
+            const result = await window.Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            });
+
+            if( result.isConfirmed ){
+                await this.form.delete(`/api/users/${user.id}`);
+                Swal.fire(
+                    "Deleted!",
+                   `User ${user.name} has been deleted`,
+                    "success"
+                );
+            }
+            // update the view
+            window.Fire.$emit("loadUser");
         }
     },
     mounted() {
         this.getUsers();
 
         // fired fire event
-        window.Fire.$on("loadUser",() => {
+        window.Fire.$on("loadUser", () => {
             this.getUsers();
         });
     }
