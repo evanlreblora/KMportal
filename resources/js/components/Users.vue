@@ -262,7 +262,8 @@ export default {
         },
         async deleteUser(user) {
             // delete the user
-            const result = await window.Swal.fire({
+            try {
+                const result = await window.Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
                 icon: "warning",
@@ -278,6 +279,13 @@ export default {
                     "Deleted!",
                    `User ${user.name} has been deleted`,
                     "success"
+                );
+            }
+            } catch (error) {
+                 Swal.fire(
+                    "Failed!",
+                   `User ${user.name} cannot be deleted`,
+                    "error"
                 );
             }
             // update the view

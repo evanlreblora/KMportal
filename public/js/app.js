@@ -2323,7 +2323,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _context3.next = 2;
+                _context3.prev = 0;
+                _context3.next = 3;
                 return window.Swal.fire({
                   title: "Are you sure?",
                   text: "You won't be able to revert this!",
@@ -2334,30 +2335,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   confirmButtonText: "Yes, delete it!"
                 });
 
-              case 2:
+              case 3:
                 result = _context3.sent;
 
                 if (!result.isConfirmed) {
-                  _context3.next = 7;
+                  _context3.next = 8;
                   break;
                 }
 
-                _context3.next = 6;
+                _context3.next = 7;
                 return _this3.form["delete"]("/api/users/".concat(user.id));
 
-              case 6:
+              case 7:
                 Swal.fire("Deleted!", "User ".concat(user.name, " has been deleted"), "success");
 
-              case 7:
+              case 8:
+                _context3.next = 13;
+                break;
+
+              case 10:
+                _context3.prev = 10;
+                _context3.t0 = _context3["catch"](0);
+                Swal.fire("Failed!", "User ".concat(user.name, " cannot be deleted"), "error");
+
+              case 13:
                 // update the view
                 window.Fire.$emit("loadUser");
 
-              case 8:
+              case 14:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3);
+        }, _callee3, null, [[0, 10]]);
       }))();
     }
   },

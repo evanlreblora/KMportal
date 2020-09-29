@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Error;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -74,6 +75,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        // throw new Error("Cannot be deleted");
         $user->delete();
         return response()->json($user);
     }
