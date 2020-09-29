@@ -10,6 +10,7 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router'
 import { Form, HasError, AlertError } from 'vform'
 import moment from "moment";
+import Swal from 'sweetalert2';
 
 window.Form = Form;
 
@@ -53,6 +54,21 @@ Vue.filter('customDate', function (data) {
     return moment(data).format('MMMM Do YYYY');
 });
 
+/* toast  */
+window.Swal = Swal;
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
+  window.Toast = Toast;
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

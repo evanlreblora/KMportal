@@ -31,14 +31,17 @@ import axios from '../../../public/js/app';
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(user,index) in users" :key="user.id">
+                                <tr
+                                    v-for="(user, index) in users"
+                                    :key="user.id"
+                                >
                                     <td :title="user.id">{{ index + 1 }}</td>
                                     <td>{{ user.name }}</td>
                                     <td>{{ user.email }}</td>
                                     <td>
-                                        <span class="tag tag-success"
-                                            >{{ user.type | capital }}</span
-                                        >
+                                        <span class="tag tag-success">{{
+                                            user.type | capital
+                                        }}</span>
                                     </td>
                                     <td>
                                         {{ user.created_at | customDate }}
@@ -179,7 +182,6 @@ import axios from '../../../public/js/app';
                                     field="type"
                                 ></has-error>
                             </div>
-
                         </div>
                         <div class="modal-footer">
                             <button
@@ -189,7 +191,11 @@ import axios from '../../../public/js/app';
                             >
                                 Close
                             </button>
-                            <button type="submit"  :disabled="form.busy" class="btn btn-success">
+                            <button
+                                type="submit"
+                                :disabled="form.busy"
+                                class="btn btn-success"
+                            >
                                 Create
                             </button>
                         </div>
@@ -204,7 +210,7 @@ import axios from '../../../public/js/app';
 export default {
     data() {
         return {
-            users:[],
+            users: [],
             // Create a new form instance
             form: new Form({
                 name: "",
@@ -218,16 +224,27 @@ export default {
     },
 
     methods: {
-        async getUsers(){
-            const users = await axios.get('/api/users');
+        async getUsers() {
+            const users = await axios.get("/api/users");
             this.users = users.data.data;
         },
         async createUser() {
-            // Submit the form via a POST request
-            await this.form.post("/api/users");
-            // modal close after submit
-            // need to modify later
-            $('#userModal').modal('toggle')
+            try {
+                // Submit the form via a POST request
+                await this.form.post("/api/users");
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("toggle");
+                window.Toast.fire({
+                    icon: "success",
+                    title: "User Created successfully"
+                });
+            } catch (error) {
+                window.Toast.fire({
+                    icon: "error",
+                    title: "User cannon created"
+                });
+            }
         }
     },
     mounted() {
