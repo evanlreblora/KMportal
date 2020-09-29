@@ -2218,7 +2218,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2235,6 +2234,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
+    openUserModal: function openUserModal() {
+      $("#userModal").modal("show");
+      this.form.reset();
+    },
     getUsers: function getUsers() {
       var _this = this;
 
@@ -2274,33 +2277,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 // modal close after submit
                 // need to modify later
-                $("#userModal").modal("toggle");
+                $("#userModal").modal("hide");
                 window.Toast.fire({
                   icon: "success",
                   title: "User Created successfully"
-                });
-                _context2.next = 10;
+                }); // updated the list
+
+                window.Fire.$emit("loadUser");
+                _context2.next = 11;
                 break;
 
-              case 7:
-                _context2.prev = 7;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
                 window.Toast.fire({
                   icon: "error",
                   title: "User cannon created"
                 });
 
-              case 10:
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 7]]);
+        }, _callee2, null, [[0, 8]]);
       }))();
     }
   },
   mounted: function mounted() {
-    this.getUsers();
+    var _this3 = this;
+
+    this.getUsers(); // fired fire event
+
+    window.Fire.$on("loadUser", function () {
+      _this3.getUsers();
+    });
   }
 });
 
@@ -64636,11 +64647,27 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "card" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "card-header" }, [
+            _c("h3", { staticClass: "card-title" }, [_vm._v("Users Table")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-tools" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success",
+                  on: { click: _vm.openUserModal }
+                },
+                [
+                  _vm._v("\n                            Add User "),
+                  _c("i", { staticClass: "fas fa-user-plus fa-fw" })
+                ]
+              )
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body table-responsive p-0" }, [
             _c("table", { staticClass: "table table-hover text-nowrap" }, [
-              _vm._m(1),
+              _vm._m(0),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -64668,7 +64695,7 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(2, true)
+                    _vm._m(1, true)
                   ])
                 }),
                 0
@@ -64700,7 +64727,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c(
                 "form",
@@ -64990,28 +65017,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Users Table")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-tools" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success",
-            attrs: { "data-toggle": "modal", "data-target": "#userModal" }
-          },
-          [
-            _vm._v("\n                            Add User "),
-            _c("i", { staticClass: "fas fa-user-plus fa-fw" })
-          ]
-        )
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -80405,6 +80410,7 @@ window.Toast = Toast;
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+window.Fire = new Vue();
 var app = new Vue({
   router: router
 }).$mount('#app');

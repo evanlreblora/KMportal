@@ -75,7 +75,7 @@ const Toast = Swal.mixin({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-
+window.Fire = new Vue();
 const app = new Vue({
     router
   }).$mount('#app')

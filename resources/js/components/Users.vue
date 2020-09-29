@@ -10,8 +10,7 @@ import axios from '../../../public/js/app';
                         <div class="card-tools">
                             <button
                                 class="btn btn-success"
-                                data-toggle="modal"
-                                data-target="#userModal"
+                                @click="openUserModal"
                             >
                                 Add User <i class="fas fa-user-plus fa-fw"></i>
                             </button>
@@ -224,6 +223,11 @@ export default {
     },
 
     methods: {
+        openUserModal() {
+            $("#userModal").modal("show");
+            this.form.reset();
+        },
+
         async getUsers() {
             const users = await axios.get("/api/users");
             this.users = users.data.data;
@@ -234,11 +238,14 @@ export default {
                 await this.form.post("/api/users");
                 // modal close after submit
                 // need to modify later
-                $("#userModal").modal("toggle");
+                $("#userModal").modal("hide");
                 window.Toast.fire({
                     icon: "success",
                     title: "User Created successfully"
                 });
+
+                // updated the list
+                window.Fire.$emit("loadUser");
             } catch (error) {
                 window.Toast.fire({
                     icon: "error",
@@ -249,6 +256,11 @@ export default {
     },
     mounted() {
         this.getUsers();
+
+        // fired fire event
+        window.Fire.$on("loadUser",() => {
+            this.getUsers();
+        });
     }
 };
 </script>
