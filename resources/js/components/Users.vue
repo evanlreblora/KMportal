@@ -37,11 +37,11 @@ import axios from '../../../public/js/app';
                                     <td>{{ user.email }}</td>
                                     <td>
                                         <span class="tag tag-success"
-                                            >{{ user.type }}</span
+                                            >{{ user.type | capital }}</span
                                         >
                                     </td>
                                     <td>
-                                        {{ user.created_at }}
+                                        {{ user.created_at | customDate }}
                                     </td>
                                     <td>
                                         <a href="#" title="Edit">
