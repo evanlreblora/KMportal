@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -50,9 +59,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return $user;
     }
 
     /**
@@ -62,9 +71,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            "name" => "required|string|max:200",
+            "email" => "required|max:110|unique:users,email,".$user->id,
+            "password" => "sometimes|string|min:4|max:100"
+        ]);
+
+        if($request->password){
+            $request->password = Hash::make($request->password);
+        }
+
+        $user->update( $request->all() );
+        return response()->json($user);
     }
 
     /**

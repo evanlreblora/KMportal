@@ -1,4 +1,4 @@
-import axios from '../../../public/js/app';
+import axios, { async } from '../../../public/js/app';
 <template>
     <div class="container">
         <div class="row">
@@ -46,7 +46,11 @@ import axios from '../../../public/js/app';
                                         {{ user.created_at | customDate }}
                                     </td>
                                     <td>
-                                        <a href="#" title="Edit">
+                                        <a
+                                            href="#"
+                                            title="Edit"
+                                            @click="openUserModal(user)"
+                                        >
                                             <i class="fa fa-edit indigo"></i>
                                         </a>
                                         <span class="yellow">/</span>
@@ -80,7 +84,7 @@ import axios from '../../../public/js/app';
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="userModalTitle">
-                            Add New
+                            {{ editable ? "Update's user data" : "Add New" }}
                         </h5>
                         <button
                             type="button"
@@ -92,7 +96,7 @@ import axios from '../../../public/js/app';
                         </button>
                     </div>
                     <form
-                        @submit.prevent="createUser"
+                        @submit.prevent="onSubmit"
                         @keydown="form.onKeydown($event)"
                     >
                         <div class="modal-body">
@@ -197,9 +201,13 @@ import axios from '../../../public/js/app';
                             <button
                                 type="submit"
                                 :disabled="form.busy"
-                                class="btn btn-success"
+                                :class="
+                                    editable
+                                        ? 'btn btn-success'
+                                        : 'btn btn-primary'
+                                "
                             >
-                                Create
+                                {{ editable ? "Update" : "Create" }}
                             </button>
                         </div>
                     </form>
@@ -214,8 +222,10 @@ export default {
     data() {
         return {
             users: [],
+            editable: false,
             // Create a new form instance
             form: new Form({
+                id: "",
                 name: "",
                 email: "",
                 password: "",
@@ -227,9 +237,26 @@ export default {
     },
 
     methods: {
-        openUserModal() {
-            $("#userModal").modal("show");
+        openUserModal(user = null) {
+            // clear the errors
+            this.form.clear();
+            // resets the form
             this.form.reset();
+            if (user.id) {
+                this.editable = true;
+                this.form.fill(user);
+            } else {
+                this.editable = false;
+            }
+            $("#userModal").modal("show");
+        },
+
+        onSubmit() {
+            if (this.editable) {
+                this.updateUser();
+            } else {
+                this.createUser();
+            }
         },
 
         async getUsers() {
@@ -254,37 +281,62 @@ export default {
 
                 this.$Progress.finish();
             } catch (error) {
+                 this.$Progress.fail();
                 window.Toast.fire({
                     icon: "error",
                     title: "User cannon created"
                 });
             }
         },
+        async updateUser() {
+             this.$Progress.start();
+            try {
+               await this.form.put(`/api/users/${this.form.id}`);
+                $("#userModal").modal("hide");
+                Swal.fire(
+                    "Updated!",
+                    `User ${this.form.name} is updated`,
+                    "success"
+                );
+                 this.$Progress.finish();
+
+                // update the view
+                window.Fire.$emit("loadUser");
+            } catch (error) {
+                 this.$Progress.fail();
+                Swal.fire(
+                    "Failed!",
+                    `User ${user.name} cannot be updated`,
+                    "error"
+                );
+                console.log(error);
+            }
+        },
         async deleteUser(user) {
             // delete the user
             try {
                 const result = await window.Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            });
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                });
 
-            if( result.isConfirmed ){
-                await this.form.delete(`/api/users/${user.id}`);
-                Swal.fire(
-                    "Deleted!",
-                   `User ${user.name} has been deleted`,
-                    "success"
-                );
-            }
+                if (result.isConfirmed) {
+                    await this.form.delete(`/api/users/${user.id}`);
+                    Swal.fire(
+                        "Deleted!",
+                        `User ${user.name} has been deleted`,
+                        "success"
+                    );
+                }
             } catch (error) {
-                 Swal.fire(
+                Swal.fire(
                     "Failed!",
-                   `User ${user.name} cannot be deleted`,
+                    `User ${user.name} cannot be deleted`,
                     "error"
                 );
             }

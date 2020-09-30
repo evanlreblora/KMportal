@@ -2222,12 +2222,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       users: [],
+      editable: false,
       // Create a new form instance
       form: new Form({
+        id: "",
         name: "",
         email: "",
         password: "",
@@ -2239,8 +2249,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     openUserModal: function openUserModal() {
-      $("#userModal").modal("show");
+      var user = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      // clear the errors
+      this.form.clear(); // resets the form
+
       this.form.reset();
+
+      if (user.id) {
+        this.editable = true;
+        this.form.fill(user);
+      } else {
+        this.editable = false;
+      }
+
+      $("#userModal").modal("show");
+    },
+    onSubmit: function onSubmit() {
+      if (this.editable) {
+        this.updateUser();
+      } else {
+        this.createUser();
+      }
     },
     getUsers: function getUsers() {
       var _this = this;
@@ -2295,18 +2324,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this2.$Progress.finish();
 
-                _context2.next = 13;
+                _context2.next = 14;
                 break;
 
               case 10:
                 _context2.prev = 10;
                 _context2.t0 = _context2["catch"](0);
+
+                _this2.$Progress.fail();
+
                 window.Toast.fire({
                   icon: "error",
                   title: "User cannon created"
                 });
 
-              case 13:
+              case 14:
               case "end":
                 return _context2.stop();
             }
@@ -2314,17 +2346,59 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2, null, [[0, 10]]);
       }))();
     },
-    deleteUser: function deleteUser(user) {
+    updateUser: function updateUser() {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var result;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _context3.prev = 0;
-                _context3.next = 3;
+                _this3.$Progress.start();
+
+                _context3.prev = 1;
+                _context3.next = 4;
+                return _this3.form.put("/api/users/".concat(_this3.form.id));
+
+              case 4:
+                $("#userModal").modal("hide");
+                Swal.fire("Updated!", "User ".concat(_this3.form.name, " is updated"), "success");
+
+                _this3.$Progress.finish(); // update the view
+
+
+                window.Fire.$emit("loadUser");
+                _context3.next = 15;
+                break;
+
+              case 10:
+                _context3.prev = 10;
+                _context3.t0 = _context3["catch"](1);
+
+                _this3.$Progress.fail();
+
+                Swal.fire("Failed!", "User ".concat(user.name, " cannot be updated"), "error");
+                console.log(_context3.t0);
+
+              case 15:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[1, 10]]);
+      }))();
+    },
+    deleteUser: function deleteUser(user) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
                 return window.Swal.fire({
                   title: "Are you sure?",
                   text: "You won't be able to revert this!",
@@ -2336,26 +2410,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 3:
-                result = _context3.sent;
+                result = _context4.sent;
 
                 if (!result.isConfirmed) {
-                  _context3.next = 8;
+                  _context4.next = 8;
                   break;
                 }
 
-                _context3.next = 7;
-                return _this3.form["delete"]("/api/users/".concat(user.id));
+                _context4.next = 7;
+                return _this4.form["delete"]("/api/users/".concat(user.id));
 
               case 7:
                 Swal.fire("Deleted!", "User ".concat(user.name, " has been deleted"), "success");
 
               case 8:
-                _context3.next = 13;
+                _context4.next = 13;
                 break;
 
               case 10:
-                _context3.prev = 10;
-                _context3.t0 = _context3["catch"](0);
+                _context4.prev = 10;
+                _context4.t0 = _context4["catch"](0);
                 Swal.fire("Failed!", "User ".concat(user.name, " cannot be deleted"), "error");
 
               case 13:
@@ -2364,20 +2438,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 14:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3, null, [[0, 10]]);
+        }, _callee4, null, [[0, 10]]);
       }))();
     }
   },
   mounted: function mounted() {
-    var _this4 = this;
+    var _this5 = this;
 
     this.getUsers(); // fired fire event
 
     window.Fire.$on("loadUser", function () {
-      _this4.getUsers();
+      _this5.getUsers();
     });
   }
 });
@@ -64763,7 +64837,18 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("td", [
-                      _vm._m(1, true),
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#", title: "Edit" },
+                          on: {
+                            click: function($event) {
+                              return _vm.openUserModal(user)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-edit indigo" })]
+                      ),
                       _vm._v(" "),
                       _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
                       _vm._v(" "),
@@ -64812,7 +64897,26 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(2),
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "userModalTitle" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(
+                          _vm.editable ? "Update's user data" : "Add New"
+                        ) +
+                        "\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ]),
               _vm._v(" "),
               _c(
                 "form",
@@ -64820,7 +64924,7 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      return _vm.createUser($event)
+                      return _vm.onSubmit($event)
                     },
                     keydown: function($event) {
                       return _vm.form.onKeydown($event)
@@ -65082,12 +65186,16 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-success",
+                        class: _vm.editable
+                          ? "btn btn-success"
+                          : "btn btn-primary",
                         attrs: { type: "submit", disabled: _vm.form.busy }
                       },
                       [
                         _vm._v(
-                          "\n                            Create\n                        "
+                          "\n                            " +
+                            _vm._s(_vm.editable ? "Update" : "Create") +
+                            "\n                        "
                         )
                       ]
                     )
@@ -65126,34 +65234,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#", title: "Edit" } }, [
-      _c("i", { staticClass: "fa fa-edit indigo" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "userModalTitle" } },
-        [_vm._v("\n                        Add New\n                    ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   }
 ]
 render._withStripped = true
