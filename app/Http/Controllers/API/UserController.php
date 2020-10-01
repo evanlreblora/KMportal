@@ -52,6 +52,15 @@ class UserController extends Controller
             'photo' => $request['photo'] ?? 'profile.png',
         ]);
     }
+    /**
+     * Display the auth resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        return auth()->user();
+    }
 
     /**
      * Display the specified resource.
