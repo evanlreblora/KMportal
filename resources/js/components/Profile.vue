@@ -191,6 +191,7 @@
                                                     class="form-control"
                                                     placeholder="photo"
                                                     autocomplete="off"
+                                                    @change="fileUpload"
                                                     :class="{
                                                         'is-invalid': form.errors.has(
                                                             'photo'
@@ -205,8 +206,8 @@
                                             <div class="form-group">
                                                 <label for="passport">Passport (leave empty if not changing)</label>
                                                 <input
-                                                    v-model="form.passport"
-                                                    type="text"
+                                                    v-model="form.password"
+                                                    type="password"
                                                     id="passport"
                                                     name="passport"
                                                     class="form-control"
@@ -274,9 +275,35 @@ export default {
             this.user = user.data;
             this.form.fill(user.data);
         },
+        fileUpload(e) {
+            const fileTypes = ['jpg', 'jpeg', 'png', 'gif'];  //acceptable file types
+            const file = e.target.files[0];
+            const extension = file.name.split('.').pop().toLowerCase();  //file extension from input file
+            const isSuccess = fileTypes.indexOf(extension) > -1;  //is extension in acceptable types
 
-        async updateUser() {
-            this.$Progress.start();
+            if(!isSuccess){
+                 Swal.fire(
+                    "Failed!",
+                    `File type ${file.type} does not support`,
+                    "error"
+                );
+                this.form.file = null;
+                return false;
+            }
+            const reader = new FileReader();
+            reader.onloadend =  evt => {
+                this.form.photo =  evt.target.result;
+            };
+
+            reader.readAsDataURL(file);
+
+            console.log(file);
+
+
+        },
+        async updateUser(e) {
+
+            /* this.$Progress.start();
             try {
                 await this.form.put(`/api/user/${this.form.id}`);
                 $("#userModal").modal("hide");
@@ -297,7 +324,7 @@ export default {
                     "error"
                 );
                 console.log(error);
-            }
+            } */
         },
 
     },

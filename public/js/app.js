@@ -2230,6 +2230,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2272,46 +2273,64 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    updateUser: function updateUser() {
+    fileUpload: function fileUpload(e) {
       var _this2 = this;
+
+      var fileTypes = ['jpg', 'jpeg', 'png', 'gif']; //acceptable file types
+
+      var file = e.target.files[0];
+      var extension = file.name.split('.').pop().toLowerCase(); //file extension from input file
+
+      var isSuccess = fileTypes.indexOf(extension) > -1; //is extension in acceptable types
+
+      if (!isSuccess) {
+        Swal.fire("Failed!", "File type ".concat(file.type, " does not support"), "error");
+        this.form.file = null;
+        return false;
+      }
+
+      var reader = new FileReader();
+
+      reader.onloadend = function (evt) {
+        _this2.form.photo = evt.target.result;
+      };
+
+      reader.readAsDataURL(file);
+      console.log(file);
+    },
+    updateUser: function updateUser(e) {
+      /* this.$Progress.start();
+      try {
+          await this.form.put(`/api/user/${this.form.id}`);
+          $("#userModal").modal("hide");
+          Swal.fire(
+              "Updated!",
+              `User ${this.form.name} is updated`,
+              "success"
+          );
+          this.$Progress.finish();
+           // update the view
+          window.Fire.$emit("loadUser");
+      } catch (error) {
+          this.$Progress.fail();
+          Swal.fire(
+              "Failed!",
+              `User ${user.name} cannot be updated`,
+              "error"
+          );
+          console.log(error);
+      } */
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _this2.$Progress.start();
-
-                _context2.prev = 1;
-                _context2.next = 4;
-                return _this2.form.put("/api/user/".concat(_this2.form.id));
-
-              case 4:
-                $("#userModal").modal("hide");
-                Swal.fire("Updated!", "User ".concat(_this2.form.name, " is updated"), "success");
-
-                _this2.$Progress.finish(); // update the view
-
-
-                window.Fire.$emit("loadUser");
-                _context2.next = 15;
-                break;
-
-              case 10:
-                _context2.prev = 10;
-                _context2.t0 = _context2["catch"](1);
-
-                _this2.$Progress.fail();
-
-                Swal.fire("Failed!", "User ".concat(user.name, " cannot be updated"), "error");
-                console.log(_context2.t0);
-
-              case 15:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[1, 10]]);
+        }, _callee2);
       }))();
     }
   },
@@ -65935,7 +65954,8 @@ var render = function() {
                                   name: "photo",
                                   placeholder: "photo",
                                   autocomplete: "off"
-                                }
+                                },
+                                on: { change: _vm.fileUpload }
                               }),
                               _vm._v(" "),
                               _c("has-error", {
@@ -65958,8 +65978,8 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.form.passport,
-                                    expression: "form.passport"
+                                    value: _vm.form.password,
+                                    expression: "form.password"
                                   }
                                 ],
                                 staticClass: "form-control",
@@ -65967,13 +65987,13 @@ var render = function() {
                                   "is-invalid": _vm.form.errors.has("passport")
                                 },
                                 attrs: {
-                                  type: "text",
+                                  type: "password",
                                   id: "passport",
                                   name: "passport",
                                   placeholder: "passport",
                                   autocomplete: "off"
                                 },
-                                domProps: { value: _vm.form.passport },
+                                domProps: { value: _vm.form.password },
                                 on: {
                                   input: function($event) {
                                     if ($event.target.composing) {
@@ -65981,7 +66001,7 @@ var render = function() {
                                     }
                                     _vm.$set(
                                       _vm.form,
-                                      "passport",
+                                      "password",
                                       $event.target.value
                                     )
                                   }
