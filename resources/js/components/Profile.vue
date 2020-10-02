@@ -113,7 +113,7 @@
 
                                     <div class="tab-pane active" id="settings">
                                         <form
-                                            @submit.prevent="onSubmit"
+                                            @submit.prevent="updateUser"
                                             @keydown="form.onKeydown($event)"
                                         >
                                             <div class="form-group">
@@ -303,10 +303,10 @@ export default {
         },
         async updateUser(e) {
 
-            /* this.$Progress.start();
+            this.$Progress.start();
             try {
-                await this.form.put(`/api/user/${this.form.id}`);
-                $("#userModal").modal("hide");
+                await this.form.put(`/api/profile/`);
+
                 Swal.fire(
                     "Updated!",
                     `User ${this.form.name} is updated`,
@@ -315,7 +315,7 @@ export default {
                 this.$Progress.finish();
 
                 // update the view
-                window.Fire.$emit("loadUser");
+                // window.Fire.$emit("loadUser");
             } catch (error) {
                 this.$Progress.fail();
                 Swal.fire(
@@ -324,7 +324,7 @@ export default {
                     "error"
                 );
                 console.log(error);
-            } */
+            }
         },
 
     },

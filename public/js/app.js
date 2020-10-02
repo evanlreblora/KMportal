@@ -2299,48 +2299,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       console.log(file);
     },
     updateUser: function updateUser(e) {
-      /* this.$Progress.start();
-      try {
-          await this.form.put(`/api/user/${this.form.id}`);
-          $("#userModal").modal("hide");
-          Swal.fire(
-              "Updated!",
-              `User ${this.form.name} is updated`,
-              "success"
-          );
-          this.$Progress.finish();
-           // update the view
-          window.Fire.$emit("loadUser");
-      } catch (error) {
-          this.$Progress.fail();
-          Swal.fire(
-              "Failed!",
-              `User ${user.name} cannot be updated`,
-              "error"
-          );
-          console.log(error);
-      } */
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                _this3.$Progress.start();
+
+                _context2.prev = 1;
+                _context2.next = 4;
+                return _this3.form.put("/api/profile/");
+
+              case 4:
+                Swal.fire("Updated!", "User ".concat(_this3.form.name, " is updated"), "success");
+
+                _this3.$Progress.finish(); // update the view
+                // window.Fire.$emit("loadUser");
+
+
+                _context2.next = 13;
+                break;
+
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](1);
+
+                _this3.$Progress.fail();
+
+                Swal.fire("Failed!", "User ".concat(user.name, " cannot be updated"), "error");
+                console.log(_context2.t0);
+
+              case 13:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[1, 8]]);
       }))();
     }
   },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this4 = this;
 
     this.getUser(); // fired fire event
 
     window.Fire.$on("loadUser", function () {
-      _this3.getUser();
+      _this4.getUser();
     });
   }
 });
@@ -65780,7 +65786,7 @@ var render = function() {
                           on: {
                             submit: function($event) {
                               $event.preventDefault()
-                              return _vm.onSubmit($event)
+                              return _vm.updateUser($event)
                             },
                             keydown: function($event) {
                               return _vm.form.onKeydown($event)

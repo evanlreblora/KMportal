@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
+use Error;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Error;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
 
 class UserController extends Controller
 {
@@ -62,6 +63,19 @@ class UserController extends Controller
         return auth('api')->user();
     }
 
+    /**
+     * update the auth resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateProfile(Request $request)
+    {
+        $user = auth('api')->user();
+        $extension = explode('/', mime_content_type($request->photo))[1];
+        $name = uniqid('img_').'.'.$extension;
+        Image::make($request->photo)->resize(128,128)->save(public_path('img/profile/').$name);
+        return $name;
+    }
     /**
      * Display the specified resource.
      *
