@@ -31,6 +31,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->authorize('isAdmin');
         $users =  User::latest()->paginate(10);
         return new UserCollection($users);
     }
@@ -125,11 +126,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $this->authorize('isAdmin');
+
         $request->validate([
             "name" => "required|string|max:200",
             "email" => "required|max:110|unique:users,email,".$user->id,
             "password" => "sometimes|required|string|min:4|max:100"
         ]);
+
 
         if(!empty($request->password)){
             $request->merge(['password' => Hash::make($request->password)]);
@@ -148,6 +152,8 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         // throw new Error("Cannot be deleted");
+        // $this->authorizeResource('isAdmin');
+        $this->authorize('isAdmin');
         $user->delete();
         return response()->json($user);
     }

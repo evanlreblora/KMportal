@@ -260,8 +260,12 @@ export default {
         },
 
         async getUsers() {
-            const users = await axios.get("/api/users");
-            this.users = users.data.data;
+            try {
+                const users = await axios.get("/api/users");
+                this.users = users.data.data;
+            } catch (error) {
+                console.log(error.message);
+            }
         },
         async createUser() {
             try {
@@ -309,7 +313,7 @@ export default {
                  this.$Progress.fail();
                 Swal.fire(
                     "Failed!",
-                    `User ${user.name} cannot be updated`,
+                    `User ${this.form.name} cannot be updated`,
                     "error"
                 );
                 console.log(error);

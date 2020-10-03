@@ -2648,19 +2648,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                _context.prev = 0;
+                _context.next = 3;
                 return axios.get("/api/users");
 
-              case 2:
+              case 3:
                 users = _context.sent;
                 _this.users = users.data.data;
+                _context.next = 10;
+                break;
 
-              case 4:
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0.message);
+
+              case 10:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, null, [[0, 7]]);
       }))();
     },
     createUser: function createUser() {
@@ -2751,7 +2759,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this3.$Progress.fail();
 
-                Swal.fire("Failed!", "User ".concat(user.name, " cannot be updated"), "error");
+                Swal.fire("Failed!", "User ".concat(_this3.form.name, " cannot be updated"), "error");
                 console.log(_context3.t0);
 
               case 16:
