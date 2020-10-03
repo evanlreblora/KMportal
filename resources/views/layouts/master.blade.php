@@ -60,7 +60,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                        <a href="/profile" class="d-block">{{ Auth::user()->name }}</a>
+                        <span class="d-block text-muted">
+                            {{ Auth::user()->type }}
+                        </span>
                     </div>
                 </div>
 
