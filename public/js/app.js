@@ -2220,29 +2220,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       user: [],
+      path: '/img/profile/',
       // Create a new form instance
       form: new Form({
         id: "",
         name: "",
         email: "",
-        passport: "",
+        password: "",
         bio: "",
-        photo: ""
+        photo: "profile.png"
       })
     };
   },
@@ -2261,17 +2251,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 user = _context.sent;
-                _this.user = user.data;
+                _this.user = user.data.data;
 
-                _this.form.fill(user.data);
+                _this.form.clear();
 
-              case 5:
+                _this.form.reset();
+
+                _this.form.fill(_this.user);
+
+              case 7:
               case "end":
                 return _context.stop();
             }
           }
         }, _callee);
       }))();
+    },
+    getProfilePhoto: function getProfilePhoto() {
+      return "".concat(this.path).concat(this.form.photo);
     },
     fileUpload: function fileUpload(e) {
       var _this2 = this;
@@ -2300,6 +2297,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var reader = new FileReader();
 
       reader.onloadend = function (evt) {
+        _this2.path = '';
         _this2.form.photo = evt.target.result;
       };
 
@@ -2310,29 +2308,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this3$form$password;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _this3.$Progress.start();
 
-                _context2.prev = 1;
-                _context2.next = 4;
+                if (!((_this3$form$password = _this3.form.password) === null || _this3$form$password === void 0 ? void 0 : _this3$form$password.length)) {
+                  _this3.form.password = undefined;
+                }
+
+                _context2.prev = 2;
+                _context2.next = 5;
                 return _this3.form.put("/api/profile/");
 
-              case 4:
+              case 5:
                 Swal.fire("Updated!", "User ".concat(_this3.form.name, " is updated"), "success");
 
                 _this3.$Progress.finish(); // update the view
+                // window.Fire.$emit("loadUser");
 
 
-                window.Fire.$emit("loadUser");
                 _context2.next = 14;
                 break;
 
               case 9:
                 _context2.prev = 9;
-                _context2.t0 = _context2["catch"](1);
+                _context2.t0 = _context2["catch"](2);
 
                 _this3.$Progress.fail();
 
@@ -2344,18 +2348,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[1, 9]]);
+        }, _callee2, null, [[2, 9]]);
       }))();
     }
   },
   mounted: function mounted() {
-    var _this4 = this;
-
     this.getUser(); // fired fire event
-
-    window.Fire.$on("loadUser", function () {
-      _this4.getUser();
-    });
+    // window.Fire.$on("loadUser", () => {
+    //     this.getUser();
+    // });
   }
 });
 
@@ -2717,17 +2718,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this3$form$password;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _this3.$Progress.start();
 
-                _context3.prev = 1;
-                _context3.next = 4;
+                if (!((_this3$form$password = _this3.form.password) === null || _this3$form$password === void 0 ? void 0 : _this3$form$password.length)) {
+                  _this3.form.password = undefined;
+                }
+
+                _context3.prev = 2;
+                _context3.next = 5;
                 return _this3.form.put("/api/users/".concat(_this3.form.id));
 
-              case 4:
+              case 5:
                 $("#userModal").modal("hide");
                 Swal.fire("Updated!", "User ".concat(_this3.form.name, " is updated"), "success");
 
@@ -2735,24 +2742,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
                 window.Fire.$emit("loadUser");
-                _context3.next = 15;
+                _context3.next = 16;
                 break;
 
-              case 10:
-                _context3.prev = 10;
-                _context3.t0 = _context3["catch"](1);
+              case 11:
+                _context3.prev = 11;
+                _context3.t0 = _context3["catch"](2);
 
                 _this3.$Progress.fail();
 
                 Swal.fire("Failed!", "User ".concat(user.name, " cannot be updated"), "error");
                 console.log(_context3.t0);
 
-              case 15:
+              case 16:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[1, 10]]);
+        }, _callee3, null, [[2, 11]]);
       }))();
     },
     deleteUser: function deleteUser(user) {
@@ -65758,7 +65765,7 @@ var render = function() {
           _c("div", { staticClass: "widget-user-image" }, [
             _c("img", {
               staticClass: "img-circle",
-              attrs: { src: "./img/profile.png", alt: "User Avatar" }
+              attrs: { src: _vm.getProfilePhoto(), alt: "User Avatar" }
             })
           ]),
           _vm._v(" "),
@@ -65877,7 +65884,7 @@ var render = function() {
                                   type: "email",
                                   name: "email",
                                   placeholder: "Email address",
-                                  autocomplete: "off"
+                                  autocomplete: "nope"
                                 },
                                 domProps: { value: _vm.form.email },
                                 on: {
@@ -65966,8 +65973,7 @@ var render = function() {
                                   type: "file",
                                   id: "photo",
                                   name: "photo",
-                                  placeholder: "photo",
-                                  autocomplete: "off"
+                                  placeholder: "photo"
                                 },
                                 on: { change: _vm.fileUpload }
                               }),
@@ -65998,14 +66004,14 @@ var render = function() {
                                 ],
                                 staticClass: "form-control",
                                 class: {
-                                  "is-invalid": _vm.form.errors.has("passport")
+                                  "is-invalid": _vm.form.errors.has("password")
                                 },
                                 attrs: {
                                   type: "password",
-                                  id: "passport",
-                                  name: "passport",
-                                  placeholder: "passport",
-                                  autocomplete: "off"
+                                  id: "password",
+                                  name: "password",
+                                  placeholder: "password",
+                                  autocomplete: "new-password"
                                 },
                                 domProps: { value: _vm.form.password },
                                 on: {
@@ -66023,7 +66029,7 @@ var render = function() {
                               }),
                               _vm._v(" "),
                               _c("has-error", {
-                                attrs: { form: _vm.form, field: "passport" }
+                                attrs: { form: _vm.form, field: "password" }
                               })
                             ],
                             1

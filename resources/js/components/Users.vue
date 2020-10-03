@@ -289,7 +289,10 @@ export default {
             }
         },
         async updateUser() {
-             this.$Progress.start();
+            this.$Progress.start();
+            if(!this.form.password?.length){
+                this.form.password = undefined;
+            }
             try {
                await this.form.put(`/api/users/${this.form.id}`);
                 $("#userModal").modal("hide");

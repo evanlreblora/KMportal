@@ -25,7 +25,7 @@
                     <div class="widget-user-image">
                         <img
                             class="img-circle"
-                            :src="'./img/profile.png'"
+                            :src="getProfilePhoto()"
                             alt="User Avatar"
                         />
                     </div>
@@ -97,17 +97,7 @@
                             <div class="card-body">
                                 <div class="tab-content">
                                     <div class="tab-pane" id="activity">
-                                        <!-- Post -->
 
-                                        <!-- /.post -->
-
-                                        <!-- Post -->
-
-                                        <!-- /.post -->
-
-                                        <!-- Post -->
-
-                                        <!-- /.post -->
                                     </div>
                                     <!-- /.tab-pane -->
 
@@ -147,7 +137,7 @@
                                                     name="email"
                                                     class="form-control"
                                                     placeholder="Email address"
-                                                    autocomplete="off"
+                                                    autocomplete="nope"
                                                     :class="{
                                                         'is-invalid': form.errors.has(
                                                             'email'
@@ -190,7 +180,6 @@
                                                     name="photo"
                                                     class="form-control"
                                                     placeholder="photo"
-                                                    autocomplete="off"
                                                     @change="fileUpload"
                                                     :class="{
                                                         'is-invalid': form.errors.has(
@@ -208,20 +197,20 @@
                                                 <input
                                                     v-model="form.password"
                                                     type="password"
-                                                    id="passport"
-                                                    name="passport"
+                                                    id="password"
+                                                    name="password"
                                                     class="form-control"
-                                                    placeholder="passport"
-                                                    autocomplete="off"
+                                                    placeholder="password"
+                                                    autocomplete="new-password"
                                                     :class="{
                                                         'is-invalid': form.errors.has(
-                                                            'passport'
+                                                            'password'
                                                         )
                                                     }"
                                                 />
                                                 <has-error
                                                     :form="form"
-                                                    field="passport"
+                                                    field="password"
                                                 ></has-error>
                                             </div>
 
@@ -256,14 +245,15 @@ export default {
     data() {
         return {
             user: [],
+            path: '/img/profile/',
             // Create a new form instance
             form: new Form({
                 id: "",
                 name: "",
                 email: "",
-                passport: "",
+                password: "",
                 bio: "",
-                photo: ""
+                photo: "profile.png"
             })
         };
     },
@@ -272,9 +262,16 @@ export default {
 
         async getUser() {
             const user = await axios.get("/api/profile");
-            this.user = user.data;
-            this.form.fill(user.data);
+            this.user = user.data.data;
+            this.form.clear();
+            this.form.reset();
+            this.form.fill(this.user);
         },
+
+        getProfilePhoto(){
+            return `${this.path}${this.form.photo}`;
+        },
+
         fileUpload(e) {
             const fileTypes = ['jpg', 'jpeg', 'png', 'gif'];  //acceptable file types
             const file = e.target.files[0];
@@ -305,6 +302,7 @@ export default {
 
             const reader = new FileReader();
             reader.onloadend =  evt => {
+                this.path = '';
                 this.form.photo =  evt.target.result;
             };
 
@@ -317,6 +315,11 @@ export default {
         async updateUser(e) {
 
             this.$Progress.start();
+
+            if(!this.form.password?.length){
+                this.form.password = undefined;
+            }
+
             try {
                 await this.form.put(`/api/profile/`);
 
@@ -328,7 +331,7 @@ export default {
                 this.$Progress.finish();
 
                 // update the view
-                window.Fire.$emit("loadUser");
+                // window.Fire.$emit("loadUser");
             } catch (error) {
                 this.$Progress.fail();
                 Swal.fire(
@@ -345,9 +348,9 @@ export default {
         this.getUser();
 
         // fired fire event
-        window.Fire.$on("loadUser", () => {
-            this.getUser();
-        });
+        // window.Fire.$on("loadUser", () => {
+        //     this.getUser();
+        // });
     }
 };
 </script>

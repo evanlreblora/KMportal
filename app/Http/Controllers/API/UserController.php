@@ -6,6 +6,8 @@ use Error;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserCollection;
+use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 
@@ -27,7 +29,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::latest()->paginate(10);
+        $users =  User::latest()->paginate(10);
+        return new UserCollection($users);
     }
 
     /**
@@ -60,7 +63,7 @@ class UserController extends Controller
      */
     public function profile()
     {
-        return auth('api')->user();
+        return new UserResource(auth('api')->user());
     }
 
     /**
@@ -71,12 +74,28 @@ class UserController extends Controller
     public function updateProfile(Request $request)
     {
         $user = auth('api')->user();
-        if($request->photo){
+        $currentPhoto = $user->photo;
+        $request->validate([
+            "name" => "required|string|max:200",
+            "email" => "required|max:110|unique:users,email,".$user->id,
+            "password" => "sometimes|required|string|min:4|max:100"
+        ]);
+
+        if($request->photo !== $currentPhoto){
             $extension = explode('/', mime_content_type($request->photo))[1];
             $name = uniqid('img_').'.'.$extension;
             Image::make($request->photo)->resize(128,128)->save(public_path('img/profile/').$name);
+
+            $request->merge(['photo' => $name]);
         }
-        return $name;
+
+        if(!empty($request->password)){
+            $request->merge(['password' => Hash::make($request->password)]);
+        }
+
+        $user->update($request->all());
+
+        return response()->json($user);
     }
     /**
      * Display the specified resource.
@@ -104,8 +123,8 @@ class UserController extends Controller
             "password" => "sometimes|required|string|min:4|max:100"
         ]);
 
-        if($request->password){
-            $request->password = Hash::make($request->password);
+        if(!empty($request->password)){
+            $request->merge(['password' => Hash::make($request->password)]);
         }
 
         $user->update( $request->all() );
