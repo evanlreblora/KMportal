@@ -281,6 +281,7 @@ export default {
             const extension = file.name.split('.').pop().toLowerCase();  //file extension from input file
             const isSuccess = fileTypes.indexOf(extension) > -1;  //is extension in acceptable types
 
+            // check file type
             if(!isSuccess){
                  Swal.fire(
                     "Failed!",
@@ -290,6 +291,18 @@ export default {
                 this.form.file = null;
                 return false;
             }
+
+            // check file size
+            if(file.size > 2097152){
+                Swal.fire(
+                    "Failed!",
+                    `File Size ${(file.size/1024/1024).toFixed(2)} MB is large.`,
+                    "error"
+                );
+                this.form.file = null;
+                return false;
+            }
+
             const reader = new FileReader();
             reader.onloadend =  evt => {
                 this.form.photo =  evt.target.result;
@@ -315,7 +328,7 @@ export default {
                 this.$Progress.finish();
 
                 // update the view
-                // window.Fire.$emit("loadUser");
+                window.Fire.$emit("loadUser");
             } catch (error) {
                 this.$Progress.fail();
                 Swal.fire(

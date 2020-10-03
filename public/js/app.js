@@ -2282,9 +2282,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var extension = file.name.split('.').pop().toLowerCase(); //file extension from input file
 
       var isSuccess = fileTypes.indexOf(extension) > -1; //is extension in acceptable types
+      // check file type
 
       if (!isSuccess) {
         Swal.fire("Failed!", "File type ".concat(file.type, " does not support"), "error");
+        this.form.file = null;
+        return false;
+      } // check file size
+
+
+      if (file.size > 2097152) {
+        Swal.fire("Failed!", "File Size ".concat((file.size / 1024 / 1024).toFixed(2), " MB is large."), "error");
         this.form.file = null;
         return false;
       }
@@ -2316,14 +2324,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 Swal.fire("Updated!", "User ".concat(_this3.form.name, " is updated"), "success");
 
                 _this3.$Progress.finish(); // update the view
-                // window.Fire.$emit("loadUser");
 
 
-                _context2.next = 13;
+                window.Fire.$emit("loadUser");
+                _context2.next = 14;
                 break;
 
-              case 8:
-                _context2.prev = 8;
+              case 9:
+                _context2.prev = 9;
                 _context2.t0 = _context2["catch"](1);
 
                 _this3.$Progress.fail();
@@ -2331,12 +2339,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 Swal.fire("Failed!", "User ".concat(user.name, " cannot be updated"), "error");
                 console.log(_context2.t0);
 
-              case 13:
+              case 14:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[1, 8]]);
+        }, _callee2, null, [[1, 9]]);
       }))();
     }
   },

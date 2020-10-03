@@ -71,9 +71,11 @@ class UserController extends Controller
     public function updateProfile(Request $request)
     {
         $user = auth('api')->user();
-        $extension = explode('/', mime_content_type($request->photo))[1];
-        $name = uniqid('img_').'.'.$extension;
-        Image::make($request->photo)->resize(128,128)->save(public_path('img/profile/').$name);
+        if($request->photo){
+            $extension = explode('/', mime_content_type($request->photo))[1];
+            $name = uniqid('img_').'.'.$extension;
+            Image::make($request->photo)->resize(128,128)->save(public_path('img/profile/').$name);
+        }
         return $name;
     }
     /**
@@ -99,7 +101,7 @@ class UserController extends Controller
         $request->validate([
             "name" => "required|string|max:200",
             "email" => "required|max:110|unique:users,email,".$user->id,
-            "password" => "sometimes|string|min:4|max:100"
+            "password" => "sometimes|required|string|min:4|max:100"
         ]);
 
         if($request->password){
