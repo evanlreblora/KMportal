@@ -1,7 +1,7 @@
-import axios, { async } from '../../../public/js/app';
 <template>
-    <div class="container">
-        <div class="row" v-if="$gate.isAdmin()">
+    <div class="users-data-wrapper" style="width:100%;">
+        <div class="container" v-if="$gate.isAdmin()">
+        <div class="row" >
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
@@ -214,6 +214,8 @@ import axios, { async } from '../../../public/js/app';
                 </div>
             </div>
         </div>
+    </div>
+     <not-found v-if="!$gate.isAdmin()"></not-found>
     </div>
 </template>
 

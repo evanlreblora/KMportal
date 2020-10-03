@@ -27,8 +27,8 @@ Vue.use(VueRouter)
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+const files = require.context('./', true, /\.vue$/i)
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
@@ -36,7 +36,8 @@ Vue.use(VueRouter)
 const routes = [
     { path: '/dashboard', component:  require('./components/Dashboard.vue').default },
     { path: '/profile', component:  require('./components/Profile.vue').default },
-    { path: '/users', component:  require('./components/Users.vue').default }
+    { path: '/users', component:  require('./components/Users.vue').default },
+    { path: '*', component:  require('./components/NotFound.vue').default },
   ]
 
 // 3. Create the router instance and pass the `routes` option
