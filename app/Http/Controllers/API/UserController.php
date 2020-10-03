@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\API;
 
+use File;
 use Error;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
+use App\Http\Resources\UserCollection;
 
 class UserController extends Controller
 {
@@ -83,10 +85,16 @@ class UserController extends Controller
 
         if($request->photo !== $currentPhoto){
             $extension = explode('/', mime_content_type($request->photo))[1];
-            $name = uniqid('img_').'.'.$extension;
+            $name = uniqid(Str::slug($user->name) .'-').'.'.$extension;
             Image::make($request->photo)->resize(128,128)->save(public_path('img/profile/').$name);
 
             $request->merge(['photo' => $name]);
+
+            // delete the old photo
+            $photo_path = public_path('img/profile/') . $currentPhoto;
+            if(file_exists($photo_path)){
+               File::delete('img/profile/'. $currentPhoto);
+            }
         }
 
         if(!empty($request->password)){
