@@ -1,7 +1,7 @@
 import axios, { async } from '../../../public/js/app';
 <template>
     <div class="container">
-        <div class="row">
+        <div class="row" v-if="$gate.isAdmin()">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
@@ -260,6 +260,7 @@ export default {
         },
 
         async getUsers() {
+            if(!this.$gate.isAdmin()) return false;
             try {
                 const users = await axios.get("/api/users");
                 this.users = users.data.data;

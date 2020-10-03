@@ -163,6 +163,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- REQUIRED SCRIPTS -->
 
     <!--  App -->
+    @auth
+        <script>
+            window.user = @JSON(auth()->user())
+        </script>
+    @endauth
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 

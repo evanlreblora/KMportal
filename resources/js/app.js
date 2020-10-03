@@ -12,9 +12,10 @@ import { Form, HasError, AlertError } from 'vform'
 import moment from "moment";
 import Swal from 'sweetalert2';
 import VueProgressBar from 'vue-progressbar';
+import Gate from './Gate';
 
 window.Form = Form;
-
+Vue.prototype.$gate = new Gate(window.user);
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 Vue.use(VueRouter)
