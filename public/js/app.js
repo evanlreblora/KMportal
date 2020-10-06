@@ -2868,7 +2868,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (_this.$gate.isAdmin()) {
+                if (_this.$gate.isAdminOrAuthor()) {
                   _context.next = 2;
                   break;
                 }
@@ -67033,7 +67033,7 @@ var render = function() {
     "div",
     { staticClass: "users-data-wrapper", staticStyle: { width: "100%" } },
     [
-      _vm.$gate.isAdmin()
+      _vm.$gate.isAdminOrAuthor()
         ? _c("div", { staticClass: "container" }, [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-12" }, [
@@ -67510,7 +67510,7 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      !_vm.$gate.isAdmin() ? _c("not-found") : _vm._e()
+      !_vm.$gate.isAdminOrAuthor() ? _c("not-found") : _vm._e()
     ],
     1
   )
@@ -82870,6 +82870,11 @@ var Gate = /*#__PURE__*/function () {
     key: "isAdmin",
     value: function isAdmin() {
       return this.user.type === 'admin';
+    }
+  }, {
+    key: "isAdminOrAuthor",
+    value: function isAdminOrAuthor() {
+      return this.user.type === "admin" || this.user.type === "author";
     }
   }, {
     key: "isAuthor",

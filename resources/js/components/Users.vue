@@ -1,6 +1,6 @@
 <template>
     <div class="users-data-wrapper" style="width:100%;">
-        <div class="container" v-if="$gate.isAdmin()">
+        <div class="container" v-if="$gate.isAdminOrAuthor()">
         <div class="row" >
             <div class="col-12">
                 <div class="card">
@@ -215,7 +215,7 @@
             </div>
         </div>
     </div>
-     <not-found v-if="!$gate.isAdmin()"></not-found>
+     <not-found v-if="!$gate.isAdminOrAuthor()"></not-found>
     </div>
 </template>
 
@@ -262,7 +262,7 @@ export default {
         },
 
         async getUsers() {
-            if(!this.$gate.isAdmin()) return false;
+            if(!this.$gate.isAdminOrAuthor()) return false;
             try {
                 const users = await axios.get("/api/users");
                 this.users = users.data.data;

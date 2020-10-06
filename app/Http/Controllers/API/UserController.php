@@ -12,6 +12,7 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use App\Http\Resources\UserCollection;
+use Gate;
 
 class UserController extends Controller
 {
@@ -31,7 +32,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $this->authorize('isAdmin');
+        // $this->authorize('isAdmin');
+        Gate::allows(['isAdmin','isAuthor']);
         $users =  User::latest()->paginate(10);
         return new UserCollection($users);
     }
@@ -126,7 +128,8 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $this->authorize('isAdmin');
+        // $this->authorize('isAdmin');
+        Gate::allows(['isAdmin','isAuthor']);
 
         $request->validate([
             "name" => "required|string|max:200",
@@ -153,7 +156,8 @@ class UserController extends Controller
     {
         // throw new Error("Cannot be deleted");
         // $this->authorizeResource('isAdmin');
-        $this->authorize('isAdmin');
+        // $this->authorize('isAdmin');
+        Gate::allows(['isAdmin','isAuthor']);
         $user->delete();
         return response()->json($user);
     }
