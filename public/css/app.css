@@ -37359,3 +37359,12 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
+/* reset */
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+

@@ -14,3 +14,9 @@
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
 @import '~admin-lte/dist/css/adminlte.css';
+
+/* reset */
+ol, ul, dl {
+    margin-top: 0;
+    margin-bottom: 0;
+}
