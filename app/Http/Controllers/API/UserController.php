@@ -161,4 +161,12 @@ class UserController extends Controller
         $user->delete();
         return response()->json($user);
     }
+
+    public function search(Request $request)
+    {
+        $query =  $request->query('q');
+        $users = User::where('name','LIKE', '%'.$query.'%')->orWhere('email','LIKE','%'.$query.'%')->orWhere('type','LIKE','%'.$query.'%')->latest()->paginate(10);
+
+        return new UserCollection($users);
+    }
 }

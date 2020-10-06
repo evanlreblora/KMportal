@@ -252,7 +252,7 @@ export default {
         return {
             users: {},
             editable: false,
-            page:1,
+            page: 0,
             // Create a new form instance
             form: new Form({
                 id: "",
@@ -300,7 +300,7 @@ export default {
         },
         // Our method to GET results from a Laravel endpoint
         getResults(page = 1) {
-            this.page = (page-1) * 10;
+            this.page = (page - 1) * 10;
             this.getUsers(page);
         },
         async createUser() {
@@ -393,6 +393,21 @@ export default {
         // fired fire event
         window.Fire.$on("loadUser", () => {
             this.getUsers();
+        });
+
+        window.Fire.$on("search", search => {
+            console.log(`searching... ${this.$parent.search}`);
+            console.log(search);
+            this.page = 0;
+            axios
+                .get(`/api/search?q=${this.$parent.search}`)
+                .then(data => {
+                    console.log(data.data);
+                    this.users = data.data;
+                })
+                .catch(e => {
+                    console.log(e);
+                });
         });
     }
 };

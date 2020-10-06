@@ -2850,7 +2850,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       users: {},
       editable: false,
-      page: 1,
+      page: 0,
       // Create a new form instance
       form: new Form({
         id: "",
@@ -3099,6 +3099,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     window.Fire.$on("loadUser", function () {
       _this5.getUsers();
+    });
+    window.Fire.$on("search", function (search) {
+      console.log("searching... ".concat(_this5.$parent.search));
+      console.log(search);
+      _this5.page = 0;
+      axios.get("/api/search?q=".concat(_this5.$parent.search)).then(function (data) {
+        console.log(data.data);
+        _this5.users = data.data;
+      })["catch"](function (e) {
+        console.log(e);
+      });
     });
   }
 });
@@ -83661,7 +83672,22 @@ Vue.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_4___default.a, {
 
 window.Fire = new Vue();
 var app = new Vue({
-  router: router
+  router: router,
+  data: {
+    search: ""
+  },
+  watch: {
+    /* search(){
+        if(!this.search.length){
+            window.Fire.$emit("loadUser");
+        }
+    } */
+  },
+  methods: {
+    getSearch: _.debounce(function () {
+      window.Fire.$emit("search", this.search);
+    }, 800)
+  }
 }).$mount('#app');
 
 /***/ }),

@@ -87,5 +87,22 @@ Vue.use(VueProgressBar, {
 
 window.Fire = new Vue();
 const app = new Vue({
-    router
+    router,
+    data:{
+        search:""
+    },
+
+    watch: {
+        /* search(){
+            if(!this.search.length){
+                window.Fire.$emit("loadUser");
+            }
+        } */
+    },
+
+    methods: {
+        getSearch: _.debounce(function () {
+            window.Fire.$emit("search",this.search);
+        },800)
+    }
   }).$mount('#app')
