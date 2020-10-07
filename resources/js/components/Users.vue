@@ -396,13 +396,11 @@ export default {
         });
 
         window.Fire.$on("search", search => {
-            console.log(`searching... ${this.$parent.search}`);
-            console.log(search);
             this.page = 0;
             axios
-                .get(`/api/search?q=${this.$parent.search}`)
+                .get(`/api/search?q=${search}`)
                 .then(data => {
-                    console.log(data.data);
+                    // console.log(data.data);
                     this.users = data.data;
                 })
                 .catch(e => {

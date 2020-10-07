@@ -93,16 +93,18 @@ const app = new Vue({
     },
 
     watch: {
-        /* search(){
+        search(){
             if(!this.search.length){
                 window.Fire.$emit("loadUser");
             }
-        } */
+        }
     },
 
     methods: {
         getSearch: _.debounce(function () {
-            window.Fire.$emit("search",this.search);
+           if(this.search.length){
+                window.Fire.$emit("search",this.search);
+           }
         },800)
     }
   }).$mount('#app')

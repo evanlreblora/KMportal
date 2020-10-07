@@ -3101,11 +3101,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _this5.getUsers();
     });
     window.Fire.$on("search", function (search) {
-      console.log("searching... ".concat(_this5.$parent.search));
-      console.log(search);
       _this5.page = 0;
-      axios.get("/api/search?q=".concat(_this5.$parent.search)).then(function (data) {
-        console.log(data.data);
+      axios.get("/api/search?q=".concat(search)).then(function (data) {
+        // console.log(data.data);
         _this5.users = data.data;
       })["catch"](function (e) {
         console.log(e);
@@ -83677,15 +83675,17 @@ var app = new Vue({
     search: ""
   },
   watch: {
-    /* search(){
-        if(!this.search.length){
-            window.Fire.$emit("loadUser");
-        }
-    } */
+    search: function search() {
+      if (!this.search.length) {
+        window.Fire.$emit("loadUser");
+      }
+    }
   },
   methods: {
     getSearch: _.debounce(function () {
-      window.Fire.$emit("search", this.search);
+      if (this.search.length) {
+        window.Fire.$emit("search", this.search);
+      }
     }, 800)
   }
 }).$mount('#app');
