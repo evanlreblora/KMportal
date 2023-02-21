@@ -13,7 +13,8 @@ import moment from "moment";
 import Swal from 'sweetalert2';
 import VueProgressBar from 'vue-progressbar';
 import Gate from './Gate';
-
+import welcomehome from './components/WelcomePage.vue';
+ 
 window.Form = Form;
 Vue.prototype.$gate = new Gate(window.user);
 Vue.component(HasError.name, HasError)
@@ -30,13 +31,29 @@ Vue.use(VueRouter)
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+
+
+Vue.component('welcomehome', require('./components/WelcomePage.vue'));
+
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('welcome', require('./components/Welcome.vue').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
 // define some routes
 const routes = [
+    { path: '/home', component:  require('./components/Dashboard.vue').default },
     { path: '/dashboard', component:  require('./components/Dashboard.vue').default },
     { path: '/profile', component:  require('./components/Profile.vue').default },
     { path: '/users', component:  require('./components/Users.vue').default },
+    { path: '/annualreports', component:  require('./components/AnnualReports.vue').default },
+    { path: '/policybriefs', component:  require('./components/PolicyBriefs.vue').default },
+    { path: '/proceedings', component:  require('./components/Proceedings.vue').default },
+    { path: '/projectcompletions', component:  require('./components/ProjectCompletions.vue').default },
+    { path: '/publications', component:  require('./components/Publications.vue').default },
+    { path: '/videos', component:  require('./components/Videos.vue').default },
+    { path: '/example-component', component:  require('./components/ExampleComponent.vue').default },
+    { path: '/example-upload', component:  require('./components/ExampleUpload.vue').default },
+
     { path: '*', component:  require('./components/NotFound.vue').default },
   ]
 
@@ -85,8 +102,10 @@ Vue.use(VueProgressBar, {
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
 window.Fire = new Vue();
 const app = new Vue({
+  
     router,
     data:{
         search:""
@@ -106,5 +125,10 @@ const app = new Vue({
                 window.Fire.$emit("search",this.search);
            }
         },800)
+    },
+    components: {
+        'welcomehome': require('./components/WelcomePage.vue'),
     }
+
+
   }).$mount('#app')

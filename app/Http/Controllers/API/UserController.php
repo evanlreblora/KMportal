@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
+ 
 use App\Http\Resources\UserCollection;
 use Gate;
 
@@ -59,6 +60,8 @@ class UserController extends Controller
             'bio' => $request['bio'],
             'type' => $request['type'],
             'photo' => $request['photo'] ?? 'profile.png',
+            'unit' => $request['unit']
+
         ]);
     }
     /**
@@ -161,7 +164,7 @@ class UserController extends Controller
         $user->delete();
         return response()->json($user);
     }
-
+     
     public function search(Request $request)
     {
         $query =  $request->query('q');

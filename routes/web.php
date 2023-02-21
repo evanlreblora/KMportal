@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // match any routes
 Route::get('{path}',[App\Http\Controllers\HomeController::class, 'index'])->where( 'path', '([A-z\/_.\d-]+)?' );
+// Route::get('/{view?}', 'Controller@landing')->where('view', '(.*)')->name('welcome');
+
+ 

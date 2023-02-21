@@ -21,7 +21,8 @@ class UserResource extends JsonResource
             'type' => $this->type,
             'bio' => $this->bio,
             'photo' => $this->photo,
-            'created_at' => $this->created_at
+            'created_at' => $this->created_at,
+            'unit' => $this->unit,
         ];
     }
 }

@@ -29,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- SEARCH FORM -->
             <div class="form-inline ml-3">
-                <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
                     <input v-model="search" class="form-control form-control-navbar" type="search" placeholder="Search"
                         aria-label="Search" @keyup="getSearch()">
                     <div class="input-group-append">
@@ -39,6 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                 </div>
             </div>
+ 
         </nav>
         <!-- /.navbar -->
 
@@ -74,12 +75,73 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <router-link to="/dashboard" tag="a" exact class="nav-link" active-class="active">
+                            <a href="{{ url('/') }}" to="/" tag="a" exact class="nav-link" active-class="active">
                                 <i class="nav-icon fas fa-tachometer-alt blue"></i>
                                 <p>
-                                    Dashboard
+                                    Home
                                 </p>
-                            </router-link>
+                            </a>
+                        </li>
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-briefcase"></i>
+                                <p>
+                                    Browse
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/annualreports" exact tag="a" class="nav-link" active-class="active">
+                                        <i class="fas fa-folder-open nav-icon purple"></i>
+                                        <p>Annual Reports</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/policybriefs" exact tag="a" class="nav-link" active-class="active" >
+                                        <i class="fas fa-sticky-note nav-icon purple"></i>
+                                        <p>Policy Briefs</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/proceedings" exact tag="a" class="nav-link" active-class="active">
+                                        <i class="fas fa-file nav-icon purple"></i>
+                                        <p>Proceedings</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/projectcompletions" exact tag="a" class="nav-link" active-class="active">
+                                        <i class="fas fa-file nav-icon purple"></i>
+                                        <p>Project Completion</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/publications" exact tag="a" class="nav-link" active-class="active">
+                                        <i class="fas fa-file nav-icon purple"></i>
+                                        <p>Publication</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+
+
+                            
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/videos" exact tag="a" class="nav-link" active-class="active">
+                                        <i class="fas fa-video nav-icon purple"></i>
+                                        <p>Videos</p>
+                                    </router-link>
+                                </li>
+                            </ul>
                         </li>
                         @canany(['isAdmin','isAuthor'])
                         <li class="nav-item">
@@ -104,7 +166,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <router-link to="/profile" tag="a" exact class="nav-link" active-class="active">
                                 <i class="nav-icon fas fa-user orange"></i>
                                 <p>
-                                    Profile
+                                    My Account
                                 </p>
                             </router-link>
                         </li>
@@ -129,7 +191,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper pt-5">
+        <div class="content-wrapper pt-1">
 
             <!-- Main content -->
             <div class="content">
@@ -157,7 +219,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-2020 MH Raihan.</strong> All rights
+            <strong>Copyright &copy; Biodiversity Information Management</strong> All rights
             reserved.
         </footer>
     </div>
@@ -169,6 +231,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @auth
         <script>
             window.user = @JSON(auth()->user())
+       
         </script>
     @endauth
     <script src="{{ asset('js/app.js') }}"></script>

@@ -16,7 +16,7 @@
                     <!-- Add the bg color to the header using any of the bg-* classes -->
                     <div class="widget-user-header text-white bg-info">
                         <h3 class="widget-user-username text-right">
-                            Elizabeth Pierce
+                            {{user.name}}
                         </h3>
                         <h5 class="widget-user-desc text-right">
                             Web Designer
@@ -257,27 +257,23 @@ export default {
             })
         };
     },
-
     methods: {
-
         async getUser() {
             const user = await axios.get("/api/profile");
-            this.user = user.data.data;
+            this.user = user.data;
             this.form.clear();
             this.form.reset();
             this.form.fill(this.user);
+            // console.log(user);
         },
-
         getProfilePhoto(){
             return `${this.path}${this.form.photo}`;
         },
-
         fileUpload(e) {
             const fileTypes = ['jpg', 'jpeg', 'png', 'gif'];  //acceptable file types
             const file = e.target.files[0];
             const extension = file.name.split('.').pop().toLowerCase();  //file extension from input file
             const isSuccess = fileTypes.indexOf(extension) > -1;  //is extension in acceptable types
-
             // check file type
             if(!isSuccess){
                  Swal.fire(
@@ -288,7 +284,6 @@ export default {
                 this.form.file = null;
                 return false;
             }
-
             // check file size
             if(file.size > 2097152){
                 Swal.fire(
@@ -299,37 +294,27 @@ export default {
                 this.form.file = null;
                 return false;
             }
-
             const reader = new FileReader();
             reader.onloadend =  evt => {
                 this.path = '';
                 this.form.photo =  evt.target.result;
             };
-
             reader.readAsDataURL(file);
-
             console.log(file);
-
-
         },
         async updateUser(e) {
-
             this.$Progress.start();
-
             if(!this.form.password?.length){
                 this.form.password = undefined;
             }
-
             try {
                 await this.form.put(`/api/profile/`);
-
                 Swal.fire(
                     "Updated!",
                     `User ${this.form.name} is updated`,
                     "success"
                 );
                 this.$Progress.finish();
-
                 // update the view
                 // window.Fire.$emit("loadUser");
             } catch (error) {
@@ -342,11 +327,9 @@ export default {
                 console.log(error);
             }
         },
-
     },
     mounted() {
         this.getUser();
-
         // fired fire event
         // window.Fire.$on("loadUser", () => {
         //     this.getUser();

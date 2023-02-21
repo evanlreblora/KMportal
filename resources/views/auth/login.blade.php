@@ -10,7 +10,10 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
+                        <div class="row justify-content-center">
+                            <img class="img-fluid center" src="{{ url('images/ACBLogo.png') }}" width="350" height="100">
+                            <img class="img-fluid" src="{{ url('images/ASEAN.png') }}" width="100" height="100">
+                        </div>
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 

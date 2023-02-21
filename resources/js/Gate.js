@@ -10,6 +10,10 @@ export default class Gate {
         return this.user.type === "admin" || this.user.type === "author";
     }
 
+    All(){
+        return this.user.type === "admin" || this.user.type === "author" || this.user.type === "user";
+    }
+
     isAuthor(){
         return this.user.type === 'author';
     }

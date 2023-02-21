@@ -5,3 +5,11 @@ Client secret: RitN3AXaVP9RVRReSOndc0zzXPMC8BDjDgZVD3Z3
 Password grant client created successfully.
 Client ID: 2
 Client secret: EfFoLsjZj9uDwD5EIclsLT1YsRy9CzfABe4SBwgl
+
+Encryption keys generated successfully.
+Personal access client created successfully.
+Client ID: 1
+Client secret: I8T9OmJk5tB4iM01UxlsIr6lk72YfVcqYypeVQub
+Password grant client created successfully.
+Client ID: 2
+Client secret: 5dIgfypw1R45mSy5btRjpq78Ed7OJ3O9p9YXEbLO
