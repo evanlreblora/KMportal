@@ -111,7 +111,7 @@
                 <div  class="content">
                     <img class="img-fluid" src="{{ url('images/ACBLogo.png') }}" width="350" height="100"><img class="img-fluid" src="{{ url('images/ASEAN.png') }}" width="100" height="100">
                     <div class="title m-b-md">
-                        Knowledge Management Platform
+                        Knowledge Management Platform pakyu
                     </div>
                     
 
