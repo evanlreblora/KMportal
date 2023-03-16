@@ -111,14 +111,23 @@
                 <div  class="content">
                     <img class="img-fluid" src="{{ url('images/ACBLogo.png') }}" width="350" height="100"><img class="img-fluid" src="{{ url('images/ASEAN.png') }}" width="100" height="100">
                     <div class="title m-b-md">
-                        Knowledge Management Platform hotdog
+                        Knowledge Management Platform
                     </div>
                     
+                    @if (Route::has('login'))
+                  
+                      @auth
+                      
+                          Welcome, {{ Auth::user()->name }}!
 
-                    {{-- <img class="img-fluid" src="{{ url('images/starter.png') }}"> --}}
-                    <a href="{{ route('login') }}"><button type="button" class="btn btn-block btn-success btn-lg">Login</button></a>
+                          @else
+                          <a href="{{ route('login') }}"><button type="button" class="btn btn-block btn-success btn-lg">Login</button></a>
+                          @endif
+                    @endif
+                    <!-- {{-- <img class="img-fluid" src="{{ url('images/starter.png') }}"> --}} -->
+                    
                 
-                    {{-- <welcomehome></welcomehome> --}}
+                    <!-- {{-- <welcomehome></welcomehome> --}} -->
                 
                 </div>
   

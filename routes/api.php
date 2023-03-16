@@ -54,6 +54,10 @@ Route::apiResource('annualreports' , AnnualReportController::class);
 Route::apiResource('projectcompletions' , ProjectController::class);
 Route::apiResource('publications' , PublicationController::class);
 Route::apiResource('video' , VideoController::class);
+Route::apiResource('abo' , ABOController::class);
+Route::apiResource('bimgbdocs' , BIMGBDoxController::class);
+Route::apiResource('bimworkshopfiles' , BIMworkshopFilesController::class);
+Route::apiResource('kmproducts' , KMProductsController::class);
  
 
 

@@ -11,11 +11,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- <link rel="stylesheet" href="{{ asset('css/overlayScrollbars/css/OverlayScrollbars.min.css') }}"> -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
+   
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper" id="app">
 
         <!-- Navbar -->
@@ -53,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
 
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-transition os-host-scrollbar-horizontal-hidden">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
@@ -137,8 +138,42 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <router-link to="/videos" exact tag="a" class="nav-link" active-class="active">
-                                        <i class="fas fa-video nav-icon purple"></i>
-                                        <p>Videos</p>
+                                        <i class="fas fa-folder-open nav-icon purple"></i>
+                                        <p>Video</p>
+                                    </router-link>
+                                </li>
+                            </ul>                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/abo" exact tag="a" class="nav-link" active-class="active">
+                                        <i class="fas fa-folder-open nav-icon purple"></i>
+                                        <p>ABO</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                            
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/bimgbdocs" exact tag="a" class="nav-link" active-class="active">
+                                        <i class="fas fa-folder-open nav-icon purple"></i>
+                                        <p>BIM 23 GB Documents</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                            
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/bimworkshopfiles" exact tag="a" class="nav-link" active-class="active">
+                                        <i class="fas fa-folder-open nav-icon purple"></i>
+                                        <p>2016 BIM Workshop Files</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                            
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/kmproducts" exact tag="a" class="nav-link" active-class="active">
+                                        <i class="fas fa-folder-open nav-icon purple"></i>
+                                        <p>KM Plan and Product Development</p>
                                     </router-link>
                                 </li>
                             </ul>
@@ -186,9 +221,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
+
             </div>
             <!-- /.sidebar -->
+ 
         </aside>
+
+        
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper pt-1">
