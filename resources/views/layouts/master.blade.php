@@ -146,7 +146,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <li class="nav-item">
                                     <router-link to="/abo" exact tag="a" class="nav-link" active-class="active">
                                         <i class="fas fa-folder-open nav-icon purple"></i>
-                                        <p>ABO</p>
+                                        <p>ASEAN Biodiversity Outlook</p>
                                     </router-link>
                                 </li>
                             </ul>

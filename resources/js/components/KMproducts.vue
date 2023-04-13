@@ -5,11 +5,11 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Annual Report Table</h3>
+              <h3 class="card-title">KM Plan and Products Table</h3>
   
                   <div class="card-tools">
                     <button class="btn btn-success" @click="openUserModal">
-                      Upload Report
+                      Upload File
                   <i class="fas fa-plus fa-fw"></i>
                 </button>
               </div>
@@ -61,25 +61,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(annualreport, index) in annualreports.data" :key="annualreport.id">
-                    <td :title="annualreport.id">
+                  <tr v-for="(kmproduct, index) in kmproducts.data" :key="kmproduct.id">
+                    <td :title="kmproduct.id">
                       {{ page + index + 1 }}
                     </td>
-                    <td>{{ annualreport.filename }}</td>
-                    <td>{{ annualreport.desc }}</td>
-                    <td>{{ annualreport.unit }}</td>
+                    <td>{{ kmproduct.filename }}</td>
+                    <td>{{ kmproduct.desc }}</td>
+                    <td>{{ kmproduct.unit }}</td>
                     <td>
-                      {{ annualreport.type }}
+                      {{ kmproduct.type }}
                     </td>
                     <td>
-                     {{ annualreport.uploader }}
+                     {{ kmproduct.uploader }}
                     </td>
                     <td>
-                      <a href="#" title="Edit" @click="openUserModal(annualreport)">
+                      <a href="#" title="Edit" @click="openUserModal(kmproduct)">
                         <i class="fa fa-edit indigo"></i>
                       </a>
                       <span class="yellow">/</span>
-                      <a href="#" @click.prevent="deleteUser(annualreport)" title="Remove">
+                      <a href="#" @click.prevent="deleteUser(kmproduct)" title="Remove">
                         <i class="fa fa-trash red"></i>
                       </a>
                     </td>
@@ -90,7 +90,7 @@
             <!-- /.card-body -->
             <div class="card-footer">
               <pagination
-                :data="annualreports"
+                :data="kmproducts"
                 :limit="3"
                 :show-disabled="true"
                 align="center"
@@ -251,7 +251,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      annualreports: {},
+      kmproducts: {},
       
     
       editable: false,
@@ -301,8 +301,8 @@ export default {
     async getUsers(page = 1) {
       if (!this.$gate.isAdminOrAuthor()) return false;
       try {
-        const annualreports = await axios.get(`/api/annualreports/?page=${page}`);
-        this.annualreports = annualreports.data;
+        const kmproducts = await axios.get(`/api/kmproducts/?page=${page}`);
+        this.kmproducts = kmproducts.data;
       } catch (error) {
         console.log(error.message);
       }
@@ -339,7 +339,7 @@ export default {
         fd.append('uploader', this.form.uploader);
         fd.append('filepath', this.filepath);
         
-        axios.post('api/annualreports',fd,config ).then(res=>{
+        axios.post('api/kmproducts',fd,config ).then(res=>{
           console.log('Response', res.data)
         }).catch(err=>console.log(err))
         // modal close after submit
@@ -368,7 +368,7 @@ export default {
         this.form.password = undefined;
       }
       try {
-        await this.form.put(`/api/annualreports/${this.form.id}`);
+        await this.form.put(`/api/kmproducts/${this.form.id}`);
         $("#userModal").modal("hide");
         Swal.fire("Updated!", `User ${this.form.filename} is updated`, "success");
         this.$Progress.finish();
@@ -395,7 +395,7 @@ export default {
         });
 
         if (result.isConfirmed) {
-          await this.form.delete(`/api/annualreports/${user.id}`);
+          await this.form.delete(`/api/kmproducts/${user.id}`);
           Swal.fire("Deleted!", `User ${user.name} has been deleted`, "success");
         }
       } catch (error) {
@@ -420,7 +420,7 @@ export default {
         .get(`/api/searchpolicybr?q=${search}`)
         .then((data) => {
           // console.log(data.data);
-          this.annualreports = data.data;
+          this.kmproducts = data.data;
         })
         .catch((e) => {
           console.log(e);

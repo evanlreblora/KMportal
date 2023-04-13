@@ -51,6 +51,10 @@ const routes = [
     { path: '/projectcompletions', component:  require('./components/ProjectCompletions.vue').default },
     { path: '/publications', component:  require('./components/Publications.vue').default },
     { path: '/videos', component:  require('./components/Videos.vue').default },
+    { path: '/abo', component:  require('./components/Abo.vue').default },
+    { path: '/bimgbdocs', component:  require('./components/Bimgbdox.vue').default },
+    { path: '/bimworkshopfiles', component:  require('./components/BIMWorkshopFiles.vue').default },
+    { path: '/kmproducts', component:  require('./components/KMproducts.vue').default },
     { path: '/example-component', component:  require('./components/ExampleComponent.vue').default },
     { path: '/example-upload', component:  require('./components/ExampleUpload.vue').default },
 

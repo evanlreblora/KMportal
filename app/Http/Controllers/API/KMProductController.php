@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\API;
 
+
 use App\Http\Controllers\Controller;
-use App\Models\Bimgbdox;
+use App\Models\KMProduct;
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
 use Validator;
 use Illuminate\Support\Facades\Storage;
  
 use App\Http\Resources\UserResource;
-use App\Http\Resources\BimgbdoxCollection;
+use App\Http\Resources\KMProductCollection;
 
-class BimgbdoxController extends Controller
+
+class KMProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +23,7 @@ class BimgbdoxController extends Controller
      */
     public function index()
     {
-        {
-            return Bimgbdox::latest()->paginate(8);
-        }
+        return KMProduct::latest()->paginate(8);
     }
 
     /**
@@ -34,7 +34,6 @@ class BimgbdoxController extends Controller
      */
     public function store(Request $request)
     {
-         
         $request->validate([
             'filename' => 'required',
             'desc' => 'required',
@@ -47,23 +46,22 @@ class BimgbdoxController extends Controller
         if($request->file('filepath')){
             $file = $request->file('filepath');
             $file_name = date('mdyHis'). '.' . $file->getClientOriginalName();
-            $destinationPath = public_path(). '/storage/BIMGBDocs';
+            $destinationPath = public_path(). '/storage/KMProducts';
             $file->move($destinationPath, $file_name);
         }
  
-            $annualReport = Bimgbdox::create([
+            $annualReport = KMProduct::create([
                 'filename' => $request->filename,
                 'desc' => $request->desc,
                 'unit' => $request->unit,
                 'type' => $request->type,
                 'uploader' => $request->uploader,
-                'filepath' => env('APP_URL'). '/bimgbdox/'. $file_name
+                'filepath' => env('APP_URL'). '/kmproduct/'. $file_name
  
             ]);
  
         return response()->json(['message' => 'Success'], 200);
     }
-
 
     /**
      * Display the specified resource.

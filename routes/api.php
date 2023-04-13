@@ -7,6 +7,10 @@ use App\Http\Controllers\API\AnnualReportController;
 use App\Http\Controllers\API\ProjectController;
 use App\Http\Controllers\API\PublicationController;
 use App\Http\Controllers\API\VideoController;
+use App\Http\Controllers\API\AboController;
+use App\Http\Controllers\API\BimgbdoxController;
+use App\Http\Controllers\API\BIMworkshopFilesController;
+use App\Http\Controllers\API\KMProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +41,7 @@ Route::middleware('auth:api')->get('/policybrief', function (Request $request) {
 Route::middleware('auth:api')->get('/annualreport', function (Request $request) {
     return $request->annualreport();
 });
-Route::middleware('auth:api')->get('/projectcompletions', function (Request $request) {
+Route::middleware('auth:api')->get('/projectcompletion', function (Request $request) {
     return $request->projectcompletion();
 });
 
@@ -45,6 +49,25 @@ Route::middleware('auth:api')->get('/publications', function (Request $request) 
     return $request->publications();
 });
 
+Route::middleware('auth:api')->get('/video', function (Request $request) {
+    return $request->video();
+});
+
+Route::middleware('auth:api')->get('/abo', function (Request $request) {
+    return $request->abo();
+});
+
+Route::middleware('auth:api')->get('/bimgbdox', function (Request $request) {
+    return $request->bimgbdox();
+});
+
+Route::middleware('auth:api')->get('/bimworkshop', function (Request $request) {
+    return $request->bimworkshop();
+});
+
+Route::middleware('auth:api')->get('/kmproduct', function (Request $request) {
+    return $request->kmproduct();
+});
 
 
 Route::apiResource('users' , UserController::class);
@@ -53,11 +76,12 @@ Route::apiResource('policybriefs' , PolicyBriefController::class);
 Route::apiResource('annualreports' , AnnualReportController::class);
 Route::apiResource('projectcompletions' , ProjectController::class);
 Route::apiResource('publications' , PublicationController::class);
-Route::apiResource('video' , VideoController::class);
-Route::apiResource('abo' , ABOController::class);
-Route::apiResource('bimgbdocs' , BIMGBDoxController::class);
+Route::apiResource('videos' , VideoController::class);
+Route::apiResource('abos' , AboController::class);
+Route::apiResource('bimgbdocs' , BimgbdoxController::class);
 Route::apiResource('bimworkshopfiles' , BIMworkshopFilesController::class);
-Route::apiResource('kmproducts' , KMProductsController::class);
+Route::apiResource('kmproducts' , KMProductController::class);
+ 
  
 
 

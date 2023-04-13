@@ -1,0 +1,60 @@
+version: '3.8'
+
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    volumes:
+      - ./src:/var/www/html/ 
+      - ./dockerize/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - laraveldockerize
+
+ 
+
+  mysql:docker nginx not running
+    image: mysql:8.0.21
+    container_name: mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "33061:3306"
+    volumes:
+      - ./dockerize/mysql:/var/lib/mysql
+      - ./dockerize/mysql:/my.cnf:/etc/mysql/conf.d/mysql-custom.cnf
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD} 
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+
+    networks:
+      - laraveldockerize
+
+  php:
+    build: 
+      context: .
+      dockerfile: ./dockerize/app/php.dockerfile
+    container_name: php
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "9000:9000"
+    networks:
+      - laraveldockerize
+
+
+ 
+
+
+networks:
+  laraveldockerize:

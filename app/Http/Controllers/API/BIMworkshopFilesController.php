@@ -3,9 +3,16 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\BIMworkshopFiles;
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Validator;
+use Illuminate\Support\Facades\Storage;
+ 
+use App\Http\Resources\UserResource;
+use App\Http\Resources\BIMworkshopFilesCollection;
 
-class 2016BIMworkshopFilesController extends Controller
+class BIMworkshopFilesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +21,7 @@ class 2016BIMworkshopFilesController extends Controller
      */
     public function index()
     {
-        //
+        return BIMworkshopFiles::latest()->paginate(8);
     }
 
     /**
@@ -25,8 +32,36 @@ class 2016BIMworkshopFilesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'filename' => 'required',
+            'desc' => 'required',
+            'unit' => 'required',
+            'type' => 'required',
+            'uploader' => 'required',
+            'filepath' => 'required|mimes:jpg,png,jpeg,pdf'
+        ]);
+
+        if($request->file('filepath')){
+            $file = $request->file('filepath');
+            $file_name = date('mdyHis'). '.' . $file->getClientOriginalName();
+            $destinationPath = public_path(). '/storage/BIMWorkshopFiles';
+            $file->move($destinationPath, $file_name);
+        }
+ 
+            $annualReport = BIMWorkshopFiles::create([
+                'filename' => $request->filename,
+                'desc' => $request->desc,
+                'unit' => $request->unit,
+                'type' => $request->type,
+                'uploader' => $request->uploader,
+                'filepath' => env('APP_URL'). '/bimworkshopfile/'. $file_name
+ 
+            ]);
+ 
+        return response()->json(['message' => 'Success'], 200);
     }
+
 
     /**
      * Display the specified resource.

@@ -3,7 +3,14 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\ABO;
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Validator;
+use Illuminate\Support\Facades\Storage;
+ 
+use App\Http\Resources\UserResource;
+use App\Http\Resources\AboCollection;
 
 class ABOController extends Controller
 {
@@ -14,7 +21,7 @@ class ABOController extends Controller
      */
     public function index()
     {
-        //
+        return Abo::latest()->paginate(8);
     }
 
     /**
@@ -25,7 +32,35 @@ class ABOController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        
+        $request->validate([
+            'filename' => 'required',
+            'desc' => 'required',
+            'unit' => 'required',
+            'type' => 'required',
+            'uploader' => 'required',
+            'filepath' => 'required|mimes:jpg,png,jpeg,pdf'
+        ]);
+
+        if($request->file('filepath')){
+            $file = $request->file('filepath');
+            $file_name = date('mdyHis'). '.' . $file->getClientOriginalName();
+            $destinationPath = public_path(). '/storage/ABO';
+            $file->move($destinationPath, $file_name);
+        }
+ 
+            $annualReport = Abo::create([
+                'filename' => $request->filename,
+                'desc' => $request->desc,
+                'unit' => $request->unit,
+                'type' => $request->type,
+                'uploader' => $request->uploader,
+                'filepath' => env('APP_URL'). '/abo/'. $file_name
+ 
+            ]);
+ 
+        return response()->json(['message' => 'Success'], 200);
     }
 
     /**

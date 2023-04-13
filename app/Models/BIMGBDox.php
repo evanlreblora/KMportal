@@ -5,7 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BIMGBDox extends Model
+class Bimgbdox extends Model
 {
     use HasFactory;
+    protected $fillable = ['filename','desc','unit','type','uploader','filepath'];
+
+    
+    public $table = 'bimgbdox';
+    protected $guarded = [];
 }

@@ -1928,9 +1928,9 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ABO.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Abo.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ABO.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Abo.vue?vue&type=script&lang=js& ***!
   \**************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2166,40 +2166,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      annualreports: {},
+      abos: {},
       editable: false,
       page: 0,
       gateadmin: this.$gate.isAdminOrAuthor(),
@@ -2247,7 +2218,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var page, annualreports;
+        var page, abos;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2264,11 +2235,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 _context.prev = 3;
                 _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/annualreports/?page=".concat(page));
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/abos/?page=".concat(page));
 
               case 6:
-                annualreports = _context.sent;
-                _this.annualreports = annualreports.data;
+                abos = _context.sent;
+                _this.abos = abos.data;
                 _context.next = 13;
                 break;
 
@@ -2322,7 +2293,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   fd.append('type', _this2.form.type);
                   fd.append('uploader', _this2.form.uploader);
                   fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/annualreports', fd, config).then(function (res) {
+                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/abos', fd, config).then(function (res) {
                     console.log('Response', res.data);
                   })["catch"](function (err) {
                     return console.log(err);
@@ -2373,7 +2344,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context3.prev = 2;
                 _context3.next = 5;
-                return _this3.form.put("/api/annualreports/".concat(_this3.form.id));
+                return _this3.form.put("/api/abos/".concat(_this3.form.id));
 
               case 5:
                 $("#userModal").modal("hide");
@@ -2433,7 +2404,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context4.next = 7;
-                return _this4.form["delete"]("/api/annualreports/".concat(user.id));
+                return _this4.form["delete"]("/api/abos/".concat(user.id));
 
               case 7:
                 Swal.fire("Deleted!", "User ".concat(user.name, " has been deleted"), "success");
@@ -2472,7 +2443,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _this5.page = 0;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
         // console.log(data.data);
-        _this5.annualreports = data.data;
+        _this5.abos = data.data;
       })["catch"](function (e) {
         console.log(e);
       });
@@ -2486,560 +2457,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /*!************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AnnualReports.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      annualreports: {},
-      editable: false,
-      page: 0,
-      gateadmin: this.$gate.isAdminOrAuthor(),
-      // Create a new form instance
-      form: new Form({
-        filename: "",
-        desc: "",
-        unit: "",
-        type: "",
-        uploader: "",
-        filepath: null // file:"",
-
-      })
-    };
-  },
-  methods: {
-    // onFileChange(event) {
-    //   this.filepath = event.target.files[0];
-    // },
-    openUserModal: function openUserModal() {
-      var user = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-      // clear the errors
-      this.form.clear(); // resets the form
-
-      this.form.reset();
-
-      if (user.id) {
-        this.editable = true;
-        this.form.fill(user);
-      } else {
-        this.editable = false;
-      }
-
-      $("#userModal").modal("show");
-    },
-    onSubmit: function onSubmit() {
-      if (this.editable) {
-        this.updateUser();
-      } else {
-        this.createUser();
-      }
-    },
-    getUsers: function getUsers() {
-      var _arguments = arguments,
-          _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var page, annualreports;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
-
-                if (_this.$gate.isAdminOrAuthor()) {
-                  _context.next = 3;
-                  break;
-                }
-
-                return _context.abrupt("return", false);
-
-              case 3:
-                _context.prev = 3;
-                _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/annualreports/?page=".concat(page));
-
-              case 6:
-                annualreports = _context.sent;
-                _this.annualreports = annualreports.data;
-                _context.next = 13;
-                break;
-
-              case 10:
-                _context.prev = 10;
-                _context.t0 = _context["catch"](3);
-                console.log(_context.t0.message);
-
-              case 13:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[3, 10]]);
-      }))();
-    },
-    // Our method to GET results from a Laravel endpoint
-    getResults: function getResults() {
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      this.page = (page - 1) * 10;
-      this.getUsers(page);
-    },
-    onFileChange: function onFileChange(e) {
-      console.log("select file", e.target.files[0]);
-      this.filepath = e.target.files[0];
-    },
-    createUser: function createUser() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var config, fd;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                //  e.preventDefault();
-                config = {
-                  header: {
-                    "content_type": "multipart/form-data"
-                  }
-                };
-
-                try {
-                  // Submit the form via a POST request
-                  _this2.$Progress.start();
-
-                  fd = new FormData();
-                  fd.append('filename', _this2.form.filename);
-                  fd.append('desc', _this2.form.desc);
-                  fd.append('unit', _this2.form.unit);
-                  fd.append('type', _this2.form.type);
-                  fd.append('uploader', _this2.form.uploader);
-                  fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/annualreports', fd, config).then(function (res) {
-                    console.log('Response', res.data);
-                  })["catch"](function (err) {
-                    return console.log(err);
-                  }); // modal close after submit
-                  // need to modify later
-
-                  $("#userModal").modal("hide");
-                  window.Toast.fire({
-                    icon: "success",
-                    title: "User Created successfully"
-                  }); // updated the list
-
-                  window.Fire.$emit("loadUser");
-
-                  _this2.$Progress.finish();
-                } catch (error) {
-                  _this2.$Progress.fail();
-
-                  window.Toast.fire({
-                    icon: "error",
-                    title: "User cannon created"
-                  });
-                }
-
-              case 2:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
-    },
-    updateUser: function updateUser() {
-      var _this3 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var _this3$form$password;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _this3.$Progress.start();
-
-                if (!((_this3$form$password = _this3.form.password) === null || _this3$form$password === void 0 ? void 0 : _this3$form$password.length)) {
-                  _this3.form.password = undefined;
-                }
-
-                _context3.prev = 2;
-                _context3.next = 5;
-                return _this3.form.put("/api/annualreports/".concat(_this3.form.id));
-
-              case 5:
-                $("#userModal").modal("hide");
-                Swal.fire("Updated!", "User ".concat(_this3.form.filename, " is updated"), "success");
-
-                _this3.$Progress.finish(); // update the view
-
-
-                window.Fire.$emit("loadUser");
-                _context3.next = 16;
-                break;
-
-              case 11:
-                _context3.prev = 11;
-                _context3.t0 = _context3["catch"](2);
-
-                _this3.$Progress.fail();
-
-                Swal.fire("Failed!", "User ".concat(_this3.form.filename, " cannot be updated"), "error");
-                console.log(_context3.t0);
-
-              case 16:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3, null, [[2, 11]]);
-      }))();
-    },
-    deleteUser: function deleteUser(user) {
-      var _this4 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var result;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _context4.prev = 0;
-                _context4.next = 3;
-                return window.Swal.fire({
-                  title: "Are you sure?",
-                  text: "You won't be able to revert this!",
-                  icon: "warning",
-                  showCancelButton: true,
-                  confirmButtonColor: "#3085d6",
-                  cancelButtonColor: "#d33",
-                  confirmButtonText: "Yes, delete it!"
-                });
-
-              case 3:
-                result = _context4.sent;
-
-                if (!result.isConfirmed) {
-                  _context4.next = 8;
-                  break;
-                }
-
-                _context4.next = 7;
-                return _this4.form["delete"]("/api/annualreports/".concat(user.id));
-
-              case 7:
-                Swal.fire("Deleted!", "User ".concat(user.name, " has been deleted"), "success");
-
-              case 8:
-                _context4.next = 13;
-                break;
-
-              case 10:
-                _context4.prev = 10;
-                _context4.t0 = _context4["catch"](0);
-                Swal.fire("Failed!", "User ".concat(user.name, " cannot be deleted"), "error");
-
-              case 13:
-                // update the view
-                window.Fire.$emit("loadUser");
-
-              case 14:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4, null, [[0, 10]]);
-      }))();
-    }
-  },
-  mounted: function mounted() {
-    var _this5 = this;
-
-    this.getUsers(); // fired fire event
-
-    window.Fire.$on("loadUser", function () {
-      _this5.getUsers();
-    });
-    window.Fire.$on("search", function (search) {
-      _this5.page = 0;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
-        // console.log(data.data);
-        _this5.annualreports = data.data;
-      })["catch"](function (e) {
-        console.log(e);
-      });
-    });
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BIM23GBDox.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BIM23GBDox.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3826,42 +3243,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      annualreports: {},
+      bimworkshopfiles: {},
       editable: false,
       page: 0,
       gateadmin: this.$gate.isAdminOrAuthor(),
@@ -3909,7 +3295,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var page, annualreports;
+        var page, bimworkshopfiles;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -3926,11 +3312,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 _context.prev = 3;
                 _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/annualreports/?page=".concat(page));
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/bimworkshopfiles/?page=".concat(page));
 
               case 6:
-                annualreports = _context.sent;
-                _this.annualreports = annualreports.data;
+                bimworkshopfiles = _context.sent;
+                _this.bimworkshopfiles = bimworkshopfiles.data;
                 _context.next = 13;
                 break;
 
@@ -3984,7 +3370,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   fd.append('type', _this2.form.type);
                   fd.append('uploader', _this2.form.uploader);
                   fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/annualreports', fd, config).then(function (res) {
+                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/bimworkshopfiles', fd, config).then(function (res) {
                     console.log('Response', res.data);
                   })["catch"](function (err) {
                     return console.log(err);
@@ -4035,7 +3421,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context3.prev = 2;
                 _context3.next = 5;
-                return _this3.form.put("/api/annualreports/".concat(_this3.form.id));
+                return _this3.form.put("/api/bimworkshopfiles/".concat(_this3.form.id));
 
               case 5:
                 $("#userModal").modal("hide");
@@ -4095,7 +3481,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context4.next = 7;
-                return _this4.form["delete"]("/api/annualreports/".concat(user.id));
+                return _this4.form["delete"]("/api/bimworkshopfiles/".concat(user.id));
 
               case 7:
                 Swal.fire("Deleted!", "User ".concat(user.name, " has been deleted"), "success");
@@ -4134,7 +3520,529 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _this5.page = 0;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
         // console.log(data.data);
-        _this5.annualreports = data.data;
+        _this5.bimworkshopfiles = data.data;
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Bimgbdox.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Bimgbdox.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      bimgbdocs: {},
+      editable: false,
+      page: 0,
+      gateadmin: this.$gate.isAdminOrAuthor(),
+      // Create a new form instance
+      form: new Form({
+        filename: "",
+        desc: "",
+        unit: "",
+        type: "",
+        uploader: "",
+        filepath: null // file:"",
+
+      })
+    };
+  },
+  methods: {
+    // onFileChange(event) {
+    //   this.filepath = event.target.files[0];
+    // },
+    openUserModal: function openUserModal() {
+      var user = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      // clear the errors
+      this.form.clear(); // resets the form
+
+      this.form.reset();
+
+      if (user.id) {
+        this.editable = true;
+        this.form.fill(user);
+      } else {
+        this.editable = false;
+      }
+
+      $("#userModal").modal("show");
+    },
+    onSubmit: function onSubmit() {
+      if (this.editable) {
+        this.updateUser();
+      } else {
+        this.createUser();
+      }
+    },
+    getUsers: function getUsers() {
+      var _arguments = arguments,
+          _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var page, bimgbdocs;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
+
+                if (_this.$gate.isAdminOrAuthor()) {
+                  _context.next = 3;
+                  break;
+                }
+
+                return _context.abrupt("return", false);
+
+              case 3:
+                _context.prev = 3;
+                _context.next = 6;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/bimgbdocs/?page=".concat(page));
+
+              case 6:
+                bimgbdocs = _context.sent;
+                _this.bimgbdocs = bimgbdocs.data;
+                _context.next = 13;
+                break;
+
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](3);
+                console.log(_context.t0.message);
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[3, 10]]);
+      }))();
+    },
+    // Our method to GET results from a Laravel endpoint
+    getResults: function getResults() {
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      this.page = (page - 1) * 10;
+      this.getUsers(page);
+    },
+    onFileChange: function onFileChange(e) {
+      console.log("select file", e.target.files[0]);
+      this.filepath = e.target.files[0];
+    },
+    createUser: function createUser() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var config, fd;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                //  e.preventDefault();
+                config = {
+                  header: {
+                    "content_type": "multipart/form-data"
+                  }
+                };
+
+                try {
+                  // Submit the form via a POST request
+                  _this2.$Progress.start();
+
+                  fd = new FormData();
+                  fd.append('filename', _this2.form.filename);
+                  fd.append('desc', _this2.form.desc);
+                  fd.append('unit', _this2.form.unit);
+                  fd.append('type', _this2.form.type);
+                  fd.append('uploader', _this2.form.uploader);
+                  fd.append('filepath', _this2.filepath);
+                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/bimgbdocs', fd, config).then(function (res) {
+                    console.log('Response', res.data);
+                  })["catch"](function (err) {
+                    return console.log(err);
+                  }); // modal close after submit
+                  // need to modify later
+
+                  $("#userModal").modal("hide");
+                  window.Toast.fire({
+                    icon: "success",
+                    title: "User Created successfully"
+                  }); // updated the list
+
+                  window.Fire.$emit("loadUser");
+
+                  _this2.$Progress.finish();
+                } catch (error) {
+                  _this2.$Progress.fail();
+
+                  window.Toast.fire({
+                    icon: "error",
+                    title: "User cannon created"
+                  });
+                }
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    updateUser: function updateUser() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this3$form$password;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _this3.$Progress.start();
+
+                if (!((_this3$form$password = _this3.form.password) === null || _this3$form$password === void 0 ? void 0 : _this3$form$password.length)) {
+                  _this3.form.password = undefined;
+                }
+
+                _context3.prev = 2;
+                _context3.next = 5;
+                return _this3.form.put("/api/bimgbdocs/".concat(_this3.form.id));
+
+              case 5:
+                $("#userModal").modal("hide");
+                Swal.fire("Updated!", "User ".concat(_this3.form.filename, " is updated"), "success");
+
+                _this3.$Progress.finish(); // update the view
+
+
+                window.Fire.$emit("loadUser");
+                _context3.next = 16;
+                break;
+
+              case 11:
+                _context3.prev = 11;
+                _context3.t0 = _context3["catch"](2);
+
+                _this3.$Progress.fail();
+
+                Swal.fire("Failed!", "User ".concat(_this3.form.filename, " cannot be updated"), "error");
+                console.log(_context3.t0);
+
+              case 16:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[2, 11]]);
+      }))();
+    },
+    deleteUser: function deleteUser(user) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure?",
+                  text: "You won't be able to revert this!",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, delete it!"
+                });
+
+              case 3:
+                result = _context4.sent;
+
+                if (!result.isConfirmed) {
+                  _context4.next = 8;
+                  break;
+                }
+
+                _context4.next = 7;
+                return _this4.form["delete"]("/api/bimgbdocs/".concat(user.id));
+
+              case 7:
+                Swal.fire("Deleted!", "User ".concat(user.name, " has been deleted"), "success");
+
+              case 8:
+                _context4.next = 13;
+                break;
+
+              case 10:
+                _context4.prev = 10;
+                _context4.t0 = _context4["catch"](0);
+                Swal.fire("Failed!", "User ".concat(user.name, " cannot be deleted"), "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 10]]);
+      }))();
+    }
+  },
+  mounted: function mounted() {
+    var _this5 = this;
+
+    this.getUsers(); // fired fire event
+
+    window.Fire.$on("loadUser", function () {
+      _this5.getUsers();
+    });
+    window.Fire.$on("search", function (search) {
+      _this5.page = 0;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
+        // console.log(data.data);
+        _this5.bimgbdocs = data.data;
       })["catch"](function (e) {
         console.log(e);
       });
@@ -4925,7 +4833,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      annualreports: {},
+      kmproducts: {},
       editable: false,
       page: 0,
       gateadmin: this.$gate.isAdminOrAuthor(),
@@ -4973,7 +4881,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var page, annualreports;
+        var page, kmproducts;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -4990,11 +4898,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 _context.prev = 3;
                 _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/annualreports/?page=".concat(page));
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/kmproducts/?page=".concat(page));
 
               case 6:
-                annualreports = _context.sent;
-                _this.annualreports = annualreports.data;
+                kmproducts = _context.sent;
+                _this.kmproducts = kmproducts.data;
                 _context.next = 13;
                 break;
 
@@ -5048,7 +4956,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   fd.append('type', _this2.form.type);
                   fd.append('uploader', _this2.form.uploader);
                   fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/annualreports', fd, config).then(function (res) {
+                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/kmproducts', fd, config).then(function (res) {
                     console.log('Response', res.data);
                   })["catch"](function (err) {
                     return console.log(err);
@@ -5099,7 +5007,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context3.prev = 2;
                 _context3.next = 5;
-                return _this3.form.put("/api/annualreports/".concat(_this3.form.id));
+                return _this3.form.put("/api/kmproducts/".concat(_this3.form.id));
 
               case 5:
                 $("#userModal").modal("hide");
@@ -5159,7 +5067,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context4.next = 7;
-                return _this4.form["delete"]("/api/annualreports/".concat(user.id));
+                return _this4.form["delete"]("/api/kmproducts/".concat(user.id));
 
               case 7:
                 Swal.fire("Deleted!", "User ".concat(user.name, " has been deleted"), "success");
@@ -5198,7 +5106,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _this5.page = 0;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
         // console.log(data.data);
-        _this5.annualreports = data.data;
+        _this5.kmproducts = data.data;
       })["catch"](function (e) {
         console.log(e);
       });
@@ -8603,11 +8511,51 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      annualreports: {},
+      videos: {},
       editable: false,
       page: 0,
       gateadmin: this.$gate.isAdminOrAuthor(),
@@ -8655,7 +8603,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var page, annualreports;
+        var page, videos;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -8672,11 +8620,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 _context.prev = 3;
                 _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/annualreports/?page=".concat(page));
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/videos/?page=".concat(page));
 
               case 6:
-                annualreports = _context.sent;
-                _this.annualreports = annualreports.data;
+                videos = _context.sent;
+                _this.videos = videos.data;
                 _context.next = 13;
                 break;
 
@@ -8730,7 +8678,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   fd.append('type', _this2.form.type);
                   fd.append('uploader', _this2.form.uploader);
                   fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/annualreports', fd, config).then(function (res) {
+                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/videos', fd, config).then(function (res) {
                     console.log('Response', res.data);
                   })["catch"](function (err) {
                     return console.log(err);
@@ -8781,7 +8729,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context3.prev = 2;
                 _context3.next = 5;
-                return _this3.form.put("/api/annualreports/".concat(_this3.form.id));
+                return _this3.form.put("/api/videos/".concat(_this3.form.id));
 
               case 5:
                 $("#userModal").modal("hide");
@@ -8841,7 +8789,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context4.next = 7;
-                return _this4.form["delete"]("/api/annualreports/".concat(user.id));
+                return _this4.form["delete"]("/api/videos/".concat(user.id));
 
               case 7:
                 Swal.fire("Deleted!", "User ".concat(user.name, " has been deleted"), "success");
@@ -8880,7 +8828,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _this5.page = 0;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
         // console.log(data.data);
-        _this5.annualreports = data.data;
+        _this5.videos = data.data;
       })["catch"](function (e) {
         console.log(e);
       });
@@ -72607,9 +72555,9 @@ AlertSuccess_component.options.__file = "AlertSuccess.vue"
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ABO.vue?vue&type=template&id=d3cfb55a&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Abo.vue?vue&type=template&id=6313ad5a&":
 /*!******************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ABO.vue?vue&type=template&id=d3cfb55a& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Abo.vue?vue&type=template&id=6313ad5a& ***!
   \******************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -72632,7 +72580,7 @@ var render = function() {
             _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-header" }, [
                 _c("h3", { staticClass: "card-title" }, [
-                  _vm._v("Annual Report Table")
+                  _vm._v("ASEAN Biodiversity Outlook Table")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-tools" }, [
@@ -72658,12 +72606,9 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "tbody",
-                    _vm._l(_vm.annualreports.data, function(
-                      annualreport,
-                      index
-                    ) {
-                      return _c("tr", { key: annualreport.id }, [
-                        _c("td", { attrs: { title: annualreport.id } }, [
+                    _vm._l(_vm.abos.data, function(abo, index) {
+                      return _c("tr", { key: abo.id }, [
+                        _c("td", { attrs: { title: abo.id } }, [
                           _vm._v(
                             "\n                    " +
                               _vm._s(_vm.page + index + 1) +
@@ -72671,16 +72616,16 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(annualreport.filename))]),
+                        _c("td", [_vm._v(_vm._s(abo.filename))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(annualreport.desc))]),
+                        _c("td", [_vm._v(_vm._s(abo.desc))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(annualreport.unit))]),
+                        _c("td", [_vm._v(_vm._s(abo.unit))]),
                         _vm._v(" "),
                         _c("td", [
                           _vm._v(
                             "\n                    " +
-                              _vm._s(annualreport.type) +
+                              _vm._s(abo.type) +
                               "\n                  "
                           )
                         ]),
@@ -72688,7 +72633,7 @@ var render = function() {
                         _c("td", [
                           _vm._v(
                             "\n                   " +
-                              _vm._s(annualreport.uploader) +
+                              _vm._s(abo.uploader) +
                               "\n                  "
                           )
                         ]),
@@ -72700,7 +72645,7 @@ var render = function() {
                               attrs: { href: "#", title: "Edit" },
                               on: {
                                 click: function($event) {
-                                  return _vm.openUserModal(annualreport)
+                                  return _vm.openUserModal(abo)
                                 }
                               }
                             },
@@ -72716,7 +72661,7 @@ var render = function() {
                               on: {
                                 click: function($event) {
                                   $event.preventDefault()
-                                  return _vm.deleteUser(annualreport)
+                                  return _vm.deleteUser(abo)
                                 }
                               }
                             },
@@ -72736,7 +72681,7 @@ var render = function() {
                 [
                   _c("pagination", {
                     attrs: {
-                      data: _vm.annualreports,
+                      data: _vm.abos,
                       limit: 3,
                       "show-disabled": true,
                       align: "center"
@@ -73805,10 +73750,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BIM23GBDox.vue?vue&type=template&id=64041f94&":
-/*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BIM23GBDox.vue?vue&type=template&id=64041f94& ***!
-  \*************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BIMWorkshopFiles.vue?vue&type=template&id=343ca335&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BIMWorkshopFiles.vue?vue&type=template&id=343ca335& ***!
+  \*******************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -73830,7 +73775,7 @@ var render = function() {
             _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-header" }, [
                 _c("h3", { staticClass: "card-title" }, [
-                  _vm._v("Annual Report Table")
+                  _vm._v("2016 BIM Workshop Files Table")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-tools" }, [
@@ -73842,7 +73787,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                    Upload Report\n                "
+                        "\n                    Upload File\n                "
                       ),
                       _c("i", { staticClass: "fas fa-plus fa-fw" })
                     ]
@@ -73856,29 +73801,33 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "tbody",
-                    _vm._l(_vm.annualreports.data, function(
-                      annualreport,
+                    _vm._l(_vm.bimworkshopfiles.data, function(
+                      bimworkshopfile,
                       index
                     ) {
-                      return _c("tr", { key: annualreport.id }, [
-                        _c("td", { attrs: { title: annualreport.id } }, [
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(_vm.page + index + 1) +
-                              "\n                  "
-                          )
-                        ]),
+                      return _c("tr", { key: bimworkshopfile.id }, [
+                        _c(
+                          "td",
+                          { attrs: { title: _vm.bimworkshopfiles.id } },
+                          [
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(_vm.page + index + 1) +
+                                "\n                  "
+                            )
+                          ]
+                        ),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(annualreport.filename))]),
+                        _c("td", [_vm._v(_vm._s(bimworkshopfile.filename))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(annualreport.desc))]),
+                        _c("td", [_vm._v(_vm._s(bimworkshopfile.desc))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(annualreport.unit))]),
+                        _c("td", [_vm._v(_vm._s(bimworkshopfile.unit))]),
                         _vm._v(" "),
                         _c("td", [
                           _vm._v(
                             "\n                    " +
-                              _vm._s(annualreport.type) +
+                              _vm._s(bimworkshopfile.type) +
                               "\n                  "
                           )
                         ]),
@@ -73886,7 +73835,7 @@ var render = function() {
                         _c("td", [
                           _vm._v(
                             "\n                   " +
-                              _vm._s(annualreport.uploader) +
+                              _vm._s(bimworkshopfile.uploader) +
                               "\n                  "
                           )
                         ]),
@@ -73898,7 +73847,7 @@ var render = function() {
                               attrs: { href: "#", title: "Edit" },
                               on: {
                                 click: function($event) {
-                                  return _vm.openUserModal(annualreport)
+                                  return _vm.openUserModal(bimworkshopfile)
                                 }
                               }
                             },
@@ -73914,7 +73863,7 @@ var render = function() {
                               on: {
                                 click: function($event) {
                                   $event.preventDefault()
-                                  return _vm.deleteUser(annualreport)
+                                  return _vm.deleteUser(bimworkshopfile)
                                 }
                               }
                             },
@@ -73934,7 +73883,7 @@ var render = function() {
                 [
                   _c("pagination", {
                     attrs: {
-                      data: _vm.annualreports,
+                      data: _vm.bimworkshopfiles,
                       limit: 3,
                       "show-disabled": true,
                       align: "center"
@@ -74404,10 +74353,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BIMWorkshopFiles.vue?vue&type=template&id=343ca335&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BIMWorkshopFiles.vue?vue&type=template&id=343ca335& ***!
-  \*******************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Bimgbdox.vue?vue&type=template&id=09ca6692&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Bimgbdox.vue?vue&type=template&id=09ca6692& ***!
+  \***********************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -74429,7 +74378,7 @@ var render = function() {
             _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-header" }, [
                 _c("h3", { staticClass: "card-title" }, [
-                  _vm._v("Annual Report Table")
+                  _vm._v("BIM '23 GB Documents Table")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-tools" }, [
@@ -74455,12 +74404,9 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "tbody",
-                    _vm._l(_vm.annualreports.data, function(
-                      annualreport,
-                      index
-                    ) {
-                      return _c("tr", { key: annualreport.id }, [
-                        _c("td", { attrs: { title: annualreport.id } }, [
+                    _vm._l(_vm.bimgbdocs.data, function(bimgbdoc, index) {
+                      return _c("tr", { key: bimgbdoc.id }, [
+                        _c("td", { attrs: { title: bimgbdoc.id } }, [
                           _vm._v(
                             "\n                    " +
                               _vm._s(_vm.page + index + 1) +
@@ -74468,16 +74414,16 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(annualreport.filename))]),
+                        _c("td", [_vm._v(_vm._s(bimgbdoc.filename))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(annualreport.desc))]),
+                        _c("td", [_vm._v(_vm._s(bimgbdoc.desc))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(annualreport.unit))]),
+                        _c("td", [_vm._v(_vm._s(bimgbdoc.unit))]),
                         _vm._v(" "),
                         _c("td", [
                           _vm._v(
                             "\n                    " +
-                              _vm._s(annualreport.type) +
+                              _vm._s(bimgbdoc.type) +
                               "\n                  "
                           )
                         ]),
@@ -74485,7 +74431,7 @@ var render = function() {
                         _c("td", [
                           _vm._v(
                             "\n                   " +
-                              _vm._s(annualreport.uploader) +
+                              _vm._s(bimgbdoc.uploader) +
                               "\n                  "
                           )
                         ]),
@@ -74497,7 +74443,7 @@ var render = function() {
                               attrs: { href: "#", title: "Edit" },
                               on: {
                                 click: function($event) {
-                                  return _vm.openUserModal(annualreport)
+                                  return _vm.openUserModal(bimgbdoc)
                                 }
                               }
                             },
@@ -74513,7 +74459,7 @@ var render = function() {
                               on: {
                                 click: function($event) {
                                   $event.preventDefault()
-                                  return _vm.deleteUser(annualreport)
+                                  return _vm.deleteUser(bimgbdoc)
                                 }
                               }
                             },
@@ -74533,7 +74479,7 @@ var render = function() {
                 [
                   _c("pagination", {
                     attrs: {
-                      data: _vm.annualreports,
+                      data: _vm.bimgbdocs,
                       limit: 3,
                       "show-disabled": true,
                       align: "center"
@@ -75723,7 +75669,7 @@ var render = function() {
             _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-header" }, [
                 _c("h3", { staticClass: "card-title" }, [
-                  _vm._v("Annual Report Table")
+                  _vm._v("KM Plan and Products Table")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-tools" }, [
@@ -75735,7 +75681,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                    Upload Report\n                "
+                        "\n                    Upload File\n                "
                       ),
                       _c("i", { staticClass: "fas fa-plus fa-fw" })
                     ]
@@ -75749,12 +75695,9 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "tbody",
-                    _vm._l(_vm.annualreports.data, function(
-                      annualreport,
-                      index
-                    ) {
-                      return _c("tr", { key: annualreport.id }, [
-                        _c("td", { attrs: { title: annualreport.id } }, [
+                    _vm._l(_vm.kmproducts.data, function(kmproduct, index) {
+                      return _c("tr", { key: kmproduct.id }, [
+                        _c("td", { attrs: { title: kmproduct.id } }, [
                           _vm._v(
                             "\n                    " +
                               _vm._s(_vm.page + index + 1) +
@@ -75762,16 +75705,16 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(annualreport.filename))]),
+                        _c("td", [_vm._v(_vm._s(kmproduct.filename))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(annualreport.desc))]),
+                        _c("td", [_vm._v(_vm._s(kmproduct.desc))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(annualreport.unit))]),
+                        _c("td", [_vm._v(_vm._s(kmproduct.unit))]),
                         _vm._v(" "),
                         _c("td", [
                           _vm._v(
                             "\n                    " +
-                              _vm._s(annualreport.type) +
+                              _vm._s(kmproduct.type) +
                               "\n                  "
                           )
                         ]),
@@ -75779,7 +75722,7 @@ var render = function() {
                         _c("td", [
                           _vm._v(
                             "\n                   " +
-                              _vm._s(annualreport.uploader) +
+                              _vm._s(kmproduct.uploader) +
                               "\n                  "
                           )
                         ]),
@@ -75791,7 +75734,7 @@ var render = function() {
                               attrs: { href: "#", title: "Edit" },
                               on: {
                                 click: function($event) {
-                                  return _vm.openUserModal(annualreport)
+                                  return _vm.openUserModal(kmproduct)
                                 }
                               }
                             },
@@ -75807,7 +75750,7 @@ var render = function() {
                               on: {
                                 click: function($event) {
                                   $event.preventDefault()
-                                  return _vm.deleteUser(annualreport)
+                                  return _vm.deleteUser(kmproduct)
                                 }
                               }
                             },
@@ -75827,7 +75770,7 @@ var render = function() {
                 [
                   _c("pagination", {
                     attrs: {
-                      data: _vm.annualreports,
+                      data: _vm.kmproducts,
                       limit: 3,
                       "show-disabled": true,
                       align: "center"
@@ -80345,7 +80288,9 @@ var render = function() {
           _c("div", { staticClass: "col-md-12" }, [
             _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-header" }, [
-                _c("h3", { staticClass: "card-title" }, [_vm._v("Videos")]),
+                _c("h3", { staticClass: "card-title" }, [
+                  _vm._v("Videos Table")
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-tools" }, [
                   _c(
@@ -80364,106 +80309,79 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "container mx-auto mt-4" }, [
-                _c(
-                  "div",
-                  { staticClass: "row" },
-                  _vm._l(_vm.annualreports.data, function(annualreport) {
-                    return _c(
-                      "div",
-                      { key: annualreport.id, staticClass: "col-md-3" },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "card",
-                            staticStyle: { width: "16rem" }
-                          },
-                          [
-                            _c("img", {
-                              staticClass: "card-img-top",
-                              attrs: {
-                                src: "/images/squareCard.svg",
-                                alt: "..."
+              _c("div", { staticClass: "card-body table-responsive p-0" }, [
+                _c("table", { staticClass: "table table-hover text-nowrap" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.videos.data, function(video, index) {
+                      return _c("tr", { key: video.id }, [
+                        _c("td", { attrs: { title: video.id } }, [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.page + index + 1) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(video.filename))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(video.desc))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(video.unit))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(video.type) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                   " +
+                              _vm._s(video.uploader) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Edit" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.openUserModal(video)
+                                }
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "card-body" }, [
-                              _c("h5", { staticClass: "card-title" }, [
-                                _vm._v(_vm._s(annualreport.filename))
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "card-text" }, [
-                                _vm._v(
-                                  "\n                        " +
-                                    _vm._s(annualreport.desc) +
-                                    "\n                      "
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "a",
-                                {
-                                  staticClass: " mr-2",
-                                  attrs: { href: "#" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.viewUserModal(annualreport)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("i", { staticClass: "fas fa-eye green" }),
-                                  _vm._v("View")
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "mr-2",
-                                  attrs: { href: "#", title: "Edit" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.openUserModal(annualreport)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("i", { staticClass: "fa fa-edit indigo" }),
-                                  _vm._v("Edit\n                      ")
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _vm.gateadmin
-                                ? _c(
-                                    "a",
-                                    {
-                                      staticClass: "mr-2",
-                                      attrs: { href: "#", title: "Remove" },
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          return _vm.deleteUser(annualreport)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("i", {
-                                        staticClass: "fa fa-trash red"
-                                      }),
-                                      _vm._v("Delete\n                      ")
-                                    ]
-                                  )
-                                : _vm._e()
-                            ])
-                          ]
-                        )
-                      ]
-                    )
-                  }),
-                  0
-                )
+                            },
+                            [_c("i", { staticClass: "fa fa-edit indigo" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Remove" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deleteUser(video)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-trash red" })]
+                          )
+                        ])
+                      ])
+                    }),
+                    0
+                  )
+                ])
               ]),
               _vm._v(" "),
               _c(
@@ -80472,7 +80390,7 @@ var render = function() {
                 [
                   _c("pagination", {
                     attrs: {
-                      data: _vm.annualreports,
+                      data: _vm.videos,
                       limit: 3,
                       "show-disabled": true,
                       align: "center"
@@ -80527,7 +80445,7 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _vm._m(0)
+                    _vm._m(1)
                   ]),
                   _vm._v(" "),
                   _c(
@@ -80896,6 +80814,28 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Filename")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Unit")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Uploader")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -96200,10 +96140,10 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./components/ABO.vue": "./resources/js/components/ABO.vue",
+	"./components/Abo.vue": "./resources/js/components/Abo.vue",
 	"./components/AnnualReports.vue": "./resources/js/components/AnnualReports.vue",
-	"./components/BIM23GBDox.vue": "./resources/js/components/BIM23GBDox.vue",
 	"./components/BIMWorkshopFiles.vue": "./resources/js/components/BIMWorkshopFiles.vue",
+	"./components/Bimgbdox.vue": "./resources/js/components/Bimgbdox.vue",
 	"./components/Dashboard.vue": "./resources/js/components/Dashboard.vue",
 	"./components/ExampleComponent.vue": "./resources/js/components/ExampleComponent.vue",
 	"./components/ExampleUpload.vue": "./resources/js/components/ExampleUpload.vue",
@@ -96387,6 +96327,18 @@ var routes = [{
   path: '/videos',
   component: __webpack_require__(/*! ./components/Videos.vue */ "./resources/js/components/Videos.vue")["default"]
 }, {
+  path: '/abo',
+  component: __webpack_require__(/*! ./components/Abo.vue */ "./resources/js/components/Abo.vue")["default"]
+}, {
+  path: '/bimgbdocs',
+  component: __webpack_require__(/*! ./components/Bimgbdox.vue */ "./resources/js/components/Bimgbdox.vue")["default"]
+}, {
+  path: '/bimworkshopfiles',
+  component: __webpack_require__(/*! ./components/BIMWorkshopFiles.vue */ "./resources/js/components/BIMWorkshopFiles.vue")["default"]
+}, {
+  path: '/kmproducts',
+  component: __webpack_require__(/*! ./components/KMproducts.vue */ "./resources/js/components/KMproducts.vue")["default"]
+}, {
   path: '/example-component',
   component: __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]
 }, {
@@ -96514,17 +96466,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/components/ABO.vue":
+/***/ "./resources/js/components/Abo.vue":
 /*!*****************************************!*\
-  !*** ./resources/js/components/ABO.vue ***!
+  !*** ./resources/js/components/Abo.vue ***!
   \*****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ABO_vue_vue_type_template_id_d3cfb55a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ABO.vue?vue&type=template&id=d3cfb55a& */ "./resources/js/components/ABO.vue?vue&type=template&id=d3cfb55a&");
-/* harmony import */ var _ABO_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ABO.vue?vue&type=script&lang=js& */ "./resources/js/components/ABO.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Abo_vue_vue_type_template_id_6313ad5a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Abo.vue?vue&type=template&id=6313ad5a& */ "./resources/js/components/Abo.vue?vue&type=template&id=6313ad5a&");
+/* harmony import */ var _Abo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Abo.vue?vue&type=script&lang=js& */ "./resources/js/components/Abo.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -96534,9 +96486,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ABO_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ABO_vue_vue_type_template_id_d3cfb55a___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ABO_vue_vue_type_template_id_d3cfb55a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Abo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Abo_vue_vue_type_template_id_6313ad5a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Abo_vue_vue_type_template_id_6313ad5a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -96546,38 +96498,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/ABO.vue"
+component.options.__file = "resources/js/components/Abo.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/ABO.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/components/Abo.vue?vue&type=script&lang=js&":
 /*!******************************************************************!*\
-  !*** ./resources/js/components/ABO.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/components/Abo.vue?vue&type=script&lang=js& ***!
   \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ABO_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ABO.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ABO.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ABO_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Abo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Abo.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Abo.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Abo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/ABO.vue?vue&type=template&id=d3cfb55a&":
+/***/ "./resources/js/components/Abo.vue?vue&type=template&id=6313ad5a&":
 /*!************************************************************************!*\
-  !*** ./resources/js/components/ABO.vue?vue&type=template&id=d3cfb55a& ***!
+  !*** ./resources/js/components/Abo.vue?vue&type=template&id=6313ad5a& ***!
   \************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ABO_vue_vue_type_template_id_d3cfb55a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ABO.vue?vue&type=template&id=d3cfb55a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ABO.vue?vue&type=template&id=d3cfb55a&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ABO_vue_vue_type_template_id_d3cfb55a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Abo_vue_vue_type_template_id_6313ad5a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Abo.vue?vue&type=template&id=6313ad5a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Abo.vue?vue&type=template&id=6313ad5a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Abo_vue_vue_type_template_id_6313ad5a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ABO_vue_vue_type_template_id_d3cfb55a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Abo_vue_vue_type_template_id_6313ad5a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -96652,75 +96604,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/BIM23GBDox.vue":
-/*!************************************************!*\
-  !*** ./resources/js/components/BIM23GBDox.vue ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _BIM23GBDox_vue_vue_type_template_id_64041f94___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BIM23GBDox.vue?vue&type=template&id=64041f94& */ "./resources/js/components/BIM23GBDox.vue?vue&type=template&id=64041f94&");
-/* harmony import */ var _BIM23GBDox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BIM23GBDox.vue?vue&type=script&lang=js& */ "./resources/js/components/BIM23GBDox.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _BIM23GBDox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _BIM23GBDox_vue_vue_type_template_id_64041f94___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _BIM23GBDox_vue_vue_type_template_id_64041f94___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/BIM23GBDox.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/BIM23GBDox.vue?vue&type=script&lang=js&":
-/*!*************************************************************************!*\
-  !*** ./resources/js/components/BIM23GBDox.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BIM23GBDox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./BIM23GBDox.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BIM23GBDox.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BIM23GBDox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/BIM23GBDox.vue?vue&type=template&id=64041f94&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/BIM23GBDox.vue?vue&type=template&id=64041f94& ***!
-  \*******************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BIM23GBDox_vue_vue_type_template_id_64041f94___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./BIM23GBDox.vue?vue&type=template&id=64041f94& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BIM23GBDox.vue?vue&type=template&id=64041f94&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BIM23GBDox_vue_vue_type_template_id_64041f94___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BIM23GBDox_vue_vue_type_template_id_64041f94___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/components/BIMWorkshopFiles.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/BIMWorkshopFiles.vue ***!
@@ -96785,6 +96668,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BIMWorkshopFiles_vue_vue_type_template_id_343ca335___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BIMWorkshopFiles_vue_vue_type_template_id_343ca335___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Bimgbdox.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/Bimgbdox.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Bimgbdox_vue_vue_type_template_id_09ca6692___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Bimgbdox.vue?vue&type=template&id=09ca6692& */ "./resources/js/components/Bimgbdox.vue?vue&type=template&id=09ca6692&");
+/* harmony import */ var _Bimgbdox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Bimgbdox.vue?vue&type=script&lang=js& */ "./resources/js/components/Bimgbdox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Bimgbdox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Bimgbdox_vue_vue_type_template_id_09ca6692___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Bimgbdox_vue_vue_type_template_id_09ca6692___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Bimgbdox.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Bimgbdox.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/Bimgbdox.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Bimgbdox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Bimgbdox.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Bimgbdox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Bimgbdox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Bimgbdox.vue?vue&type=template&id=09ca6692&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/Bimgbdox.vue?vue&type=template&id=09ca6692& ***!
+  \*****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Bimgbdox_vue_vue_type_template_id_09ca6692___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Bimgbdox.vue?vue&type=template&id=09ca6692& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Bimgbdox.vue?vue&type=template&id=09ca6692&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Bimgbdox_vue_vue_type_template_id_09ca6692___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Bimgbdox_vue_vue_type_template_id_09ca6692___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
