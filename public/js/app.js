@@ -75055,7 +75055,7 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-3 col-6" }, [
-          _c("div", { staticClass: "small-box bg-info" }, [
+          _c("div", { staticClass: "small-box bg-danger" }, [
             _c("div", { staticClass: "inner" }, [
               _c("h3", [_vm._v("150")]),
               _vm._v(" "),
@@ -75074,7 +75074,7 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-3 col-6" }, [
-          _c("div", { staticClass: "small-box bg-success" }, [
+          _c("div", { staticClass: "small-box bg-info" }, [
             _c("div", { staticClass: "inner" }, [
               _c("h3", [
                 _vm._v("53"),
@@ -75098,7 +75098,7 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-3 col-6" }, [
-          _c("div", { staticClass: "small-box bg-warning" }, [
+          _c("div", { staticClass: "small-box bg-success" }, [
             _c("div", { staticClass: "inner" }, [
               _c("h3", [_vm._v("44")]),
               _vm._v(" "),
@@ -75117,7 +75117,7 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-3 col-6" }, [
-          _c("div", { staticClass: "small-box bg-danger" }, [
+          _c("div", { staticClass: "small-box bg-warning" }, [
             _c("div", { staticClass: "inner" }, [
               _c("h3", [_vm._v("65")]),
               _vm._v(" "),
