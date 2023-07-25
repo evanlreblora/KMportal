@@ -33,7 +33,7 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'filename' => 'required',
+            'filename' => 'required|unique:Video,filename',
             'desc' => 'required',
             'unit' => 'required',
             'type' => 'required',

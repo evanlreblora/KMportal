@@ -283,7 +283,7 @@ export default {
         this.$Progress.fail();
         window.Toast.fire({
           icon: "error",
-          title: "User cannon created",
+          title: "User cannot created",
         });
       }
     },

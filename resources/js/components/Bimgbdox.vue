@@ -43,6 +43,10 @@
                      {{ bimgbdoc.uploader }}
                     </td>
                     <td>
+                      <a href="#" @click.prevent="downloadUser(annualreport)" title="Download">
+                        <i class="fa fa-download blue"></i>
+                      </a>
+                      <span class="yellow">/</span>
                       <a href="#" title="Edit" @click="openUserModal(bimgbdoc)">
                         <i class="fa fa-edit indigo"></i>
                       </a>
@@ -307,9 +311,7 @@ export default {
         fd.append('uploader', this.form.uploader);
         fd.append('filepath', this.filepath);
         
-        axios.post('api/bimgbdocs',fd,config ).then(res=>{
-          console.log('Response', res.data)
-        }).catch(err=>console.log(err))
+        await axios.post('api/bimgbdocs',fd,config );
         // modal close after submit
         // need to modify later
         $("#userModal").modal("hide");
@@ -372,7 +374,29 @@ export default {
       // update the view
       window.Fire.$emit("loadUser");
     },
+    async downloadUser(user) {
+      // download the user
+      try {
+        const result = await window.Swal.fire({
+          title: "Are you sure to download this file?",
+          text: "You won't be able to revert this!",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, Download it!",
+        });
 
+        if (result.isConfirmed) {
+          await this.form.download(`/api/annualreports/${user.id}`);
+          Swal.fire("Downloading!", "success");
+        }
+      } catch (error) {
+        Swal.fire("Failed!", `File ${user.name} cannot be download`, "error");
+      }
+      // update the view
+      window.Fire.$emit("loadUser");
+    },
   },
   mounted() {
     this.getUsers();

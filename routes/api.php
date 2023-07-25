@@ -11,6 +11,12 @@ use App\Http\Controllers\API\AboController;
 use App\Http\Controllers\API\BimgbdoxController;
 use App\Http\Controllers\API\BIMworkshopFilesController;
 use App\Http\Controllers\API\KMProductController;
+
+use App\Http\Controllers\API\ABDController;
+use App\Http\Controllers\API\ActivityDesignController;
+use App\Http\Controllers\API\GOFBudgetController;
+use App\Http\Controllers\API\KBACourseController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -69,6 +75,27 @@ Route::middleware('auth:api')->get('/kmproduct', function (Request $request) {
     return $request->kmproduct();
 });
 
+Route::middleware('auth:api')->get('/gofbudget', function (Request $request) {
+    return $request->gofbudget();
+});
+
+
+Route::middleware('auth:api')->get('/activitydesign', function (Request $request) {
+    return $request->activitydesign();
+});
+
+
+Route::middleware('auth:api')->get('/kbacourse', function (Request $request) {
+    return $request->kbacourse();
+});
+
+
+Route::middleware('auth:api')->get('/abd', function (Request $request) {
+    return $request->abd();
+});
+
+
+
 
 Route::apiResource('users' , UserController::class);
 Route::apiResource('proceedings' , ProceedingController::class);
@@ -81,6 +108,13 @@ Route::apiResource('abos' , AboController::class);
 Route::apiResource('bimgbdocs' , BimgbdoxController::class);
 Route::apiResource('bimworkshopfiles' , BIMworkshopFilesController::class);
 Route::apiResource('kmproducts' , KMProductController::class);
+
+Route::apiResource('gofbudgets' , GOFBudgetController::class);
+Route::apiResource('activitydesigns' , ActivityDesignController::class);
+Route::apiResource('kbacourses' , KBACourseController::class);
+Route::apiResource('abds' , AbdController::class);
+
+
  
  
 

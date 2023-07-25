@@ -39,7 +39,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {    
         $request->validate([
-            'filename' => 'required',
+            'filename' => 'required|unique:ProjectComp,filename',
             'desc' => 'required',
             'unit' => 'required',
             'type' => 'required',

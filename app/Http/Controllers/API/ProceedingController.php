@@ -57,7 +57,7 @@ class ProceedingController extends Controller
 
         
         $request->validate([
-            'filename' => 'required',
+            'filename' => 'required|unique:Proceeding,filename',
             'desc' => 'required',
             'unit' => 'required',
             'type' => 'required',

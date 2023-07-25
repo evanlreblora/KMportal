@@ -19,7 +19,7 @@
                             {{user.name}}
                         </h3>
                         <h5 class="widget-user-desc text-right">
-                            Web Designer
+                            {{user.type}}
                         </h5>
                     </div>
                     <div class="widget-user-image">

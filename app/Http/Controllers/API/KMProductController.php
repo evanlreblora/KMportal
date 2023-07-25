@@ -35,7 +35,7 @@ class KMProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'filename' => 'required',
+            'filename' => 'required|unique:KMProduct,filename',
             'desc' => 'required',
             'unit' => 'required',
             'type' => 'required',

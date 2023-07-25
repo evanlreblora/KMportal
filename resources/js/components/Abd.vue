@@ -5,7 +5,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">ASEAN Biodiversity Outlook Table</h3>
+              <h3 class="card-title">ASEAN Biodiversity Dashboard Table</h3>
   
                   <div class="card-tools">
                     <button class="btn btn-success" @click="openUserModal">
@@ -16,8 +16,37 @@
             </div>
             <!-- /.card-header -->
   
-     
-
+            <!-- <div class="container mx-auto mt-4">
+                <div class="row">
+                  <div v-for="annualreport  in annualreports.data" :key="annualreport.id" class="col-md-3">
+                    <div class="card" style="width: 16rem">
+                      <img
+                        src="/images/squareCard.svg"
+                        class="card-img-top"
+                        alt="..."
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">{{ annualreport.filename }}</h5>
+   
+                        <p class="card-text">
+                          {{ annualreport.desc }}
+                        </p>
+                        <a href="#" class=" mr-2"  @click="viewUserModal(annualreport)"><i class="fas fa-eye green"></i>View</a> 
+                        <a href="#"  class="mr-2" title="Edit" @click="openUserModal(annualreport)">
+                          <i class="fa fa-edit indigo"></i>Edit
+                        </a>
+                        <a v-if="gateadmin" class="mr-2" href="#" @click.prevent="deleteUser(annualreport)" title="Remove">
+                          <i class="fa fa-trash red"></i>Delete
+                        </a>
+                    </div>
+                  </div>
+              </div>
+   
+   
+  
+                </div>
+              </div> -->
+              
               <div class="card-body table-responsive p-0">
               <table class="table table-hover text-nowrap">
                 <thead>
@@ -32,31 +61,33 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(abo, index) in abos.data" :key="abo.id">
-                    <td :title="abo.id">
+                  <tr v-for="(abd, index) in abds.data" :key="abd.id">
+                    <td :title="abd.id">
                       {{ page + index + 1 }}
                     </td>
-                    <td>{{ abo.filename }}</td>
-                    <td>{{ abo.desc }}</td>
-                    <td>{{ abo.unit }}</td>
+                    <td>{{ abd.filename }}</td>
+                    <td>{{ abd.desc }}</td>
+                    <td>{{ abd.unit }}</td>
                     <td>
-                      {{ abo.type }}
+                      {{ abd.type }}
                     </td>
                     <td>
-                     {{ abo.uploader }}
+                     {{ abd.uploader }}
                     </td>
                     <td>
-                      <a href="#" @click.prevent="downloadUser(annualreport)" title="Download">
+                      
+                      <a href="#" @click.prevent="downloadUser(abd)" title="Download">
                         <i class="fa fa-download blue"></i>
                       </a>
                       <span class="yellow">/</span>
-                      <a href="#" title="Edit" @click="openUserModal(abo)">
+                      <a href="#" title="Edit" @click="openUserModal(abd)">
                         <i class="fa fa-edit indigo"></i>
                       </a>
                       <span class="yellow">/</span>
-                      <a href="#" @click.prevent="deleteUser(abo)" title="Remove">
+                      <a href="#" @click.prevent="deleteUser(abd)" title="Remove">
                         <i class="fa fa-trash red"></i>
                       </a>
+
                     </td>
                   </tr>
                 </tbody>
@@ -65,7 +96,7 @@
             <!-- /.card-body -->
             <div class="card-footer">
               <pagination
-                :data="abos"
+                :data="abds"
                 :limit="3"
                 :show-disabled="true"
                 align="center"
@@ -89,7 +120,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="userModalTitle">
-                {{ editable ? "Update's Poiicy brief data" : "Add New" }}
+                {{ editable ? "Update's ASEAN Biodiversity Dashboard data" : "Add New" }}
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -138,11 +169,9 @@
                   }"
                 >
                   <option value="" selected disabled>Select Unit</option>
-                  <option value="PDF">PDF</option>
-                  <option value="PNG">PNG/JPEG</option>
-                  <option value="Docx">DOCX</option>
-                  <option value="HTML">HTML</option>
-                  <option value="PPT">PPT</option>
+                  <option value="BIM">BIM</option>
+                  <option value="CPA">CPA</option>
+                  <option value="PDI">PDI</option>
                 </select>
                 <has-error :form="form" field="unit"></has-error>
               </div>
@@ -230,7 +259,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      abos: {},
+      adbs: {},
       
     
       editable: false,
@@ -238,12 +267,13 @@ export default {
       gateadmin: this.$gate.isAdminOrAuthor(),
       // Create a new form instance
       form: new Form({
+        id: "",
         filename: "",
         desc: "",
         unit: "",
         type: "",
         uploader: "",
-        filepath: null
+        filepath: ""
         // file:"",
 
       }),
@@ -280,8 +310,8 @@ export default {
     async getUsers(page = 1) {
       if (!this.$gate.isAdminOrAuthor()) return false;
       try {
-        const abos = await axios.get(`/api/abos/?page=${page}`);
-        this.abos = abos.data;
+        const abds = await axios.get(`/api/abds/?page=${page}`);
+        this.abds = abds.data;
       } catch (error) {
         console.log(error.message);
       }
@@ -311,14 +341,17 @@ export default {
         this.$Progress.start();
 
         let fd = new FormData();
-        fd.append('filename', this.form.filename);
+        fd.append('filename', this.form.filename); 
         fd.append('desc', this.form.desc);
         fd.append('unit', this.form.unit);
         fd.append('type', this.form.type);
         fd.append('uploader', this.form.uploader);
         fd.append('filepath', this.filepath);
         
-        await axios.post('api/abos',fd,config );
+        await axios.post('api/abds',fd,config );
+        //.then(res=>{
+        //   console.log('Response', res.data)
+        // }).catch(err=>console.log(err))
         // modal close after submit
         // need to modify later
         $("#userModal").modal("hide");
@@ -335,26 +368,26 @@ export default {
         this.$Progress.fail();
         window.Toast.fire({
           icon: "error",
-          title: "User cannon created",
+          title: "File cannot created",
         });
       }
     },
-        async updateUser() {
+    async updateUser() {
       this.$Progress.start();
       if (!this.form.password?.length) {
         this.form.password = undefined;
       }
       try {
-        await this.form.put(`/api/abos/${this.form.id}`);
+        await this.form.put(`/api/abds/${this.form.id}`);
         $("#userModal").modal("hide");
-        Swal.fire("Updated!", `User ${this.form.filename} is updated`, "success");
+        Swal.fire("Updated!", `File is updated`, "success");
         this.$Progress.finish();
 
         // update the view
         window.Fire.$emit("loadUser");
       } catch (error) {
         this.$Progress.fail();
-        Swal.fire("Failed!", `User ${this.form.filename} cannot be updated`, "error");
+        Swal.fire("Failed!", `File cannot be updated`, "error");
         console.log(error);
       }
     },
@@ -372,11 +405,11 @@ export default {
         });
 
         if (result.isConfirmed) {
-          await this.form.delete(`/api/abos/${user.id}`);
-          Swal.fire("Deleted!", `User ${user.name} has been deleted`, "success");
+          await this.form.delete(`/api/abds/${user.id}`);
+          Swal.fire("Deleted!", `User has been deleted`, "success");
         }
       } catch (error) {
-        Swal.fire("Failed!", `User ${user.name} cannot be deleted`, "error");
+        Swal.fire("Failed!", `User cannot be deleted`, "error");
       }
       // update the view
       window.Fire.$emit("loadUser");
@@ -395,11 +428,11 @@ export default {
         });
 
         if (result.isConfirmed) {
-          await this.form.download(`/api/annualreports/${user.id}`);
+          await this.form.download(`/api/abds/${user.id}`);
           Swal.fire("Downloading!", "success");
         }
       } catch (error) {
-        Swal.fire("Failed!", `File ${user.name} cannot be download`, "error");
+        Swal.fire("Failed!", `File cannot be download`, "error");
       }
       // update the view
       window.Fire.$emit("loadUser");
@@ -419,7 +452,7 @@ export default {
         .get(`/api/searchpolicybr?q=${search}`)
         .then((data) => {
           // console.log(data.data);
-          this.abos = data.data;
+          this.annualreports = data.data;
         })
         .catch((e) => {
           console.log(e);

@@ -35,7 +35,7 @@ class ABOController extends Controller
 
         
         $request->validate([
-            'filename' => 'required',
+            'filename' => 'required|unique:Abo,filename',
             'desc' => 'required',
             'unit' => 'required',
             'type' => 'required',

@@ -24,7 +24,7 @@ class PolicyBriefController extends Controller
 
         
         $request->validate([
-            'filename' => 'required',
+            'filename' => 'required|unique:PolicyBrief,filename',
             'desc' => 'required',
             'unit' => 'required',
             'type' => 'required',

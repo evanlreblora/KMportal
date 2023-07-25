@@ -34,7 +34,7 @@ class BIMworkshopFilesController extends Controller
     {
         
         $request->validate([
-            'filename' => 'required',
+            'filename' => 'required|unique:BIMWorkshopFiles,filename',
             'desc' => 'required',
             'unit' => 'required',
             'type' => 'required',

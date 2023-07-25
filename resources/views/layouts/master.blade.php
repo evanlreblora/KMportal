@@ -177,6 +177,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </router-link>
                                 </li>
                             </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/gofbudgets" exact tag="a" class="nav-link" active-class="active">
+                                        <i class="fas fa-folder-open nav-icon purple"></i>
+                                        <p>GOF Budget Appropriations
+</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/activitydesigns" exact tag="a" class="nav-link" active-class="active">
+                                        <i class="fas fa-folder-open nav-icon purple"></i>
+                                        <p>Activity Design</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/kbacourses" exact tag="a" class="nav-link" active-class="active">
+                                        <i class="fas fa-folder-open nav-icon purple"></i>
+                                        <p>KBA Course Prep Documents</p>
+                                    </router-link>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <router-link to="/abds" exact tag="a" class="nav-link" active-class="active">
+                                        <i class="fas fa-folder-open nav-icon purple"></i>
+                                        <p>ASEAN Biodiversity Dashboard Surveys</p>
+                                    </router-link>
+                                </li>
+                            </ul>
                         </li>
                         @canany(['isAdmin','isAuthor'])
                         <li class="nav-item">

@@ -4,16 +4,16 @@ namespace App\Http\Controllers\API;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\AnnualReport;
+use App\Models\GOFBudget;
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
 use Validator;
 use Illuminate\Support\Facades\Storage;
  
 use App\Http\Resources\UserResource;
-use App\Http\Resources\AnnualReportCollection;
+use App\Http\Resources\GofbudgetCollection;
 
-class AnnualReportController extends Controller
+class GOFBudgetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,8 +24,8 @@ class AnnualReportController extends Controller
     {
         // return AnnualReport::latest()->paginate(8);
         // Gate::allows(['isAdmin','isAuthor']);
-        $annualreports =  AnnualReport::latest()->paginate(8);
-        return new AnnualReportCollection($annualreports);
+        $annualreports =  GOFBudget::latest()->paginate(8);
+        return new GofbudgetCollection($annualreports);
     }
 
     /**
@@ -52,11 +52,11 @@ class AnnualReportController extends Controller
         if($request->file('filepath')){
             $file = $request->file('filepath');
             $file_name =  $file->getClientOriginalName();
-            $destinationPath = public_path(). '/storage/AnnualReport';
+            $destinationPath = public_path(). '/storage/GOFBudget';
             $file->move($destinationPath, $file_name);
         }
  
-            $annualReport = AnnualReport::create([
+            $annualReport = GOFBudget::create([
                 'filename' => $request->filename,
                 'desc' => $request->desc,
                 'unit' => $request->unit,
@@ -77,7 +77,7 @@ class AnnualReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(AnnualReport $id)
+    public function show(GOFBudget $id)
     {
                //Get annualreport
             //    $annualreport = AnnualReport::FindOrFail($id);
@@ -100,10 +100,10 @@ class AnnualReportController extends Controller
     {
 
         // Gate::allows(['isAdmin','isAuthor']);
-        $upload = AnnualReport::findorFail($id);
+        $upload = GOFBudget::findorFail($id);
 
         $this->validate($request,[
-            'filename' => 'required|unique:annualreport',
+            'filename' => 'required|unique:GOFBudget',
             'desc' => 'required',
             'unit' => 'required',
             'type' => 'required',
@@ -127,7 +127,7 @@ class AnnualReportController extends Controller
      */
     public function destroy($id)
     {
-        $upload = AnnualReport::findOrFail($id);
+        $upload = GOFBudget::findOrFail($id);
 
         $upload->delete();
 
@@ -149,9 +149,9 @@ class AnnualReportController extends Controller
     public function search(Request $request)
     {
         $query =  $request->query('q');
-        $annualreport = AnnualReport::where('filename','LIKE', '%'.$query.'%')->orWhere('desc','LIKE','%'.$query.'%')->orWhere('type','LIKE','%'.$query.'%')->latest()->paginate(10);
+        $GOFBudget = GOFBudget::where('filename','LIKE', '%'.$query.'%')->orWhere('desc','LIKE','%'.$query.'%')->orWhere('type','LIKE','%'.$query.'%')->latest()->paginate(10);
 
-        return new AnnualReportCollection($annualreport);
+        return new GOFBudgetCollection($GOFBudget);
     }
 
   

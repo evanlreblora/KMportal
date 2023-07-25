@@ -44,6 +44,10 @@
                      {{ bimworkshopfile.uploader }}
                     </td>
                     <td>
+                      <a href="#" @click.prevent="downloadUser(annualreport)" title="Download">
+                        <i class="fa fa-download blue"></i>
+                      </a>
+                      <span class="yellow">/</span>
                       <a href="#" title="Edit" @click="openUserModal(bimworkshopfile)">
                         <i class="fa fa-edit indigo"></i>
                       </a>
@@ -308,9 +312,7 @@ export default {
         fd.append('uploader', this.form.uploader);
         fd.append('filepath', this.filepath);
         
-        axios.post('api/bimworkshopfiles',fd,config ).then(res=>{
-          console.log('Response', res.data)
-        }).catch(err=>console.log(err))
+        await axios.post('api/bimworkshopfiles',fd,config );
         // modal close after submit
         // need to modify later
         $("#userModal").modal("hide");

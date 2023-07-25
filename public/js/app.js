@@ -1928,6 +1928,633 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Abd.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Abd.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      adbs: {},
+      editable: false,
+      page: 0,
+      gateadmin: this.$gate.isAdminOrAuthor(),
+      // Create a new form instance
+      form: new Form({
+        id: "",
+        filename: "",
+        desc: "",
+        unit: "",
+        type: "",
+        uploader: "",
+        filepath: "" // file:"",
+
+      })
+    };
+  },
+  methods: {
+    // onFileChange(event) {
+    //   this.filepath = event.target.files[0];
+    // },
+    openUserModal: function openUserModal() {
+      var user = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      // clear the errors
+      this.form.clear(); // resets the form
+
+      this.form.reset();
+
+      if (user.id) {
+        this.editable = true;
+        this.form.fill(user);
+      } else {
+        this.editable = false;
+      }
+
+      $("#userModal").modal("show");
+    },
+    onSubmit: function onSubmit() {
+      if (this.editable) {
+        this.updateUser();
+      } else {
+        this.createUser();
+      }
+    },
+    getUsers: function getUsers() {
+      var _arguments = arguments,
+          _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var page, abds;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
+
+                if (_this.$gate.isAdminOrAuthor()) {
+                  _context.next = 3;
+                  break;
+                }
+
+                return _context.abrupt("return", false);
+
+              case 3:
+                _context.prev = 3;
+                _context.next = 6;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/abds/?page=".concat(page));
+
+              case 6:
+                abds = _context.sent;
+                _this.abds = abds.data;
+                _context.next = 13;
+                break;
+
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](3);
+                console.log(_context.t0.message);
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[3, 10]]);
+      }))();
+    },
+    // Our method to GET results from a Laravel endpoint
+    getResults: function getResults() {
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      this.page = (page - 1) * 10;
+      this.getUsers(page);
+    },
+    onFileChange: function onFileChange(e) {
+      console.log("select file", e.target.files[0]);
+      this.filepath = e.target.files[0];
+    },
+    createUser: function createUser() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var config, fd;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                //  e.preventDefault();
+                config = {
+                  header: {
+                    "content_type": "multipart/form-data"
+                  }
+                };
+                _context2.prev = 1;
+
+                // Submit the form via a POST request
+                _this2.$Progress.start();
+
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/abds', fd, config);
+
+              case 12:
+                //.then(res=>{
+                //   console.log('Response', res.data)
+                // }).catch(err=>console.log(err))
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
+
+                window.Fire.$emit("loadUser");
+
+                _this2.$Progress.finish();
+
+                _context2.next = 22;
+                break;
+
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "File cannot created"
+                });
+
+              case 22:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[1, 18]]);
+      }))();
+    },
+    updateUser: function updateUser() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this3$form$password;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _this3.$Progress.start();
+
+                if (!((_this3$form$password = _this3.form.password) === null || _this3$form$password === void 0 ? void 0 : _this3$form$password.length)) {
+                  _this3.form.password = undefined;
+                }
+
+                _context3.prev = 2;
+                _context3.next = 5;
+                return _this3.form.put("/api/abds/".concat(_this3.form.id));
+
+              case 5:
+                $("#userModal").modal("hide");
+                Swal.fire("Updated!", "File is updated", "success");
+
+                _this3.$Progress.finish(); // update the view
+
+
+                window.Fire.$emit("loadUser");
+                _context3.next = 16;
+                break;
+
+              case 11:
+                _context3.prev = 11;
+                _context3.t0 = _context3["catch"](2);
+
+                _this3.$Progress.fail();
+
+                Swal.fire("Failed!", "File cannot be updated", "error");
+                console.log(_context3.t0);
+
+              case 16:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[2, 11]]);
+      }))();
+    },
+    deleteUser: function deleteUser(user) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure?",
+                  text: "You won't be able to revert this!",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, delete it!"
+                });
+
+              case 3:
+                result = _context4.sent;
+
+                if (!result.isConfirmed) {
+                  _context4.next = 8;
+                  break;
+                }
+
+                _context4.next = 7;
+                return _this4.form["delete"]("/api/abds/".concat(user.id));
+
+              case 7:
+                Swal.fire("Deleted!", "User has been deleted", "success");
+
+              case 8:
+                _context4.next = 13;
+                break;
+
+              case 10:
+                _context4.prev = 10;
+                _context4.t0 = _context4["catch"](0);
+                Swal.fire("Failed!", "User cannot be deleted", "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 10]]);
+      }))();
+    },
+    downloadUser: function downloadUser(user) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure to download this file?",
+                  text: "You won't be able to revert this!",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Download it!"
+                });
+
+              case 3:
+                result = _context5.sent;
+
+                if (!result.isConfirmed) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                _context5.next = 7;
+                return _this5.form.download("/api/abds/".concat(user.id));
+
+              case 7:
+                Swal.fire("Downloading!", "success");
+
+              case 8:
+                _context5.next = 13;
+                break;
+
+              case 10:
+                _context5.prev = 10;
+                _context5.t0 = _context5["catch"](0);
+                Swal.fire("Failed!", "File cannot be download", "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 10]]);
+      }))();
+    }
+  },
+  mounted: function mounted() {
+    var _this6 = this;
+
+    this.getUsers(); // fired fire event
+
+    window.Fire.$on("loadUser", function () {
+      _this6.getUsers();
+    });
+    window.Fire.$on("search", function (search) {
+      _this6.page = 0;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
+        // console.log(data.data);
+        _this6.annualreports = data.data;
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Abo.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Abo.vue?vue&type=script&lang=js& ***!
@@ -1947,6 +2574,14 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2281,49 +2916,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     "content_type": "multipart/form-data"
                   }
                 };
+                _context2.prev = 1;
 
-                try {
-                  // Submit the form via a POST request
-                  _this2.$Progress.start();
+                // Submit the form via a POST request
+                _this2.$Progress.start();
 
-                  fd = new FormData();
-                  fd.append('filename', _this2.form.filename);
-                  fd.append('desc', _this2.form.desc);
-                  fd.append('unit', _this2.form.unit);
-                  fd.append('type', _this2.form.type);
-                  fd.append('uploader', _this2.form.uploader);
-                  fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/abos', fd, config).then(function (res) {
-                    console.log('Response', res.data);
-                  })["catch"](function (err) {
-                    return console.log(err);
-                  }); // modal close after submit
-                  // need to modify later
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/abos', fd, config);
 
-                  $("#userModal").modal("hide");
-                  window.Toast.fire({
-                    icon: "success",
-                    title: "User Created successfully"
-                  }); // updated the list
+              case 12:
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
 
-                  window.Fire.$emit("loadUser");
+                window.Fire.$emit("loadUser");
 
-                  _this2.$Progress.finish();
-                } catch (error) {
-                  _this2.$Progress.fail();
+                _this2.$Progress.finish();
 
-                  window.Toast.fire({
-                    icon: "error",
-                    title: "User cannon created"
-                  });
-                }
+                _context2.next = 22;
+                break;
 
-              case 2:
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "User cannon created"
+                });
+
+              case 22:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[1, 18]]);
       }))();
     },
     updateUser: function updateUser() {
@@ -2429,21 +3069,704 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4, null, [[0, 10]]);
       }))();
+    },
+    downloadUser: function downloadUser(user) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure to download this file?",
+                  text: "You won't be able to revert this!",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Download it!"
+                });
+
+              case 3:
+                result = _context5.sent;
+
+                if (!result.isConfirmed) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                _context5.next = 7;
+                return _this5.form.download("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Downloading!", "success");
+
+              case 8:
+                _context5.next = 13;
+                break;
+
+              case 10:
+                _context5.prev = 10;
+                _context5.t0 = _context5["catch"](0);
+                Swal.fire("Failed!", "File ".concat(user.name, " cannot be download"), "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 10]]);
+      }))();
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.getUsers(); // fired fire event
 
     window.Fire.$on("loadUser", function () {
-      _this5.getUsers();
+      _this6.getUsers();
     });
     window.Fire.$on("search", function (search) {
-      _this5.page = 0;
+      _this6.page = 0;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
         // console.log(data.data);
-        _this5.abos = data.data;
+        _this6.abos = data.data;
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ActivityDesign.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ActivityDesign.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      annualreports: {},
+      editable: false,
+      page: 0,
+      gateadmin: this.$gate.isAdminOrAuthor(),
+      // Create a new form instance
+      form: new Form({
+        id: "",
+        filename: "",
+        desc: "",
+        unit: "",
+        type: "",
+        uploader: "",
+        filepath: "" // file:"",
+
+      })
+    };
+  },
+  methods: {
+    // onFileChange(event) {
+    //   this.filepath = event.target.files[0];
+    // },
+    openUserModal: function openUserModal() {
+      var user = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      // clear the errors
+      this.form.clear(); // resets the form
+
+      this.form.reset();
+
+      if (user.id) {
+        this.editable = true;
+        this.form.fill(user);
+      } else {
+        this.editable = false;
+      }
+
+      $("#userModal").modal("show");
+    },
+    onSubmit: function onSubmit() {
+      if (this.editable) {
+        this.updateUser();
+      } else {
+        this.createUser();
+      }
+    },
+    getUsers: function getUsers() {
+      var _arguments = arguments,
+          _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var page, annualreports;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
+
+                if (_this.$gate.isAdminOrAuthor()) {
+                  _context.next = 3;
+                  break;
+                }
+
+                return _context.abrupt("return", false);
+
+              case 3:
+                _context.prev = 3;
+                _context.next = 6;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/annualreports/?page=".concat(page));
+
+              case 6:
+                annualreports = _context.sent;
+                _this.annualreports = annualreports.data;
+                _context.next = 13;
+                break;
+
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](3);
+                console.log(_context.t0.message);
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[3, 10]]);
+      }))();
+    },
+    // Our method to GET results from a Laravel endpoint
+    getResults: function getResults() {
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      this.page = (page - 1) * 10;
+      this.getUsers(page);
+    },
+    onFileChange: function onFileChange(e) {
+      console.log("select file", e.target.files[0]);
+      this.filepath = e.target.files[0];
+    },
+    createUser: function createUser() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var config, fd;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                //  e.preventDefault();
+                config = {
+                  header: {
+                    "content_type": "multipart/form-data"
+                  }
+                };
+                _context2.prev = 1;
+
+                // Submit the form via a POST request
+                _this2.$Progress.start();
+
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/annualreports', fd, config);
+
+              case 12:
+                //.then(res=>{
+                //   console.log('Response', res.data)
+                // }).catch(err=>console.log(err))
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
+
+                window.Fire.$emit("loadUser");
+
+                _this2.$Progress.finish();
+
+                _context2.next = 22;
+                break;
+
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "File cannot created"
+                });
+
+              case 22:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[1, 18]]);
+      }))();
+    },
+    updateUser: function updateUser() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this3$form$password;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _this3.$Progress.start();
+
+                if (!((_this3$form$password = _this3.form.password) === null || _this3$form$password === void 0 ? void 0 : _this3$form$password.length)) {
+                  _this3.form.password = undefined;
+                }
+
+                _context3.prev = 2;
+                _context3.next = 5;
+                return _this3.form.put("/api/annualreports/".concat(_this3.form.id));
+
+              case 5:
+                $("#userModal").modal("hide");
+                Swal.fire("Updated!", "File is updated", "success");
+
+                _this3.$Progress.finish(); // update the view
+
+
+                window.Fire.$emit("loadUser");
+                _context3.next = 16;
+                break;
+
+              case 11:
+                _context3.prev = 11;
+                _context3.t0 = _context3["catch"](2);
+
+                _this3.$Progress.fail();
+
+                Swal.fire("Failed!", "File cannot be updated", "error");
+                console.log(_context3.t0);
+
+              case 16:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[2, 11]]);
+      }))();
+    },
+    deleteUser: function deleteUser(user) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure?",
+                  text: "You won't be able to revert this!",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, delete it!"
+                });
+
+              case 3:
+                result = _context4.sent;
+
+                if (!result.isConfirmed) {
+                  _context4.next = 8;
+                  break;
+                }
+
+                _context4.next = 7;
+                return _this4.form["delete"]("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Deleted!", "User has been deleted", "success");
+
+              case 8:
+                _context4.next = 13;
+                break;
+
+              case 10:
+                _context4.prev = 10;
+                _context4.t0 = _context4["catch"](0);
+                Swal.fire("Failed!", "User cannot be deleted", "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 10]]);
+      }))();
+    },
+    downloadUser: function downloadUser(user) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure to download this file?",
+                  text: "You won't be able to revert this!",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Download it!"
+                });
+
+              case 3:
+                result = _context5.sent;
+
+                if (!result.isConfirmed) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                _context5.next = 7;
+                return _this5.form.download("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Downloading!", "success");
+
+              case 8:
+                _context5.next = 13;
+                break;
+
+              case 10:
+                _context5.prev = 10;
+                _context5.t0 = _context5["catch"](0);
+                Swal.fire("Failed!", "File cannot be download", "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 10]]);
+      }))();
+    }
+  },
+  mounted: function mounted() {
+    var _this6 = this;
+
+    this.getUsers(); // fired fire event
+
+    window.Fire.$on("loadUser", function () {
+      _this6.getUsers();
+    });
+    window.Fire.$on("search", function (search) {
+      _this6.page = 0;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
+        // console.log(data.data);
+        _this6.annualreports = data.data;
       })["catch"](function (e) {
         console.log(e);
       });
@@ -2720,6 +4043,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2730,12 +4061,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       gateadmin: this.$gate.isAdminOrAuthor(),
       // Create a new form instance
       form: new Form({
+        id: "",
         filename: "",
         desc: "",
         unit: "",
         type: "",
         uploader: "",
-        filepath: null // file:"",
+        filepath: "" // file:"",
 
       })
     };
@@ -2835,49 +4167,57 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     "content_type": "multipart/form-data"
                   }
                 };
+                _context2.prev = 1;
 
-                try {
-                  // Submit the form via a POST request
-                  _this2.$Progress.start();
+                // Submit the form via a POST request
+                _this2.$Progress.start();
 
-                  fd = new FormData();
-                  fd.append('filename', _this2.form.filename);
-                  fd.append('desc', _this2.form.desc);
-                  fd.append('unit', _this2.form.unit);
-                  fd.append('type', _this2.form.type);
-                  fd.append('uploader', _this2.form.uploader);
-                  fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/annualreports', fd, config).then(function (res) {
-                    console.log('Response', res.data);
-                  })["catch"](function (err) {
-                    return console.log(err);
-                  }); // modal close after submit
-                  // need to modify later
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/annualreports', fd, config);
 
-                  $("#userModal").modal("hide");
-                  window.Toast.fire({
-                    icon: "success",
-                    title: "User Created successfully"
-                  }); // updated the list
+              case 12:
+                //.then(res=>{
+                //   console.log('Response', res.data)
+                // }).catch(err=>console.log(err))
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
 
-                  window.Fire.$emit("loadUser");
+                window.Fire.$emit("loadUser");
 
-                  _this2.$Progress.finish();
-                } catch (error) {
-                  _this2.$Progress.fail();
+                _this2.$Progress.finish();
 
-                  window.Toast.fire({
-                    icon: "error",
-                    title: "User cannon created"
-                  });
-                }
+                _context2.next = 22;
+                break;
 
-              case 2:
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "File cannot created"
+                });
+
+              case 22:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[1, 18]]);
       }))();
     },
     updateUser: function updateUser() {
@@ -2902,7 +4242,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
                 $("#userModal").modal("hide");
-                Swal.fire("Updated!", "User ".concat(_this3.form.filename, " is updated"), "success");
+                Swal.fire("Updated!", "File is updated", "success");
 
                 _this3.$Progress.finish(); // update the view
 
@@ -2917,7 +4257,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this3.$Progress.fail();
 
-                Swal.fire("Failed!", "User ".concat(_this3.form.filename, " cannot be updated"), "error");
+                Swal.fire("Failed!", "File cannot be updated", "error");
                 console.log(_context3.t0);
 
               case 16:
@@ -2961,7 +4301,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _this4.form["delete"]("/api/annualreports/".concat(user.id));
 
               case 7:
-                Swal.fire("Deleted!", "User ".concat(user.name, " has been deleted"), "success");
+                Swal.fire("Deleted!", "User has been deleted", "success");
 
               case 8:
                 _context4.next = 13;
@@ -2970,7 +4310,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 10:
                 _context4.prev = 10;
                 _context4.t0 = _context4["catch"](0);
-                Swal.fire("Failed!", "User ".concat(user.name, " cannot be deleted"), "error");
+                Swal.fire("Failed!", "User cannot be deleted", "error");
 
               case 13:
                 // update the view
@@ -2983,21 +4323,77 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4, null, [[0, 10]]);
       }))();
+    },
+    downloadUser: function downloadUser(user) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure to download this file?",
+                  text: "You won't be able to revert this!",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Download it!"
+                });
+
+              case 3:
+                result = _context5.sent;
+
+                if (!result.isConfirmed) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                _context5.next = 7;
+                return _this5.form.download("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Downloading!", "success");
+
+              case 8:
+                _context5.next = 13;
+                break;
+
+              case 10:
+                _context5.prev = 10;
+                _context5.t0 = _context5["catch"](0);
+                Swal.fire("Failed!", "File cannot be download", "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 10]]);
+      }))();
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.getUsers(); // fired fire event
 
     window.Fire.$on("loadUser", function () {
-      _this5.getUsers();
+      _this6.getUsers();
     });
     window.Fire.$on("search", function (search) {
-      _this5.page = 0;
+      _this6.page = 0;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
         // console.log(data.data);
-        _this5.annualreports = data.data;
+        _this6.annualreports = data.data;
       })["catch"](function (e) {
         console.log(e);
       });
@@ -3026,6 +4422,10 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -3358,49 +4758,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     "content_type": "multipart/form-data"
                   }
                 };
+                _context2.prev = 1;
 
-                try {
-                  // Submit the form via a POST request
-                  _this2.$Progress.start();
+                // Submit the form via a POST request
+                _this2.$Progress.start();
 
-                  fd = new FormData();
-                  fd.append('filename', _this2.form.filename);
-                  fd.append('desc', _this2.form.desc);
-                  fd.append('unit', _this2.form.unit);
-                  fd.append('type', _this2.form.type);
-                  fd.append('uploader', _this2.form.uploader);
-                  fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/bimworkshopfiles', fd, config).then(function (res) {
-                    console.log('Response', res.data);
-                  })["catch"](function (err) {
-                    return console.log(err);
-                  }); // modal close after submit
-                  // need to modify later
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/bimworkshopfiles', fd, config);
 
-                  $("#userModal").modal("hide");
-                  window.Toast.fire({
-                    icon: "success",
-                    title: "User Created successfully"
-                  }); // updated the list
+              case 12:
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
 
-                  window.Fire.$emit("loadUser");
+                window.Fire.$emit("loadUser");
 
-                  _this2.$Progress.finish();
-                } catch (error) {
-                  _this2.$Progress.fail();
+                _this2.$Progress.finish();
 
-                  window.Toast.fire({
-                    icon: "error",
-                    title: "User cannon created"
-                  });
-                }
+                _context2.next = 22;
+                break;
 
-              case 2:
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "User cannon created"
+                });
+
+              case 22:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[1, 18]]);
       }))();
     },
     updateUser: function updateUser() {
@@ -3765,6 +5170,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3880,49 +5289,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     "content_type": "multipart/form-data"
                   }
                 };
+                _context2.prev = 1;
 
-                try {
-                  // Submit the form via a POST request
-                  _this2.$Progress.start();
+                // Submit the form via a POST request
+                _this2.$Progress.start();
 
-                  fd = new FormData();
-                  fd.append('filename', _this2.form.filename);
-                  fd.append('desc', _this2.form.desc);
-                  fd.append('unit', _this2.form.unit);
-                  fd.append('type', _this2.form.type);
-                  fd.append('uploader', _this2.form.uploader);
-                  fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/bimgbdocs', fd, config).then(function (res) {
-                    console.log('Response', res.data);
-                  })["catch"](function (err) {
-                    return console.log(err);
-                  }); // modal close after submit
-                  // need to modify later
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/bimgbdocs', fd, config);
 
-                  $("#userModal").modal("hide");
-                  window.Toast.fire({
-                    icon: "success",
-                    title: "User Created successfully"
-                  }); // updated the list
+              case 12:
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
 
-                  window.Fire.$emit("loadUser");
+                window.Fire.$emit("loadUser");
 
-                  _this2.$Progress.finish();
-                } catch (error) {
-                  _this2.$Progress.fail();
+                _this2.$Progress.finish();
 
-                  window.Toast.fire({
-                    icon: "error",
-                    title: "User cannon created"
-                  });
-                }
+                _context2.next = 22;
+                break;
 
-              case 2:
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "User cannon created"
+                });
+
+              case 22:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[1, 18]]);
       }))();
     },
     updateUser: function updateUser() {
@@ -4028,21 +5442,77 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4, null, [[0, 10]]);
       }))();
+    },
+    downloadUser: function downloadUser(user) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure to download this file?",
+                  text: "You won't be able to revert this!",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Download it!"
+                });
+
+              case 3:
+                result = _context5.sent;
+
+                if (!result.isConfirmed) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                _context5.next = 7;
+                return _this5.form.download("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Downloading!", "success");
+
+              case 8:
+                _context5.next = 13;
+                break;
+
+              case 10:
+                _context5.prev = 10;
+                _context5.t0 = _context5["catch"](0);
+                Swal.fire("Failed!", "File ".concat(user.name, " cannot be download"), "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 10]]);
+      }))();
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.getUsers(); // fired fire event
 
     window.Fire.$on("loadUser", function () {
-      _this5.getUsers();
+      _this6.getUsers();
     });
     window.Fire.$on("search", function (search) {
-      _this5.page = 0;
+      _this6.page = 0;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
         // console.log(data.data);
-        _this5.bimgbdocs = data.data;
+        _this6.bimgbdocs = data.data;
       })["catch"](function (e) {
         console.log(e);
       });
@@ -4061,6 +5531,116 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4562,6 +6142,1260 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/GOFBudget.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/GOFBudget.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      annualreports: {},
+      editable: false,
+      page: 0,
+      gateadmin: this.$gate.isAdminOrAuthor(),
+      // Create a new form instance
+      form: new Form({
+        id: "",
+        filename: "",
+        desc: "",
+        unit: "",
+        type: "",
+        uploader: "",
+        filepath: "" // file:"",
+
+      })
+    };
+  },
+  methods: {
+    // onFileChange(event) {
+    //   this.filepath = event.target.files[0];
+    // },
+    openUserModal: function openUserModal() {
+      var user = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      // clear the errors
+      this.form.clear(); // resets the form
+
+      this.form.reset();
+
+      if (user.id) {
+        this.editable = true;
+        this.form.fill(user);
+      } else {
+        this.editable = false;
+      }
+
+      $("#userModal").modal("show");
+    },
+    onSubmit: function onSubmit() {
+      if (this.editable) {
+        this.updateUser();
+      } else {
+        this.createUser();
+      }
+    },
+    getUsers: function getUsers() {
+      var _arguments = arguments,
+          _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var page, annualreports;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
+
+                if (_this.$gate.isAdminOrAuthor()) {
+                  _context.next = 3;
+                  break;
+                }
+
+                return _context.abrupt("return", false);
+
+              case 3:
+                _context.prev = 3;
+                _context.next = 6;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/annualreports/?page=".concat(page));
+
+              case 6:
+                annualreports = _context.sent;
+                _this.annualreports = annualreports.data;
+                _context.next = 13;
+                break;
+
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](3);
+                console.log(_context.t0.message);
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[3, 10]]);
+      }))();
+    },
+    // Our method to GET results from a Laravel endpoint
+    getResults: function getResults() {
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      this.page = (page - 1) * 10;
+      this.getUsers(page);
+    },
+    onFileChange: function onFileChange(e) {
+      console.log("select file", e.target.files[0]);
+      this.filepath = e.target.files[0];
+    },
+    createUser: function createUser() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var config, fd;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                //  e.preventDefault();
+                config = {
+                  header: {
+                    "content_type": "multipart/form-data"
+                  }
+                };
+                _context2.prev = 1;
+
+                // Submit the form via a POST request
+                _this2.$Progress.start();
+
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/annualreports', fd, config);
+
+              case 12:
+                //.then(res=>{
+                //   console.log('Response', res.data)
+                // }).catch(err=>console.log(err))
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
+
+                window.Fire.$emit("loadUser");
+
+                _this2.$Progress.finish();
+
+                _context2.next = 22;
+                break;
+
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "File cannot created"
+                });
+
+              case 22:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[1, 18]]);
+      }))();
+    },
+    updateUser: function updateUser() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this3$form$password;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _this3.$Progress.start();
+
+                if (!((_this3$form$password = _this3.form.password) === null || _this3$form$password === void 0 ? void 0 : _this3$form$password.length)) {
+                  _this3.form.password = undefined;
+                }
+
+                _context3.prev = 2;
+                _context3.next = 5;
+                return _this3.form.put("/api/annualreports/".concat(_this3.form.id));
+
+              case 5:
+                $("#userModal").modal("hide");
+                Swal.fire("Updated!", "File is updated", "success");
+
+                _this3.$Progress.finish(); // update the view
+
+
+                window.Fire.$emit("loadUser");
+                _context3.next = 16;
+                break;
+
+              case 11:
+                _context3.prev = 11;
+                _context3.t0 = _context3["catch"](2);
+
+                _this3.$Progress.fail();
+
+                Swal.fire("Failed!", "File cannot be updated", "error");
+                console.log(_context3.t0);
+
+              case 16:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[2, 11]]);
+      }))();
+    },
+    deleteUser: function deleteUser(user) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure?",
+                  text: "You won't be able to revert this!",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, delete it!"
+                });
+
+              case 3:
+                result = _context4.sent;
+
+                if (!result.isConfirmed) {
+                  _context4.next = 8;
+                  break;
+                }
+
+                _context4.next = 7;
+                return _this4.form["delete"]("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Deleted!", "User has been deleted", "success");
+
+              case 8:
+                _context4.next = 13;
+                break;
+
+              case 10:
+                _context4.prev = 10;
+                _context4.t0 = _context4["catch"](0);
+                Swal.fire("Failed!", "User cannot be deleted", "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 10]]);
+      }))();
+    },
+    downloadUser: function downloadUser(user) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure to download this file?",
+                  text: "You won't be able to revert this!",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Download it!"
+                });
+
+              case 3:
+                result = _context5.sent;
+
+                if (!result.isConfirmed) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                _context5.next = 7;
+                return _this5.form.download("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Downloading!", "success");
+
+              case 8:
+                _context5.next = 13;
+                break;
+
+              case 10:
+                _context5.prev = 10;
+                _context5.t0 = _context5["catch"](0);
+                Swal.fire("Failed!", "File cannot be download", "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 10]]);
+      }))();
+    }
+  },
+  mounted: function mounted() {
+    var _this6 = this;
+
+    this.getUsers(); // fired fire event
+
+    window.Fire.$on("loadUser", function () {
+      _this6.getUsers();
+    });
+    window.Fire.$on("search", function (search) {
+      _this6.page = 0;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
+        // console.log(data.data);
+        _this6.annualreports = data.data;
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/KBACourse.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/KBACourse.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      annualreports: {},
+      editable: false,
+      page: 0,
+      gateadmin: this.$gate.isAdminOrAuthor(),
+      // Create a new form instance
+      form: new Form({
+        id: "",
+        filename: "",
+        desc: "",
+        unit: "",
+        type: "",
+        uploader: "",
+        filepath: "" // file:"",
+
+      })
+    };
+  },
+  methods: {
+    // onFileChange(event) {
+    //   this.filepath = event.target.files[0];
+    // },
+    openUserModal: function openUserModal() {
+      var user = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      // clear the errors
+      this.form.clear(); // resets the form
+
+      this.form.reset();
+
+      if (user.id) {
+        this.editable = true;
+        this.form.fill(user);
+      } else {
+        this.editable = false;
+      }
+
+      $("#userModal").modal("show");
+    },
+    onSubmit: function onSubmit() {
+      if (this.editable) {
+        this.updateUser();
+      } else {
+        this.createUser();
+      }
+    },
+    getUsers: function getUsers() {
+      var _arguments = arguments,
+          _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var page, annualreports;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
+
+                if (_this.$gate.isAdminOrAuthor()) {
+                  _context.next = 3;
+                  break;
+                }
+
+                return _context.abrupt("return", false);
+
+              case 3:
+                _context.prev = 3;
+                _context.next = 6;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/annualreports/?page=".concat(page));
+
+              case 6:
+                annualreports = _context.sent;
+                _this.annualreports = annualreports.data;
+                _context.next = 13;
+                break;
+
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](3);
+                console.log(_context.t0.message);
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[3, 10]]);
+      }))();
+    },
+    // Our method to GET results from a Laravel endpoint
+    getResults: function getResults() {
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      this.page = (page - 1) * 10;
+      this.getUsers(page);
+    },
+    onFileChange: function onFileChange(e) {
+      console.log("select file", e.target.files[0]);
+      this.filepath = e.target.files[0];
+    },
+    createUser: function createUser() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var config, fd;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                //  e.preventDefault();
+                config = {
+                  header: {
+                    "content_type": "multipart/form-data"
+                  }
+                };
+                _context2.prev = 1;
+
+                // Submit the form via a POST request
+                _this2.$Progress.start();
+
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/annualreports', fd, config);
+
+              case 12:
+                //.then(res=>{
+                //   console.log('Response', res.data)
+                // }).catch(err=>console.log(err))
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
+
+                window.Fire.$emit("loadUser");
+
+                _this2.$Progress.finish();
+
+                _context2.next = 22;
+                break;
+
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "File cannot created"
+                });
+
+              case 22:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[1, 18]]);
+      }))();
+    },
+    updateUser: function updateUser() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this3$form$password;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _this3.$Progress.start();
+
+                if (!((_this3$form$password = _this3.form.password) === null || _this3$form$password === void 0 ? void 0 : _this3$form$password.length)) {
+                  _this3.form.password = undefined;
+                }
+
+                _context3.prev = 2;
+                _context3.next = 5;
+                return _this3.form.put("/api/annualreports/".concat(_this3.form.id));
+
+              case 5:
+                $("#userModal").modal("hide");
+                Swal.fire("Updated!", "File is updated", "success");
+
+                _this3.$Progress.finish(); // update the view
+
+
+                window.Fire.$emit("loadUser");
+                _context3.next = 16;
+                break;
+
+              case 11:
+                _context3.prev = 11;
+                _context3.t0 = _context3["catch"](2);
+
+                _this3.$Progress.fail();
+
+                Swal.fire("Failed!", "File cannot be updated", "error");
+                console.log(_context3.t0);
+
+              case 16:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[2, 11]]);
+      }))();
+    },
+    deleteUser: function deleteUser(user) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure?",
+                  text: "You won't be able to revert this!",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, delete it!"
+                });
+
+              case 3:
+                result = _context4.sent;
+
+                if (!result.isConfirmed) {
+                  _context4.next = 8;
+                  break;
+                }
+
+                _context4.next = 7;
+                return _this4.form["delete"]("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Deleted!", "User has been deleted", "success");
+
+              case 8:
+                _context4.next = 13;
+                break;
+
+              case 10:
+                _context4.prev = 10;
+                _context4.t0 = _context4["catch"](0);
+                Swal.fire("Failed!", "User cannot be deleted", "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 10]]);
+      }))();
+    },
+    downloadUser: function downloadUser(user) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure to download this file?",
+                  text: "You won't be able to revert this!",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Download it!"
+                });
+
+              case 3:
+                result = _context5.sent;
+
+                if (!result.isConfirmed) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                _context5.next = 7;
+                return _this5.form.download("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Downloading!", "success");
+
+              case 8:
+                _context5.next = 13;
+                break;
+
+              case 10:
+                _context5.prev = 10;
+                _context5.t0 = _context5["catch"](0);
+                Swal.fire("Failed!", "File cannot be download", "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 10]]);
+      }))();
+    }
+  },
+  mounted: function mounted() {
+    var _this6 = this;
+
+    this.getUsers(); // fired fire event
+
+    window.Fire.$on("loadUser", function () {
+      _this6.getUsers();
+    });
+    window.Fire.$on("search", function (search) {
+      _this6.page = 0;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
+        // console.log(data.data);
+        _this6.annualreports = data.data;
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/KMproducts.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/KMproducts.vue?vue&type=script&lang=js& ***!
@@ -4581,6 +7415,10 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -4944,49 +7782,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     "content_type": "multipart/form-data"
                   }
                 };
+                _context2.prev = 1;
 
-                try {
-                  // Submit the form via a POST request
-                  _this2.$Progress.start();
+                // Submit the form via a POST request
+                _this2.$Progress.start();
 
-                  fd = new FormData();
-                  fd.append('filename', _this2.form.filename);
-                  fd.append('desc', _this2.form.desc);
-                  fd.append('unit', _this2.form.unit);
-                  fd.append('type', _this2.form.type);
-                  fd.append('uploader', _this2.form.uploader);
-                  fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/kmproducts', fd, config).then(function (res) {
-                    console.log('Response', res.data);
-                  })["catch"](function (err) {
-                    return console.log(err);
-                  }); // modal close after submit
-                  // need to modify later
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/kmproducts', fd, config);
 
-                  $("#userModal").modal("hide");
-                  window.Toast.fire({
-                    icon: "success",
-                    title: "User Created successfully"
-                  }); // updated the list
+              case 12:
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
 
-                  window.Fire.$emit("loadUser");
+                window.Fire.$emit("loadUser");
 
-                  _this2.$Progress.finish();
-                } catch (error) {
-                  _this2.$Progress.fail();
+                _this2.$Progress.finish();
 
-                  window.Toast.fire({
-                    icon: "error",
-                    title: "User cannon created"
-                  });
-                }
+                _context2.next = 22;
+                break;
 
-              case 2:
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "User cannon created"
+                });
+
+              case 22:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[1, 18]]);
       }))();
     },
     updateUser: function updateUser() {
@@ -5092,21 +7935,77 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4, null, [[0, 10]]);
       }))();
+    },
+    downloadUser: function downloadUser(user) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure to download this file?",
+                  text: "You won't be able to revert this!",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Download it!"
+                });
+
+              case 3:
+                result = _context5.sent;
+
+                if (!result.isConfirmed) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                _context5.next = 7;
+                return _this5.form.download("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Downloading!", "success");
+
+              case 8:
+                _context5.next = 13;
+                break;
+
+              case 10:
+                _context5.prev = 10;
+                _context5.t0 = _context5["catch"](0);
+                Swal.fire("Failed!", "File ".concat(user.name, " cannot be download"), "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 10]]);
+      }))();
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.getUsers(); // fired fire event
 
     window.Fire.$on("loadUser", function () {
-      _this5.getUsers();
+      _this6.getUsers();
     });
     window.Fire.$on("search", function (search) {
-      _this5.page = 0;
+      _this6.page = 0;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
         // console.log(data.data);
-        _this5.kmproducts = data.data;
+        _this6.kmproducts = data.data;
       })["catch"](function (e) {
         console.log(e);
       });
@@ -5536,6 +8435,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5651,49 +8554,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     "content_type": "multipart/form-data"
                   }
                 };
+                _context2.prev = 1;
 
-                try {
-                  // Submit the form via a POST request
-                  _this2.$Progress.start();
+                // Submit the form via a POST request
+                _this2.$Progress.start();
 
-                  fd = new FormData();
-                  fd.append('filename', _this2.form.filename);
-                  fd.append('desc', _this2.form.desc);
-                  fd.append('unit', _this2.form.unit);
-                  fd.append('type', _this2.form.type);
-                  fd.append('uploader', _this2.form.uploader);
-                  fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/policybriefs', fd, config).then(function (res) {
-                    console.log('Response', res.data);
-                  })["catch"](function (err) {
-                    return console.log(err);
-                  }); // modal close after submit
-                  // need to modify later
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/policybriefs', fd, config);
 
-                  $("#userModal").modal("hide");
-                  window.Toast.fire({
-                    icon: "success",
-                    title: "User Created successfully"
-                  }); // updated the list
+              case 12:
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
 
-                  window.Fire.$emit("loadUser");
+                window.Fire.$emit("loadUser");
 
-                  _this2.$Progress.finish();
-                } catch (error) {
-                  _this2.$Progress.fail();
+                _this2.$Progress.finish();
 
-                  window.Toast.fire({
-                    icon: "error",
-                    title: "User cannon created"
-                  });
-                }
+                _context2.next = 22;
+                break;
 
-              case 2:
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "User cannon created"
+                });
+
+              case 22:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[1, 18]]);
       }))();
     },
     updateUser: function updateUser() {
@@ -5777,7 +8685,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _this4.form["delete"]("/api/policybriefs/".concat(user.id));
 
               case 7:
-                Swal.fire("Deleted!", "User ".concat(user.name, " has been deleted"), "success");
+                Swal.fire("Deleted!", "User has been deleted", "success");
 
               case 8:
                 _context4.next = 13;
@@ -5786,7 +8694,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 10:
                 _context4.prev = 10;
                 _context4.t0 = _context4["catch"](0);
-                Swal.fire("Failed!", "User ".concat(user.name, " cannot be deleted"), "error");
+                Swal.fire("Failed!", "User cannot be deleted", "error");
 
               case 13:
                 // update the view
@@ -5799,21 +8707,77 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4, null, [[0, 10]]);
       }))();
+    },
+    downloadUser: function downloadUser(user) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure to download this file?",
+                  text: "You won't be able to revert this!",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Download it!"
+                });
+
+              case 3:
+                result = _context5.sent;
+
+                if (!result.isConfirmed) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                _context5.next = 7;
+                return _this5.form.download("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Downloading!", "success");
+
+              case 8:
+                _context5.next = 13;
+                break;
+
+              case 10:
+                _context5.prev = 10;
+                _context5.t0 = _context5["catch"](0);
+                Swal.fire("Failed!", "File ".concat(user.name, " cannot be download"), "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 10]]);
+      }))();
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.getUsers(); // fired fire event
 
     window.Fire.$on("loadUser", function () {
-      _this5.getUsers();
+      _this6.getUsers();
     });
     window.Fire.$on("search", function (search) {
-      _this5.page = 0;
+      _this6.page = 0;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
         // console.log(data.data);
-        _this5.policybriefs = data.data;
+        _this6.policybriefs = data.data;
       })["catch"](function (e) {
         console.log(e);
       });
@@ -5842,6 +8806,10 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -6173,49 +9141,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     "content_type": "multipart/form-data"
                   }
                 };
+                _context2.prev = 1;
 
-                try {
-                  // Submit the form via a POST request
-                  _this2.$Progress.start();
+                // Submit the form via a POST request
+                _this2.$Progress.start();
 
-                  fd = new FormData();
-                  fd.append('filename', _this2.form.filename);
-                  fd.append('desc', _this2.form.desc);
-                  fd.append('unit', _this2.form.unit);
-                  fd.append('type', _this2.form.type);
-                  fd.append('uploader', _this2.form.uploader);
-                  fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/proceedings', fd, config).then(function (res) {
-                    console.log('Response', res.data);
-                  })["catch"](function (err) {
-                    return console.log(err);
-                  }); // modal close after submit
-                  // need to modify later
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/proceedings', fd, config);
 
-                  $("#userModal").modal("hide");
-                  window.Toast.fire({
-                    icon: "success",
-                    title: "User Created successfully"
-                  }); // updated the list
+              case 12:
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
 
-                  window.Fire.$emit("loadUser");
+                window.Fire.$emit("loadUser");
 
-                  _this2.$Progress.finish();
-                } catch (error) {
-                  _this2.$Progress.fail();
+                _this2.$Progress.finish();
 
-                  window.Toast.fire({
-                    icon: "error",
-                    title: "User cannon created"
-                  });
-                }
+                _context2.next = 22;
+                break;
 
-              case 2:
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "User cannon created"
+                });
+
+              case 22:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[1, 18]]);
       }))();
     },
     updateUser: function updateUser() {
@@ -6321,21 +9294,77 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4, null, [[0, 10]]);
       }))();
+    },
+    downloadUser: function downloadUser(user) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure to download this file?",
+                  text: "You won't be able to revert this!",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Download it!"
+                });
+
+              case 3:
+                result = _context5.sent;
+
+                if (!result.isConfirmed) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                _context5.next = 7;
+                return _this5.form.download("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Downloading!", "success");
+
+              case 8:
+                _context5.next = 13;
+                break;
+
+              case 10:
+                _context5.prev = 10;
+                _context5.t0 = _context5["catch"](0);
+                Swal.fire("Failed!", "File ".concat(user.name, " cannot be download"), "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 10]]);
+      }))();
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.getUsers(); // fired fire event
 
     window.Fire.$on("loadUser", function () {
-      _this5.getUsers();
+      _this6.getUsers();
     });
     window.Fire.$on("search", function (search) {
-      _this5.page = 0;
+      _this6.page = 0;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
         // console.log(data.data);
-        _this5.proceedings = data.data;
+        _this6.proceedings = data.data;
       })["catch"](function (e) {
         console.log(e);
       });
@@ -6982,6 +10011,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -7097,49 +10130,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     "content_type": "multipart/form-data"
                   }
                 };
+                _context2.prev = 1;
 
-                try {
-                  // Submit the form via a POST request
-                  _this2.$Progress.start();
+                // Submit the form via a POST request
+                _this2.$Progress.start();
 
-                  fd = new FormData();
-                  fd.append('filename', _this2.form.filename);
-                  fd.append('desc', _this2.form.desc);
-                  fd.append('unit', _this2.form.unit);
-                  fd.append('type', _this2.form.type);
-                  fd.append('uploader', _this2.form.uploader);
-                  fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/projectcompletions', fd, config).then(function (res) {
-                    console.log('Response', res.data);
-                  })["catch"](function (err) {
-                    return console.log(err);
-                  }); // modal close after submit
-                  // need to modify later
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/projectcompletions', fd, config);
 
-                  $("#userModal").modal("hide");
-                  window.Toast.fire({
-                    icon: "success",
-                    title: "User Created successfully"
-                  }); // updated the list
+              case 12:
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
 
-                  window.Fire.$emit("loadUser");
+                window.Fire.$emit("loadUser");
 
-                  _this2.$Progress.finish();
-                } catch (error) {
-                  _this2.$Progress.fail();
+                _this2.$Progress.finish();
 
-                  window.Toast.fire({
-                    icon: "error",
-                    title: "User cannon created"
-                  });
-                }
+                _context2.next = 22;
+                break;
 
-              case 2:
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "User cannon created"
+                });
+
+              case 22:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[1, 18]]);
       }))();
     },
     updateUser: function updateUser() {
@@ -7245,21 +10283,77 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4, null, [[0, 10]]);
       }))();
+    },
+    downloadUser: function downloadUser(user) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure to download this file?",
+                  text: "You won't be able to revert this!",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Download it!"
+                });
+
+              case 3:
+                result = _context5.sent;
+
+                if (!result.isConfirmed) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                _context5.next = 7;
+                return _this5.form.download("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Downloading!", "success");
+
+              case 8:
+                _context5.next = 13;
+                break;
+
+              case 10:
+                _context5.prev = 10;
+                _context5.t0 = _context5["catch"](0);
+                Swal.fire("Failed!", "File ".concat(user.name, " cannot be download"), "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 10]]);
+      }))();
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.getUsers(); // fired fire event
 
     window.Fire.$on("loadUser", function () {
-      _this5.getUsers();
+      _this6.getUsers();
     });
     window.Fire.$on("search", function (search) {
-      _this5.page = 0;
+      _this6.page = 0;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
         // console.log(data.data);
-        _this5.projectcompletions = data.data;
+        _this6.projectcompletions = data.data;
       })["catch"](function (e) {
         console.log(e);
       });
@@ -7288,6 +10382,10 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -7619,49 +10717,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     "content_type": "multipart/form-data"
                   }
                 };
+                _context2.prev = 1;
 
-                try {
-                  // Submit the form via a POST request
-                  _this2.$Progress.start();
+                // Submit the form via a POST request
+                _this2.$Progress.start();
 
-                  fd = new FormData();
-                  fd.append('filename', _this2.form.filename);
-                  fd.append('desc', _this2.form.desc);
-                  fd.append('unit', _this2.form.unit);
-                  fd.append('type', _this2.form.type);
-                  fd.append('uploader', _this2.form.uploader);
-                  fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/publications', fd, config).then(function (res) {
-                    console.log('Response', res.data);
-                  })["catch"](function (err) {
-                    return console.log(err);
-                  }); // modal close after submit
-                  // need to modify later
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/publications', fd, config);
 
-                  $("#userModal").modal("hide");
-                  window.Toast.fire({
-                    icon: "success",
-                    title: "User Created successfully"
-                  }); // updated the list
+              case 12:
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
 
-                  window.Fire.$emit("loadUser");
+                window.Fire.$emit("loadUser");
 
-                  _this2.$Progress.finish();
-                } catch (error) {
-                  _this2.$Progress.fail();
+                _this2.$Progress.finish();
 
-                  window.Toast.fire({
-                    icon: "error",
-                    title: "User cannon created"
-                  });
-                }
+                _context2.next = 22;
+                break;
 
-              case 2:
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "User cannon created"
+                });
+
+              case 22:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[1, 18]]);
       }))();
     },
     updateUser: function updateUser() {
@@ -7767,21 +10870,77 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4, null, [[0, 10]]);
       }))();
+    },
+    downloadUser: function downloadUser(user) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure to download this file?",
+                  text: "You won't be able to revert this!",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Download it!"
+                });
+
+              case 3:
+                result = _context5.sent;
+
+                if (!result.isConfirmed) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                _context5.next = 7;
+                return _this5.form.download("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Downloading!", "success");
+
+              case 8:
+                _context5.next = 13;
+                break;
+
+              case 10:
+                _context5.prev = 10;
+                _context5.t0 = _context5["catch"](0);
+                Swal.fire("Failed!", "File ".concat(user.name, " cannot be download"), "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 10]]);
+      }))();
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.getUsers(); // fired fire event
 
     window.Fire.$on("loadUser", function () {
-      _this5.getUsers();
+      _this6.getUsers();
     });
     window.Fire.$on("search", function (search) {
-      _this5.page = 0;
+      _this6.page = 0;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
         // console.log(data.data);
-        _this5.publications = data.data;
+        _this6.publications = data.data;
       })["catch"](function (e) {
         console.log(e);
       });
@@ -8146,7 +11305,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 window.Toast.fire({
                   icon: "error",
-                  title: "User cannon created"
+                  title: "User cannot created"
                 });
 
               case 14:
@@ -8551,6 +11710,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -8666,49 +11829,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     "content_type": "multipart/form-data"
                   }
                 };
+                _context2.prev = 1;
 
-                try {
-                  // Submit the form via a POST request
-                  _this2.$Progress.start();
+                // Submit the form via a POST request
+                _this2.$Progress.start();
 
-                  fd = new FormData();
-                  fd.append('filename', _this2.form.filename);
-                  fd.append('desc', _this2.form.desc);
-                  fd.append('unit', _this2.form.unit);
-                  fd.append('type', _this2.form.type);
-                  fd.append('uploader', _this2.form.uploader);
-                  fd.append('filepath', _this2.filepath);
-                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/videos', fd, config).then(function (res) {
-                    console.log('Response', res.data);
-                  })["catch"](function (err) {
-                    return console.log(err);
-                  }); // modal close after submit
-                  // need to modify later
+                fd = new FormData();
+                fd.append('filename', _this2.form.filename);
+                fd.append('desc', _this2.form.desc);
+                fd.append('unit', _this2.form.unit);
+                fd.append('type', _this2.form.type);
+                fd.append('uploader', _this2.form.uploader);
+                fd.append('filepath', _this2.filepath);
+                _context2.next = 12;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/videos', fd, config);
 
-                  $("#userModal").modal("hide");
-                  window.Toast.fire({
-                    icon: "success",
-                    title: "User Created successfully"
-                  }); // updated the list
+              case 12:
+                // modal close after submit
+                // need to modify later
+                $("#userModal").modal("hide");
+                window.Toast.fire({
+                  icon: "success",
+                  title: "User Created successfully"
+                }); // updated the list
 
-                  window.Fire.$emit("loadUser");
+                window.Fire.$emit("loadUser");
 
-                  _this2.$Progress.finish();
-                } catch (error) {
-                  _this2.$Progress.fail();
+                _this2.$Progress.finish();
 
-                  window.Toast.fire({
-                    icon: "error",
-                    title: "User cannon created"
-                  });
-                }
+                _context2.next = 22;
+                break;
 
-              case 2:
+              case 18:
+                _context2.prev = 18;
+                _context2.t0 = _context2["catch"](1);
+
+                _this2.$Progress.fail();
+
+                window.Toast.fire({
+                  icon: "error",
+                  title: "User cannon created"
+                });
+
+              case 22:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[1, 18]]);
       }))();
     },
     updateUser: function updateUser() {
@@ -8814,21 +11982,77 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4, null, [[0, 10]]);
       }))();
+    },
+    downloadUser: function downloadUser(user) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return window.Swal.fire({
+                  title: "Are you sure to download this file?",
+                  text: "You won't be able to revert this!",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, Download it!"
+                });
+
+              case 3:
+                result = _context5.sent;
+
+                if (!result.isConfirmed) {
+                  _context5.next = 8;
+                  break;
+                }
+
+                _context5.next = 7;
+                return _this5.form.download("/api/annualreports/".concat(user.id));
+
+              case 7:
+                Swal.fire("Downloading!", "success");
+
+              case 8:
+                _context5.next = 13;
+                break;
+
+              case 10:
+                _context5.prev = 10;
+                _context5.t0 = _context5["catch"](0);
+                Swal.fire("Failed!", "File ".concat(user.name, " cannot be download"), "error");
+
+              case 13:
+                // update the view
+                window.Fire.$emit("loadUser");
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 10]]);
+      }))();
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.getUsers(); // fired fire event
 
     window.Fire.$on("loadUser", function () {
-      _this5.getUsers();
+      _this6.getUsers();
     });
     window.Fire.$on("search", function (search) {
-      _this5.page = 0;
+      _this6.page = 0;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/searchpolicybr?q=".concat(search)).then(function (data) {
         // console.log(data.data);
-        _this5.videos = data.data;
+        _this6.videos = data.data;
       })["catch"](function (e) {
         console.log(e);
       });
@@ -72555,6 +75779,626 @@ AlertSuccess_component.options.__file = "AlertSuccess.vue"
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Abd.vue?vue&type=template&id=6449b270&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Abd.vue?vue&type=template&id=6449b270& ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "users-data-wrapper", staticStyle: { width: "100%" } },
+    [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row mt-5" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("h3", { staticClass: "card-title" }, [
+                  _vm._v("ASEAN Biodiversity Dashboard Table")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      on: { click: _vm.openUserModal }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    Upload Report\n                "
+                      ),
+                      _c("i", { staticClass: "fas fa-plus fa-fw" })
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body table-responsive p-0" }, [
+                _c("table", { staticClass: "table table-hover text-nowrap" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.abds.data, function(abd, index) {
+                      return _c("tr", { key: abd.id }, [
+                        _c("td", { attrs: { title: abd.id } }, [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.page + index + 1) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(abd.filename))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(abd.desc))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(abd.unit))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(abd.type) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                   " +
+                              _vm._s(abd.uploader) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(abd)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Edit" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.openUserModal(abd)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-edit indigo" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Remove" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deleteUser(abd)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-trash red" })]
+                          )
+                        ])
+                      ])
+                    }),
+                    0
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "card-footer" },
+                [
+                  _c("pagination", {
+                    attrs: {
+                      data: _vm.abds,
+                      limit: 3,
+                      "show-disabled": true,
+                      align: "center"
+                    },
+                    on: { "pagination-change-page": _vm.getResults }
+                  })
+                ],
+                1
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
+              id: "userModal",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "userModalTitle",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-dialog-centered",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "modal-title",
+                        attrs: { id: "userModalTitle" }
+                      },
+                      [
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(
+                              _vm.editable
+                                ? "Update's ASEAN Biodiversity Dashboard data"
+                                : "Add New"
+                            ) +
+                            "\n            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      attrs: { enctype: "multipart/form-data" },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.onSubmit($event)
+                        },
+                        keydown: function($event) {
+                          return _vm.form.onKeydown($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "modal-body" }, [
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.filename,
+                                  expression: "form.filename"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("filename")
+                              },
+                              attrs: {
+                                type: "text",
+                                name: "filename",
+                                placeholder: "Filename"
+                              },
+                              domProps: { value: _vm.form.filename },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "filename",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "filename" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.desc,
+                                  expression: "form.desc"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("desc")
+                              },
+                              attrs: {
+                                type: "desc",
+                                name: "desc",
+                                placeholder: "Description",
+                                autocomplete: "off"
+                              },
+                              domProps: { value: _vm.form.desc },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "desc",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "desc" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.unit,
+                                    expression: "form.unit"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has("unit")
+                                },
+                                attrs: { name: "unit", placeholder: "Unit" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "unit",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      selected: "",
+                                      disabled: ""
+                                    }
+                                  },
+                                  [_vm._v("Select Unit")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "BIM" } }, [
+                                  _vm._v("BIM")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "CPA" } }, [
+                                  _vm._v("CPA")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PDI" } }, [
+                                  _vm._v("PDI")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "unit" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.type,
+                                    expression: "form.type"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has("type")
+                                },
+                                attrs: { name: "type", placeholder: "Type" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "type",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      selected: "",
+                                      disabled: ""
+                                    }
+                                  },
+                                  [_vm._v("Select Type")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PDF" } }, [
+                                  _vm._v("PDF")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PNG" } }, [
+                                  _vm._v("PNG/JPEG")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "Docx" } }, [
+                                  _vm._v("DOCX")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "HTML" } }, [
+                                  _vm._v("HTML")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PPT" } }, [
+                                  _vm._v("PPT")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "type" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.uploader,
+                                  expression: "form.uploader"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("uploader")
+                              },
+                              attrs: {
+                                type: "uploader",
+                                name: "uploader",
+                                placeholder: "Uploader",
+                                autocomplete: "off"
+                              },
+                              domProps: { value: _vm.form.uploader },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "uploader",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "uploader" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              ref: "pdfFileInput",
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("filepath")
+                              },
+                              attrs: {
+                                type: "file",
+                                id: "filepath",
+                                name: "filepath",
+                                placeholder: "filepath"
+                              },
+                              on: { change: _vm.onFileChange }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "filepath" }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("\n                Close\n              ")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            class: _vm.editable
+                              ? "btn btn-success"
+                              : "btn btn-primary",
+                            attrs: { type: "submit", disabled: _vm.form.busy }
+                          },
+                          [
+                            _vm._v(
+                              "\n               " +
+                                _vm._s(_vm.editable ? "Update" : "Submit") +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Filename")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Unit")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Uploader")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Abo.vue?vue&type=template&id=6313ad5a&":
 /*!******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Abo.vue?vue&type=template&id=6313ad5a& ***!
@@ -72639,6 +76483,22 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(_vm.annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
                           _c(
                             "a",
                             {
@@ -72898,6 +76758,637 @@ var render = function() {
                                   [_vm._v("Select Unit")]
                                 ),
                                 _vm._v(" "),
+                                _c("option", { attrs: { value: "PDF" } }, [
+                                  _vm._v("PDF")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PNG" } }, [
+                                  _vm._v("PNG/JPEG")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "Docx" } }, [
+                                  _vm._v("DOCX")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "HTML" } }, [
+                                  _vm._v("HTML")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PPT" } }, [
+                                  _vm._v("PPT")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "unit" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.type,
+                                    expression: "form.type"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has("type")
+                                },
+                                attrs: { name: "type", placeholder: "Type" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "type",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      selected: "",
+                                      disabled: ""
+                                    }
+                                  },
+                                  [_vm._v("Select Type")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PDF" } }, [
+                                  _vm._v("PDF")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PNG" } }, [
+                                  _vm._v("PNG/JPEG")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "Docx" } }, [
+                                  _vm._v("DOCX")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "HTML" } }, [
+                                  _vm._v("HTML")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PPT" } }, [
+                                  _vm._v("PPT")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "type" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.uploader,
+                                  expression: "form.uploader"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("uploader")
+                              },
+                              attrs: {
+                                type: "uploader",
+                                name: "uploader",
+                                placeholder: "Uploader",
+                                autocomplete: "off"
+                              },
+                              domProps: { value: _vm.form.uploader },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "uploader",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "uploader" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              ref: "pdfFileInput",
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("filepath")
+                              },
+                              attrs: {
+                                type: "file",
+                                id: "filepath",
+                                name: "filepath",
+                                placeholder: "filepath"
+                              },
+                              on: { change: _vm.onFileChange }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "filepath" }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("\n                Close\n              ")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            class: _vm.editable
+                              ? "btn btn-success"
+                              : "btn btn-primary",
+                            attrs: { type: "submit", disabled: _vm.form.busy }
+                          },
+                          [
+                            _vm._v(
+                              "\n               " +
+                                _vm._s(_vm.editable ? "Update" : "Submit") +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Filename")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Unit")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Uploader")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ActivityDesign.vue?vue&type=template&id=264fa658&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ActivityDesign.vue?vue&type=template&id=264fa658& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "users-data-wrapper", staticStyle: { width: "100%" } },
+    [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row mt-5" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("h3", { staticClass: "card-title" }, [
+                  _vm._v("Annual Report Table")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      on: { click: _vm.openUserModal }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    Upload Report\n                "
+                      ),
+                      _c("i", { staticClass: "fas fa-plus fa-fw" })
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body table-responsive p-0" }, [
+                _c("table", { staticClass: "table table-hover text-nowrap" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.annualreports.data, function(
+                      annualreport,
+                      index
+                    ) {
+                      return _c("tr", { key: annualreport.id }, [
+                        _c("td", { attrs: { title: annualreport.id } }, [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.page + index + 1) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(annualreport.filename))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(annualreport.desc))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(annualreport.unit))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(annualreport.type) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                   " +
+                              _vm._s(annualreport.uploader) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Edit" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.openUserModal(annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-edit indigo" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Remove" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deleteUser(annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-trash red" })]
+                          )
+                        ])
+                      ])
+                    }),
+                    0
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "card-footer" },
+                [
+                  _c("pagination", {
+                    attrs: {
+                      data: _vm.annualreports,
+                      limit: 3,
+                      "show-disabled": true,
+                      align: "center"
+                    },
+                    on: { "pagination-change-page": _vm.getResults }
+                  })
+                ],
+                1
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
+              id: "userModal",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "userModalTitle",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-dialog-centered",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "modal-title",
+                        attrs: { id: "userModalTitle" }
+                      },
+                      [
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(
+                              _vm.editable
+                                ? "Update's Annual Report data"
+                                : "Add New"
+                            ) +
+                            "\n            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      attrs: { enctype: "multipart/form-data" },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.onSubmit($event)
+                        },
+                        keydown: function($event) {
+                          return _vm.form.onKeydown($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "modal-body" }, [
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.filename,
+                                  expression: "form.filename"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("filename")
+                              },
+                              attrs: {
+                                type: "text",
+                                name: "filename",
+                                placeholder: "Filename"
+                              },
+                              domProps: { value: _vm.form.filename },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "filename",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "filename" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.desc,
+                                  expression: "form.desc"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("desc")
+                              },
+                              attrs: {
+                                type: "desc",
+                                name: "desc",
+                                placeholder: "Description",
+                                autocomplete: "off"
+                              },
+                              domProps: { value: _vm.form.desc },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "desc",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "desc" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.unit,
+                                    expression: "form.unit"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has("unit")
+                                },
+                                attrs: { name: "unit", placeholder: "Unit" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "unit",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      selected: "",
+                                      disabled: ""
+                                    }
+                                  },
+                                  [_vm._v("Select Unit")]
+                                ),
+                                _vm._v(" "),
                                 _c("option", { attrs: { value: "BIM" } }, [
                                   _vm._v("BIM")
                                 ]),
@@ -72983,6 +77474,14 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("option", { attrs: { value: "Docx" } }, [
                                   _vm._v("DOCX")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "HTML" } }, [
+                                  _vm._v("HTML")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PPT" } }, [
+                                  _vm._v("PPT")
                                 ])
                               ]
                             ),
@@ -73241,6 +77740,22 @@ var render = function() {
                           _c(
                             "a",
                             {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
                               attrs: { href: "#", title: "Edit" },
                               on: {
                                 click: function($event) {
@@ -73327,7 +77842,7 @@ var render = function() {
                           "\n              " +
                             _vm._s(
                               _vm.editable
-                                ? "Update's Poiicy brief data"
+                                ? "Update's Annual Report data"
                                 : "Add New"
                             ) +
                             "\n            "
@@ -73582,6 +78097,14 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("option", { attrs: { value: "Docx" } }, [
                                   _vm._v("DOCX")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "HTML" } }, [
+                                  _vm._v("HTML")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PPT" } }, [
+                                  _vm._v("PPT")
                                 ])
                               ]
                             ),
@@ -73841,6 +78364,22 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(_vm.annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
                           _c(
                             "a",
                             {
@@ -74440,6 +78979,22 @@ var render = function() {
                           _c(
                             "a",
                             {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(_vm.annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
                               attrs: { href: "#", title: "Edit" },
                               on: {
                                 click: function($event) {
@@ -74985,10 +79540,17 @@ var staticRenderFns = [
               _c("i", { staticClass: "ion ion-bag" })
             ]),
             _vm._v(" "),
-            _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-              _vm._v("More info "),
-              _c("i", { staticClass: "fas fa-arrow-circle-right" })
-            ])
+            _c(
+              "a",
+              {
+                staticClass: "small-box-footer",
+                attrs: { href: "/annualreports" }
+              },
+              [
+                _vm._v("More info "),
+                _c("i", { staticClass: "fas fa-arrow-circle-right" })
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
@@ -75009,10 +79571,17 @@ var staticRenderFns = [
               _c("i", { staticClass: "ion ion-stats-bars" })
             ]),
             _vm._v(" "),
-            _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-              _vm._v("More info "),
-              _c("i", { staticClass: "fas fa-arrow-circle-right" })
-            ])
+            _c(
+              "a",
+              {
+                staticClass: "small-box-footer",
+                attrs: { href: "/policybriefs" }
+              },
+              [
+                _vm._v("More info "),
+                _c("i", { staticClass: "fas fa-arrow-circle-right" })
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
@@ -75028,10 +79597,17 @@ var staticRenderFns = [
               _c("i", { staticClass: "ion ion-person-add" })
             ]),
             _vm._v(" "),
-            _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-              _vm._v("More info "),
-              _c("i", { staticClass: "fas fa-arrow-circle-right" })
-            ])
+            _c(
+              "a",
+              {
+                staticClass: "small-box-footer",
+                attrs: { href: "/proceedings" }
+              },
+              [
+                _vm._v("More info "),
+                _c("i", { staticClass: "fas fa-arrow-circle-right" })
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
@@ -75047,10 +79623,17 @@ var staticRenderFns = [
               _c("i", { staticClass: "ion ion-pie-graph" })
             ]),
             _vm._v(" "),
-            _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-              _vm._v("More info "),
-              _c("i", { staticClass: "fas fa-arrow-circle-right" })
-            ])
+            _c(
+              "a",
+              {
+                staticClass: "small-box-footer",
+                attrs: { href: "/projectcompletions" }
+              },
+              [
+                _vm._v("More info "),
+                _c("i", { staticClass: "fas fa-arrow-circle-right" })
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
@@ -75066,10 +79649,17 @@ var staticRenderFns = [
               _c("i", { staticClass: "ion ion-bag" })
             ]),
             _vm._v(" "),
-            _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-              _vm._v("More info "),
-              _c("i", { staticClass: "fas fa-arrow-circle-right" })
-            ])
+            _c(
+              "a",
+              {
+                staticClass: "small-box-footer",
+                attrs: { href: "/publications" }
+              },
+              [
+                _vm._v("More info "),
+                _c("i", { staticClass: "fas fa-arrow-circle-right" })
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
@@ -75090,6 +79680,130 @@ var staticRenderFns = [
               _c("i", { staticClass: "ion ion-stats-bars" })
             ]),
             _vm._v(" "),
+            _c(
+              "a",
+              { staticClass: "small-box-footer", attrs: { href: "/videos" } },
+              [
+                _vm._v("More info "),
+                _c("i", { staticClass: "fas fa-arrow-circle-right" })
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-6" }, [
+          _c("div", { staticClass: "small-box bg-success" }, [
+            _c("div", { staticClass: "inner" }, [
+              _c("h3", [_vm._v("44")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("ASEAN Biodiversity Outlook")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "icon" }, [
+              _c("i", { staticClass: "ion ion-person-add" })
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              { staticClass: "small-box-footer", attrs: { href: "/abo" } },
+              [
+                _vm._v("More info "),
+                _c("i", { staticClass: "fas fa-arrow-circle-right" })
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-6" }, [
+          _c("div", { staticClass: "small-box bg-warning" }, [
+            _c("div", { staticClass: "inner" }, [
+              _c("h3", [_vm._v("65")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("BIM 2023 GB Documents")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "icon" }, [
+              _c("i", { staticClass: "ion ion-pie-graph" })
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "small-box-footer",
+                attrs: { href: "/bimgbdocs" }
+              },
+              [
+                _vm._v("More info "),
+                _c("i", { staticClass: "fas fa-arrow-circle-right" })
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-6" }, [
+          _c("div", { staticClass: "small-box bg-warning" }, [
+            _c("div", { staticClass: "inner" }, [
+              _c("h3", [_vm._v("65")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("2026 BIM Workshop Files")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "icon" }, [
+              _c("i", { staticClass: "ion ion-pie-graph" })
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "small-box-footer",
+                attrs: { href: "/bimworkshopfiles" }
+              },
+              [
+                _vm._v("More info "),
+                _c("i", { staticClass: "fas fa-arrow-circle-right" })
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-6" }, [
+          _c("div", { staticClass: "small-box bg-danger" }, [
+            _c("div", { staticClass: "inner" }, [
+              _c("h3", [_vm._v("65")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("KM Plan and Product Development")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "icon" }, [
+              _c("i", { staticClass: "ion ion-pie-graph" })
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "small-box-footer",
+                attrs: { href: "/kmproducts" }
+              },
+              [
+                _vm._v("More info "),
+                _c("i", { staticClass: "fas fa-arrow-circle-right" })
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-6" }, [
+          _c("div", { staticClass: "small-box bg-info" }, [
+            _c("div", { staticClass: "inner" }, [
+              _c("h3", [_vm._v("65")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("GOF Budget Appropriations")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "icon" }, [
+              _c("i", { staticClass: "ion ion-pie-graph" })
+            ]),
+            _vm._v(" "),
             _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
               _vm._v("More info "),
               _c("i", { staticClass: "fas fa-arrow-circle-right" })
@@ -75100,13 +79814,32 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-lg-3 col-6" }, [
           _c("div", { staticClass: "small-box bg-success" }, [
             _c("div", { staticClass: "inner" }, [
-              _c("h3", [_vm._v("44")]),
+              _c("h3", [_vm._v("65")]),
               _vm._v(" "),
-              _c("p", [_vm._v("Webinar")])
+              _c("p", [_vm._v("Activity Design")])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "icon" }, [
-              _c("i", { staticClass: "ion ion-person-add" })
+              _c("i", { staticClass: "ion ion-pie-graph" })
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
+              _vm._v("More info "),
+              _c("i", { staticClass: "fas fa-arrow-circle-right" })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-6" }, [
+          _c("div", { staticClass: "small-box bg-success" }, [
+            _c("div", { staticClass: "inner" }, [
+              _c("h3", [_vm._v("65")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("KBA Course Prep Documents")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "icon" }, [
+              _c("i", { staticClass: "ion ion-pie-graph" })
             ]),
             _vm._v(" "),
             _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
@@ -75121,7 +79854,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "inner" }, [
               _c("h3", [_vm._v("65")]),
               _vm._v(" "),
-              _c("p", [_vm._v("Unique Visitors")])
+              _c("p", [_vm._v("ABD Surveys")])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "icon" }, [
@@ -75644,6 +80377,1252 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/GOFBudget.vue?vue&type=template&id=ef02dbf0&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/GOFBudget.vue?vue&type=template&id=ef02dbf0& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "users-data-wrapper", staticStyle: { width: "100%" } },
+    [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row mt-5" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("h3", { staticClass: "card-title" }, [
+                  _vm._v("Annual Report Table")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      on: { click: _vm.openUserModal }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    Upload Report\n                "
+                      ),
+                      _c("i", { staticClass: "fas fa-plus fa-fw" })
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body table-responsive p-0" }, [
+                _c("table", { staticClass: "table table-hover text-nowrap" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.annualreports.data, function(
+                      annualreport,
+                      index
+                    ) {
+                      return _c("tr", { key: annualreport.id }, [
+                        _c("td", { attrs: { title: annualreport.id } }, [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.page + index + 1) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(annualreport.filename))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(annualreport.desc))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(annualreport.unit))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(annualreport.type) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                   " +
+                              _vm._s(annualreport.uploader) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Edit" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.openUserModal(annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-edit indigo" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Remove" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deleteUser(annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-trash red" })]
+                          )
+                        ])
+                      ])
+                    }),
+                    0
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "card-footer" },
+                [
+                  _c("pagination", {
+                    attrs: {
+                      data: _vm.annualreports,
+                      limit: 3,
+                      "show-disabled": true,
+                      align: "center"
+                    },
+                    on: { "pagination-change-page": _vm.getResults }
+                  })
+                ],
+                1
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
+              id: "userModal",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "userModalTitle",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-dialog-centered",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "modal-title",
+                        attrs: { id: "userModalTitle" }
+                      },
+                      [
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(
+                              _vm.editable
+                                ? "Update's Annual Report data"
+                                : "Add New"
+                            ) +
+                            "\n            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      attrs: { enctype: "multipart/form-data" },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.onSubmit($event)
+                        },
+                        keydown: function($event) {
+                          return _vm.form.onKeydown($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "modal-body" }, [
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.filename,
+                                  expression: "form.filename"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("filename")
+                              },
+                              attrs: {
+                                type: "text",
+                                name: "filename",
+                                placeholder: "Filename"
+                              },
+                              domProps: { value: _vm.form.filename },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "filename",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "filename" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.desc,
+                                  expression: "form.desc"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("desc")
+                              },
+                              attrs: {
+                                type: "desc",
+                                name: "desc",
+                                placeholder: "Description",
+                                autocomplete: "off"
+                              },
+                              domProps: { value: _vm.form.desc },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "desc",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "desc" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.unit,
+                                    expression: "form.unit"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has("unit")
+                                },
+                                attrs: { name: "unit", placeholder: "Unit" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "unit",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      selected: "",
+                                      disabled: ""
+                                    }
+                                  },
+                                  [_vm._v("Select Unit")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "BIM" } }, [
+                                  _vm._v("BIM")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "CPA" } }, [
+                                  _vm._v("CPA")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PDI" } }, [
+                                  _vm._v("PDI")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "unit" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.type,
+                                    expression: "form.type"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has("type")
+                                },
+                                attrs: { name: "type", placeholder: "Type" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "type",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      selected: "",
+                                      disabled: ""
+                                    }
+                                  },
+                                  [_vm._v("Select Type")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PDF" } }, [
+                                  _vm._v("PDF")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PNG" } }, [
+                                  _vm._v("PNG/JPEG")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "Docx" } }, [
+                                  _vm._v("DOCX")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "HTML" } }, [
+                                  _vm._v("HTML")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PPT" } }, [
+                                  _vm._v("PPT")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "type" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.uploader,
+                                  expression: "form.uploader"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("uploader")
+                              },
+                              attrs: {
+                                type: "uploader",
+                                name: "uploader",
+                                placeholder: "Uploader",
+                                autocomplete: "off"
+                              },
+                              domProps: { value: _vm.form.uploader },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "uploader",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "uploader" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              ref: "pdfFileInput",
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("filepath")
+                              },
+                              attrs: {
+                                type: "file",
+                                id: "filepath",
+                                name: "filepath",
+                                placeholder: "filepath"
+                              },
+                              on: { change: _vm.onFileChange }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "filepath" }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("\n                Close\n              ")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            class: _vm.editable
+                              ? "btn btn-success"
+                              : "btn btn-primary",
+                            attrs: { type: "submit", disabled: _vm.form.busy }
+                          },
+                          [
+                            _vm._v(
+                              "\n               " +
+                                _vm._s(_vm.editable ? "Update" : "Submit") +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Filename")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Unit")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Uploader")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/KBACourse.vue?vue&type=template&id=98b4c36c&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/KBACourse.vue?vue&type=template&id=98b4c36c& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "users-data-wrapper", staticStyle: { width: "100%" } },
+    [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row mt-5" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("h3", { staticClass: "card-title" }, [
+                  _vm._v("Annual Report Table")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      on: { click: _vm.openUserModal }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    Upload Report\n                "
+                      ),
+                      _c("i", { staticClass: "fas fa-plus fa-fw" })
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body table-responsive p-0" }, [
+                _c("table", { staticClass: "table table-hover text-nowrap" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.annualreports.data, function(
+                      annualreport,
+                      index
+                    ) {
+                      return _c("tr", { key: annualreport.id }, [
+                        _c("td", { attrs: { title: annualreport.id } }, [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.page + index + 1) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(annualreport.filename))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(annualreport.desc))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(annualreport.unit))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(annualreport.type) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                   " +
+                              _vm._s(annualreport.uploader) +
+                              "\n                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Edit" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.openUserModal(annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-edit indigo" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Remove" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deleteUser(annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-trash red" })]
+                          )
+                        ])
+                      ])
+                    }),
+                    0
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "card-footer" },
+                [
+                  _c("pagination", {
+                    attrs: {
+                      data: _vm.annualreports,
+                      limit: 3,
+                      "show-disabled": true,
+                      align: "center"
+                    },
+                    on: { "pagination-change-page": _vm.getResults }
+                  })
+                ],
+                1
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
+              id: "userModal",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "userModalTitle",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-dialog-centered",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "modal-title",
+                        attrs: { id: "userModalTitle" }
+                      },
+                      [
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(
+                              _vm.editable
+                                ? "Update's Annual Report data"
+                                : "Add New"
+                            ) +
+                            "\n            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      attrs: { enctype: "multipart/form-data" },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.onSubmit($event)
+                        },
+                        keydown: function($event) {
+                          return _vm.form.onKeydown($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "modal-body" }, [
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.filename,
+                                  expression: "form.filename"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("filename")
+                              },
+                              attrs: {
+                                type: "text",
+                                name: "filename",
+                                placeholder: "Filename"
+                              },
+                              domProps: { value: _vm.form.filename },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "filename",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "filename" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.desc,
+                                  expression: "form.desc"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("desc")
+                              },
+                              attrs: {
+                                type: "desc",
+                                name: "desc",
+                                placeholder: "Description",
+                                autocomplete: "off"
+                              },
+                              domProps: { value: _vm.form.desc },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "desc",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "desc" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.unit,
+                                    expression: "form.unit"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has("unit")
+                                },
+                                attrs: { name: "unit", placeholder: "Unit" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "unit",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      selected: "",
+                                      disabled: ""
+                                    }
+                                  },
+                                  [_vm._v("Select Unit")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "BIM" } }, [
+                                  _vm._v("BIM")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "CPA" } }, [
+                                  _vm._v("CPA")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PDI" } }, [
+                                  _vm._v("PDI")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "unit" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.type,
+                                    expression: "form.type"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.form.errors.has("type")
+                                },
+                                attrs: { name: "type", placeholder: "Type" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "type",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      selected: "",
+                                      disabled: ""
+                                    }
+                                  },
+                                  [_vm._v("Select Type")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PDF" } }, [
+                                  _vm._v("PDF")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PNG" } }, [
+                                  _vm._v("PNG/JPEG")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "Docx" } }, [
+                                  _vm._v("DOCX")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "HTML" } }, [
+                                  _vm._v("HTML")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "PPT" } }, [
+                                  _vm._v("PPT")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "type" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.uploader,
+                                  expression: "form.uploader"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("uploader")
+                              },
+                              attrs: {
+                                type: "uploader",
+                                name: "uploader",
+                                placeholder: "Uploader",
+                                autocomplete: "off"
+                              },
+                              domProps: { value: _vm.form.uploader },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "uploader",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "uploader" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("input", {
+                              ref: "pdfFileInput",
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("filepath")
+                              },
+                              attrs: {
+                                type: "file",
+                                id: "filepath",
+                                name: "filepath",
+                                placeholder: "filepath"
+                              },
+                              on: { change: _vm.onFileChange }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "filepath" }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("\n                Close\n              ")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            class: _vm.editable
+                              ? "btn btn-success"
+                              : "btn btn-primary",
+                            attrs: { type: "submit", disabled: _vm.form.busy }
+                          },
+                          [
+                            _vm._v(
+                              "\n               " +
+                                _vm._s(_vm.editable ? "Update" : "Submit") +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Filename")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Unit")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Uploader")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/KMproducts.vue?vue&type=template&id=237b335e&":
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/KMproducts.vue?vue&type=template&id=237b335e& ***!
@@ -75728,6 +81707,22 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(_vm.annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
                           _c(
                             "a",
                             {
@@ -76906,6 +82901,22 @@ var render = function() {
                           _c(
                             "a",
                             {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(_vm.annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
                               attrs: { href: "#", title: "Edit" },
                               on: {
                                 click: function($event) {
@@ -77502,6 +83513,22 @@ var render = function() {
                           _c(
                             "a",
                             {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(_vm.annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
                               attrs: { href: "#", title: "Edit" },
                               on: {
                                 click: function($event) {
@@ -78041,7 +84068,9 @@ var render = function() {
             _vm._v(" "),
             _c("h5", { staticClass: "widget-user-desc text-right" }, [
               _vm._v(
-                "\n                        Web Designer\n                    "
+                "\n                        " +
+                  _vm._s(_vm.user.type) +
+                  "\n                    "
               )
             ])
           ]),
@@ -78503,6 +84532,22 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(_vm.annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
                           _c(
                             "a",
                             {
@@ -79099,6 +85144,22 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(_vm.annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
                           _c(
                             "a",
                             {
@@ -80348,6 +86409,22 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#", title: "Download" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.downloadUser(_vm.annualreport)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-download blue" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "yellow" }, [_vm._v("/")]),
+                          _vm._v(" "),
                           _c(
                             "a",
                             {
@@ -96140,13 +102217,17 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./components/Abd.vue": "./resources/js/components/Abd.vue",
 	"./components/Abo.vue": "./resources/js/components/Abo.vue",
+	"./components/ActivityDesign.vue": "./resources/js/components/ActivityDesign.vue",
 	"./components/AnnualReports.vue": "./resources/js/components/AnnualReports.vue",
 	"./components/BIMWorkshopFiles.vue": "./resources/js/components/BIMWorkshopFiles.vue",
 	"./components/Bimgbdox.vue": "./resources/js/components/Bimgbdox.vue",
 	"./components/Dashboard.vue": "./resources/js/components/Dashboard.vue",
 	"./components/ExampleComponent.vue": "./resources/js/components/ExampleComponent.vue",
 	"./components/ExampleUpload.vue": "./resources/js/components/ExampleUpload.vue",
+	"./components/GOFBudget.vue": "./resources/js/components/GOFBudget.vue",
+	"./components/KBACourse.vue": "./resources/js/components/KBACourse.vue",
 	"./components/KMproducts.vue": "./resources/js/components/KMproducts.vue",
 	"./components/NotFound.vue": "./resources/js/components/NotFound.vue",
 	"./components/PolicyBriefs.vue": "./resources/js/components/PolicyBriefs.vue",
@@ -96466,6 +102547,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/components/Abd.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/components/Abd.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Abd_vue_vue_type_template_id_6449b270___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Abd.vue?vue&type=template&id=6449b270& */ "./resources/js/components/Abd.vue?vue&type=template&id=6449b270&");
+/* harmony import */ var _Abd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Abd.vue?vue&type=script&lang=js& */ "./resources/js/components/Abd.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Abd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Abd_vue_vue_type_template_id_6449b270___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Abd_vue_vue_type_template_id_6449b270___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Abd.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Abd.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/Abd.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Abd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Abd.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Abd.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Abd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Abd.vue?vue&type=template&id=6449b270&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Abd.vue?vue&type=template&id=6449b270& ***!
+  \************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Abd_vue_vue_type_template_id_6449b270___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Abd.vue?vue&type=template&id=6449b270& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Abd.vue?vue&type=template&id=6449b270&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Abd_vue_vue_type_template_id_6449b270___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Abd_vue_vue_type_template_id_6449b270___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Abo.vue":
 /*!*****************************************!*\
   !*** ./resources/js/components/Abo.vue ***!
@@ -96530,6 +102680,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Abo_vue_vue_type_template_id_6313ad5a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Abo_vue_vue_type_template_id_6313ad5a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ActivityDesign.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/ActivityDesign.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ActivityDesign_vue_vue_type_template_id_264fa658___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ActivityDesign.vue?vue&type=template&id=264fa658& */ "./resources/js/components/ActivityDesign.vue?vue&type=template&id=264fa658&");
+/* harmony import */ var _ActivityDesign_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ActivityDesign.vue?vue&type=script&lang=js& */ "./resources/js/components/ActivityDesign.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ActivityDesign_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ActivityDesign_vue_vue_type_template_id_264fa658___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ActivityDesign_vue_vue_type_template_id_264fa658___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ActivityDesign.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ActivityDesign.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/ActivityDesign.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ActivityDesign_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ActivityDesign.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ActivityDesign.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ActivityDesign_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ActivityDesign.vue?vue&type=template&id=264fa658&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/ActivityDesign.vue?vue&type=template&id=264fa658& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ActivityDesign_vue_vue_type_template_id_264fa658___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ActivityDesign.vue?vue&type=template&id=264fa658& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ActivityDesign.vue?vue&type=template&id=264fa658&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ActivityDesign_vue_vue_type_template_id_264fa658___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ActivityDesign_vue_vue_type_template_id_264fa658___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -96944,6 +103163,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleUpload_vue_vue_type_template_id_7674f230___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleUpload_vue_vue_type_template_id_7674f230___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/GOFBudget.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/GOFBudget.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _GOFBudget_vue_vue_type_template_id_ef02dbf0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GOFBudget.vue?vue&type=template&id=ef02dbf0& */ "./resources/js/components/GOFBudget.vue?vue&type=template&id=ef02dbf0&");
+/* harmony import */ var _GOFBudget_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GOFBudget.vue?vue&type=script&lang=js& */ "./resources/js/components/GOFBudget.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _GOFBudget_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _GOFBudget_vue_vue_type_template_id_ef02dbf0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _GOFBudget_vue_vue_type_template_id_ef02dbf0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/GOFBudget.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/GOFBudget.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/GOFBudget.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GOFBudget_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./GOFBudget.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/GOFBudget.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GOFBudget_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/GOFBudget.vue?vue&type=template&id=ef02dbf0&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/GOFBudget.vue?vue&type=template&id=ef02dbf0& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GOFBudget_vue_vue_type_template_id_ef02dbf0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./GOFBudget.vue?vue&type=template&id=ef02dbf0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/GOFBudget.vue?vue&type=template&id=ef02dbf0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GOFBudget_vue_vue_type_template_id_ef02dbf0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GOFBudget_vue_vue_type_template_id_ef02dbf0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/KBACourse.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/KBACourse.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _KBACourse_vue_vue_type_template_id_98b4c36c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./KBACourse.vue?vue&type=template&id=98b4c36c& */ "./resources/js/components/KBACourse.vue?vue&type=template&id=98b4c36c&");
+/* harmony import */ var _KBACourse_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./KBACourse.vue?vue&type=script&lang=js& */ "./resources/js/components/KBACourse.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _KBACourse_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _KBACourse_vue_vue_type_template_id_98b4c36c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _KBACourse_vue_vue_type_template_id_98b4c36c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/KBACourse.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/KBACourse.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/KBACourse.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_KBACourse_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./KBACourse.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/KBACourse.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_KBACourse_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/KBACourse.vue?vue&type=template&id=98b4c36c&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/KBACourse.vue?vue&type=template&id=98b4c36c& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_KBACourse_vue_vue_type_template_id_98b4c36c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./KBACourse.vue?vue&type=template&id=98b4c36c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/KBACourse.vue?vue&type=template&id=98b4c36c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_KBACourse_vue_vue_type_template_id_98b4c36c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_KBACourse_vue_vue_type_template_id_98b4c36c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

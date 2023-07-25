@@ -36,7 +36,7 @@ class BimgbdoxController extends Controller
     {
          
         $request->validate([
-            'filename' => 'required',
+            'filename' => 'required|unique:Bimgbdox,filename',
             'desc' => 'required',
             'unit' => 'required',
             'type' => 'required',
