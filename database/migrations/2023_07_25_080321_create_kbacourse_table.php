@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAbdTable extends Migration
+class CreateKbacourseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,14 @@ class CreateAbdTable extends Migration
      */
     public function up()
     {
-        Schema::create('abd', function (Blueprint $table) {
+        Schema::create('kbacourse', function (Blueprint $table) {
             $table->id();
+            $table->string('filename');
+            $table->string('desc');
+            $table->string('unit');
+            $table->string('type');
+            $table->string('uploader');
+            $table->string('filepath');
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ class CreateAbdTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('abd');
+        Schema::dropIfExists('kbacourse');
     }
 }
