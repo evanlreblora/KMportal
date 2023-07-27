@@ -5,7 +5,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Annual Report Table</h3>
+              <h3 class="card-title">Activity Design Table</h3>
   
                   <div class="card-tools">
                     <button class="btn btn-success" @click="openUserModal">
@@ -61,22 +61,22 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(annualreport, index) in annualreports.data" :key="annualreport.id">
-                    <td :title="annualreport.id">
+                  <tr v-for="(activitydesign, index) in activitydesigns.data" :key="activitydesign.id">
+                    <td :title="activitydesign.id">
                       {{ page + index + 1 }}
                     </td>
-                    <td>{{ annualreport.filename }}</td>
-                    <td>{{ annualreport.desc }}</td>
-                    <td>{{ annualreport.unit }}</td>
+                    <td>{{ activitydesign.filename }}</td>
+                    <td>{{ activitydesign.desc }}</td>
+                    <td>{{ activitydesign.unit }}</td>
                     <td>
-                      {{ annualreport.type }}
+                      {{ activitydesign.type }}
                     </td>
                     <td>
-                     {{ annualreport.uploader }}
+                     {{ activitydesign.uploader }}
                     </td>
                     <td>
                       
-                      <a href="#" @click.prevent="downloadUser(annualreport)" title="Download">
+                      <a href="#" @click.prevent="downloadUser(activitydesign)" title="Download">
                         <i class="fa fa-download blue"></i>
                       </a>
                       <span class="yellow">/</span>
@@ -84,7 +84,7 @@
                         <i class="fa fa-edit indigo"></i>
                       </a>
                       <span class="yellow">/</span>
-                      <a href="#" @click.prevent="deleteUser(annualreport)" title="Remove">
+                      <a href="#" @click.prevent="deleteUser(activitydesign)" title="Remove">
                         <i class="fa fa-trash red"></i>
                       </a>
 
@@ -96,7 +96,7 @@
             <!-- /.card-body -->
             <div class="card-footer">
               <pagination
-                :data="annualreports"
+                :data="activitydesigns"
                 :limit="3"
                 :show-disabled="true"
                 align="center"
@@ -259,7 +259,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      annualreports: {},
+      activitydesigns: {},
       
     
       editable: false,
@@ -310,8 +310,8 @@ export default {
     async getUsers(page = 1) {
       if (!this.$gate.isAdminOrAuthor()) return false;
       try {
-        const annualreports = await axios.get(`/api/annualreports/?page=${page}`);
-        this.annualreports = annualreports.data;
+        const activitydesigns = await axios.get(`/api/activitydesigns/?page=${page}`);
+        this.activitydesigns = activitydesigns.data;
       } catch (error) {
         console.log(error.message);
       }
@@ -348,7 +348,7 @@ export default {
         fd.append('uploader', this.form.uploader);
         fd.append('filepath', this.filepath);
         
-        await axios.post('api/annualreports',fd,config );
+        await axios.post('api/activitydesigns',fd,config );
         //.then(res=>{
         //   console.log('Response', res.data)
         // }).catch(err=>console.log(err))
@@ -378,7 +378,7 @@ export default {
         this.form.password = undefined;
       }
       try {
-        await this.form.put(`/api/annualreports/${this.form.id}`);
+        await this.form.put(`/api/activitydesigns/${this.form.id}`);
         $("#userModal").modal("hide");
         Swal.fire("Updated!", `File is updated`, "success");
         this.$Progress.finish();
@@ -405,7 +405,7 @@ export default {
         });
 
         if (result.isConfirmed) {
-          await this.form.delete(`/api/annualreports/${user.id}`);
+          await this.form.delete(`/api/activitydesigns/${user.id}`);
           Swal.fire("Deleted!", `User has been deleted`, "success");
         }
       } catch (error) {
@@ -428,7 +428,7 @@ export default {
         });
 
         if (result.isConfirmed) {
-          await this.form.download(`/api/annualreports/${user.id}`);
+          await this.form.download(`/api/activitydesigns/${user.id}`);
           Swal.fire("Downloading!", "success");
         }
       } catch (error) {
@@ -452,7 +452,7 @@ export default {
         .get(`/api/searchpolicybr?q=${search}`)
         .then((data) => {
           // console.log(data.data);
-          this.annualreports = data.data;
+          this.activitydesigns = data.data;
         })
         .catch((e) => {
           console.log(e);

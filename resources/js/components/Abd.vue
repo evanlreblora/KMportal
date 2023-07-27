@@ -43,10 +43,10 @@
               </div>
    
    
-  
+   
                 </div>
               </div> -->
-              
+
               <div class="card-body table-responsive p-0">
               <table class="table table-hover text-nowrap">
                 <thead>
@@ -61,8 +61,34 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    
+                  <tr v-for="(abd, index) in abds.data" :key="abd.id">
+                    <td :title="abd.id">
+                      {{ page + index + 1 }}
+                    </td>
+                    <td>{{ abd.filename }}</td>
+                    <td>{{ abd.desc }}</td>
+                    <td>{{ abd.unit }}</td>
+                    <td>
+                      {{ abd.type }}
+                    </td>
+                    <td>
+                     {{ abd.uploader }}
+                    </td>
+                    <td>
+                      
+                      <a href="#" @click.prevent="downloadUser(abd)" title="Download">
+                        <i class="fa fa-download blue"></i>
+                      </a>
+                      <span class="yellow">/</span>
+                      <a href="#" title="Edit" @click="openUserModal(abd)">
+                        <i class="fa fa-edit indigo"></i>
+                      </a>
+                      <span class="yellow">/</span>
+                      <a href="#" @click.prevent="deleteUser(abd)" title="Remove">
+                        <i class="fa fa-trash red"></i>
+                      </a>
+
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -94,7 +120,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="userModalTitle">
-                {{ editable ? "Update's ASEAN Biodiversity Dashboard data" : "Add New" }}
+                {{ editable ? "Update's ASEAN Biodiv data" : "Add New" }}
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -229,4 +255,209 @@
 </template>
 
 <script>
+import axios from 'axios';
+export default {
+  data() {
+    return {
+      abds: {},
+      
+    
+      editable: false,
+      page: 0,
+      gateadmin: this.$gate.isAdminOrAuthor(),
+      // Create a new form instance
+      form: new Form({
+        id: "",
+        filename: "",
+        desc: "",
+        unit: "",
+        type: "",
+        uploader: "",
+        filepath: ""
+        // file:"",
+
+      }),
+    };
+  },
+
+  methods: {
+
+    // onFileChange(event) {
+    //   this.filepath = event.target.files[0];
+    // },
+    openUserModal(user = null) {
+      // clear the errors
+      this.form.clear();
+      // resets the form
+      this.form.reset();
+      if (user.id) {
+        this.editable = true;
+        this.form.fill(user);
+      } else {
+        this.editable = false;
+      }
+      $("#userModal").modal("show");
+    },
+
+    onSubmit() {
+      if (this.editable) {
+        this.updateUser();
+      } else {
+        this.createUser();
+      }
+    },
+
+    async getUsers(page = 1) {
+      if (!this.$gate.isAdminOrAuthor()) return false;
+      try {
+        const abds = await axios.get(`/api/abds/?page=${page}`);
+        this.abds = abds.data;
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+    // Our method to GET results from a Laravel endpoint
+    getResults(page = 1) {
+      this.page = (page - 1) * 10;
+      this.getUsers(page);
+    },
+    
+
+ 
+
+    onFileChange(e) {
+      console.log("select file", e.target.files[0])
+      this.filepath = e.target.files[0];
+      
+    },
+    async createUser() {
+      //  e.preventDefault();
+     
+      const config = {
+          header: { "content_type": "multipart/form-data"}
+      }
+      try {
+        // Submit the form via a POST request
+        this.$Progress.start();
+
+        let fd = new FormData();
+        fd.append('filename', this.form.filename); 
+        fd.append('desc', this.form.desc);
+        fd.append('unit', this.form.unit);
+        fd.append('type', this.form.type);
+        fd.append('uploader', this.form.uploader);
+        fd.append('filepath', this.filepath);
+        
+        await axios.post('api/abds',fd,config );
+        //.then(res=>{
+        //   console.log('Response', res.data)
+        // }).catch(err=>console.log(err))
+        // modal close after submit
+        // need to modify later
+        $("#userModal").modal("hide");
+        window.Toast.fire({
+          icon: "success",
+          title: "User Created successfully",
+        });
+
+        // updated the list
+        window.Fire.$emit("loadUser");
+
+        this.$Progress.finish();
+      } catch (error) {
+        this.$Progress.fail();
+        window.Toast.fire({
+          icon: "error",
+          title: "File cannot created",
+        });
+      }
+    },
+    async updateUser() {
+      this.$Progress.start();
+      if (!this.form.password?.length) {
+        this.form.password = undefined;
+      }
+      try {
+        await this.form.put(`/api/abds/${this.form.id}`);
+        $("#userModal").modal("hide");
+        Swal.fire("Updated!", `File is updated`, "success");
+        this.$Progress.finish();
+
+        // update the view
+        window.Fire.$emit("loadUser");
+      } catch (error) {
+        this.$Progress.fail();
+        Swal.fire("Failed!", `File cannot be updated`, "error");
+        console.log(error);
+      }
+    },
+    async deleteUser(user) {
+      // delete the user
+      try {
+        const result = await window.Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        });
+
+        if (result.isConfirmed) {
+          await this.form.delete(`/api/abds/${user.id}`);
+          Swal.fire("Deleted!", `User has been deleted`, "success");
+        }
+      } catch (error) {
+        Swal.fire("Failed!", `User cannot be deleted`, "error");
+      }
+      // update the view
+      window.Fire.$emit("loadUser");
+    },
+    async downloadUser(user) {
+      // download the user
+      try {
+        const result = await window.Swal.fire({
+          title: "Are you sure to download this file?",
+          text: "You won't be able to revert this!",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, Download it!",
+        });
+
+        if (result.isConfirmed) {
+          await this.form.download(`/api/abds/${user.id}`);
+          Swal.fire("Downloading!", "success");
+        }
+      } catch (error) {
+        Swal.fire("Failed!", `File cannot be download`, "error");
+      }
+      // update the view
+      window.Fire.$emit("loadUser");
+    },
+  },
+  mounted() {
+    this.getUsers();
+
+    // fired fire event
+    window.Fire.$on("loadUser", () => {
+      this.getUsers();
+    });
+
+    window.Fire.$on("search", (search) => {
+      this.page = 0;
+      axios
+        .get(`/api/searchpolicybr?q=${search}`)
+        .then((data) => {
+          // console.log(data.data);
+          this.abds = data.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    });
+  },
+};
 </script>

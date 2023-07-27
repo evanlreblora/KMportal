@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AnnualReport extends Model
+class ABD extends Model
 {
     use HasFactory;
       protected $fillable = ['filename','desc','unit','type','uploader','filepath'];
 
     
-    public $table = 'annualreport';
+    public $table = 'abd';
     protected $guarded = [];
 }

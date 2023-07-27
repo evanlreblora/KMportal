@@ -5,7 +5,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Annual Report Table</h3>
+              <h3 class="card-title">KBA Course Table</h3>
   
                   <div class="card-tools">
                     <button class="btn btn-success" @click="openUserModal">
@@ -14,39 +14,7 @@
                 </button>
               </div>
             </div>
-            <!-- /.card-header -->
-  
-            <!-- <div class="container mx-auto mt-4">
-                <div class="row">
-                  <div v-for="annualreport  in annualreports.data" :key="annualreport.id" class="col-md-3">
-                    <div class="card" style="width: 16rem">
-                      <img
-                        src="/images/squareCard.svg"
-                        class="card-img-top"
-                        alt="..."
-                      />
-                      <div class="card-body">
-                        <h5 class="card-title">{{ annualreport.filename }}</h5>
-   
-                        <p class="card-text">
-                          {{ annualreport.desc }}
-                        </p>
-                        <a href="#" class=" mr-2"  @click="viewUserModal(annualreport)"><i class="fas fa-eye green"></i>View</a> 
-                        <a href="#"  class="mr-2" title="Edit" @click="openUserModal(annualreport)">
-                          <i class="fa fa-edit indigo"></i>Edit
-                        </a>
-                        <a v-if="gateadmin" class="mr-2" href="#" @click.prevent="deleteUser(annualreport)" title="Remove">
-                          <i class="fa fa-trash red"></i>Delete
-                        </a>
-                    </div>
-                  </div>
-              </div>
-   
-   
-   
-                </div>
-              </div> -->
-
+ 
               <div class="card-body table-responsive p-0">
               <table class="table table-hover text-nowrap">
                 <thead>
@@ -61,30 +29,30 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(annualreport, index) in annualreports.data" :key="annualreport.id">
-                    <td :title="annualreport.id">
+                  <tr v-for="(kbacourse, index) in kbacourses.data" :key="kbacourse.id">
+                    <td :title="kbacourse.id">
                       {{ page + index + 1 }}
                     </td>
-                    <td>{{ annualreport.filename }}</td>
-                    <td>{{ annualreport.desc }}</td>
-                    <td>{{ annualreport.unit }}</td>
+                    <td>{{ kbacourse.filename }}</td>
+                    <td>{{ kbacourse.desc }}</td>
+                    <td>{{ kbacourse.unit }}</td>
                     <td>
-                      {{ annualreport.type }}
+                      {{ kbacourse.type }}
                     </td>
                     <td>
-                     {{ annualreport.uploader }}
+                     {{ kbacourse.uploader }}
                     </td>
                     <td>
                       
-                      <a href="#" @click.prevent="downloadUser(annualreport)" title="Download">
+                      <a href="#" @click.prevent="downloadUser(kbacourse)" title="Download">
                         <i class="fa fa-download blue"></i>
                       </a>
                       <span class="yellow">/</span>
-                      <a href="#" title="Edit" @click="openUserModal(annualreport)">
+                      <a href="#" title="Edit" @click="openUserModal(kbacourse)">
                         <i class="fa fa-edit indigo"></i>
                       </a>
                       <span class="yellow">/</span>
-                      <a href="#" @click.prevent="deleteUser(annualreport)" title="Remove">
+                      <a href="#" @click.prevent="deleteUser(kbacourse)" title="Remove">
                         <i class="fa fa-trash red"></i>
                       </a>
 
@@ -120,7 +88,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="userModalTitle">
-                {{ editable ? "Update's Annual Report data" : "Add New" }}
+                {{ editable ? "Update's KBA Course data" : "Add New" }}
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -259,7 +227,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      annualreports: {},
+      kbacourses: {},
       
     
       editable: false,
@@ -310,8 +278,8 @@ export default {
     async getUsers(page = 1) {
       if (!this.$gate.isAdminOrAuthor()) return false;
       try {
-        const annualreports = await axios.get(`/api/annualreports/?page=${page}`);
-        this.annualreports = annualreports.data;
+        const kbacourses = await axios.get(`/api/kbacourses/?page=${page}`);
+        this.kbacourses = kbacourses.data;
       } catch (error) {
         console.log(error.message);
       }
@@ -348,7 +316,7 @@ export default {
         fd.append('uploader', this.form.uploader);
         fd.append('filepath', this.filepath);
         
-        await axios.post('api/annualreports',fd,config );
+        await axios.post('api/kbacourses',fd,config );
         //.then(res=>{
         //   console.log('Response', res.data)
         // }).catch(err=>console.log(err))
@@ -378,7 +346,7 @@ export default {
         this.form.password = undefined;
       }
       try {
-        await this.form.put(`/api/annualreports/${this.form.id}`);
+        await this.form.put(`/api/kbacourses/${this.form.id}`);
         $("#userModal").modal("hide");
         Swal.fire("Updated!", `File is updated`, "success");
         this.$Progress.finish();
@@ -405,11 +373,11 @@ export default {
         });
 
         if (result.isConfirmed) {
-          await this.form.delete(`/api/annualreports/${user.id}`);
-          Swal.fire("Deleted!", `User has been deleted`, "success");
+          await this.form.delete(`/api/kbacourses/${user.id}`);
+          Swal.fire("Deleted!", `File has been deleted`, "success");
         }
       } catch (error) {
-        Swal.fire("Failed!", `User cannot be deleted`, "error");
+        Swal.fire("Failed!", `File cannot be deleted`, "error");
       }
       // update the view
       window.Fire.$emit("loadUser");
@@ -428,7 +396,7 @@ export default {
         });
 
         if (result.isConfirmed) {
-          await this.form.download(`/api/annualreports/${user.id}`);
+          await this.form.download(`/api/kbacourses/${user.id}`);
           Swal.fire("Downloading!", "success");
         }
       } catch (error) {
@@ -452,7 +420,7 @@ export default {
         .get(`/api/searchpolicybr?q=${search}`)
         .then((data) => {
           // console.log(data.data);
-          this.annualreports = data.data;
+          this.kbacourses = data.data;
         })
         .catch((e) => {
           console.log(e);

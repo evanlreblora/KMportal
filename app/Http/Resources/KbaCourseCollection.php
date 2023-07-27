@@ -2,13 +2,13 @@
 
 namespace App\Http\Resources;
 
-use App\Http\Resources\KbaCourseResource;
+use App\Http\Resources\KbacourseResource;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class KbaCourseCollection extends ResourceCollection
+class KbacourseCollection extends ResourceCollection
 {
-    public $collects = KbaCourseResource::class;
+    public $collects = KbacourseResource::class;
     /**
      * Transform the resource collection into an array.
      *

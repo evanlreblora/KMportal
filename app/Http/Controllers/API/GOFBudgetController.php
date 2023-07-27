@@ -24,8 +24,8 @@ class GOFBudgetController extends Controller
     {
         // return AnnualReport::latest()->paginate(8);
         // Gate::allows(['isAdmin','isAuthor']);
-        $annualreports =  GOFBudget::latest()->paginate(8);
-        return new GofbudgetCollection($annualreports);
+        $GOFBudgets =  GOFBudget::latest()->paginate(8);
+        return new GofbudgetCollection($GOFBudgets);
     }
 
     /**
@@ -142,7 +142,7 @@ class GOFBudgetController extends Controller
         // }
 
         return [
-         'message' => 'Photo deleted successfully'
+         'message' => 'File deleted successfully'
         ];
     }
 
