@@ -64,7 +64,7 @@
             <!-- /.card-body -->
             <div class="card-footer">
               <pagination
-                :data="annualreports"
+                :data="kbacourses"
                 :limit="3"
                 :show-disabled="true"
                 align="center"

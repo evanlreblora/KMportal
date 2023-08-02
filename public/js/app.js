@@ -81076,7 +81076,7 @@ var render = function() {
                 [
                   _c("pagination", {
                     attrs: {
-                      data: _vm.annualreports,
+                      data: _vm.kbacourses,
                       limit: 3,
                       "show-disabled": true,
                       align: "center"
