@@ -37,7 +37,7 @@ class KbaCourseController extends Controller
 
         
                $request->validate([
-                'filename' => 'required|unique:Kbacourse',
+                'filename' => 'required|unique:kbacourse,filename',
                 'desc' => 'required',
                 'unit' => 'required',
                 'type' => 'required',

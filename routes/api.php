@@ -15,7 +15,7 @@ use App\Http\Controllers\API\KMProductController;
 use App\Http\Controllers\API\ABDController;
 use App\Http\Controllers\API\ActivityDesignController;
 use App\Http\Controllers\API\GOFBudgetController;
-use App\Http\Controllers\API\KBACourseController;
+use App\Http\Controllers\API\KbaCourseController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -111,7 +111,7 @@ Route::apiResource('kmproducts' , KMProductController::class);
 
 Route::apiResource('gofbudgets' , GOFBudgetController::class);
 Route::apiResource('activitydesigns' , ActivityDesignController::class);
-Route::apiResource('kbacourses' , KBACourseController::class);
+Route::apiResource('kbacourses' , KbaCourseController::class);
 Route::apiResource('abds' , AbdController::class);
 
 

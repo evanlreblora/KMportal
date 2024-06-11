@@ -138,11 +138,9 @@
                   }"
                 >
                   <option value="" selected disabled>Select Unit</option>
-                  <option value="PDF">PDF</option>
-                  <option value="PNG">PNG/JPEG</option>
-                  <option value="Docx">DOCX</option>
-                  <option value="HTML">HTML</option>
-                  <option value="PPT">PPT</option>
+                  <option value="BIM">BIM</option>
+                  <option value="CPA">CPA</option>
+                  <option value="PDI">PDI</option>
                 </select>
                 <has-error :form="form" field="unit"></has-error>
               </div>
